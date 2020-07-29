@@ -72,7 +72,7 @@ let galleryObject = {
         imageObject,
         {
             video: "https://vimeo.com/23456789",
-            caption: "Alt text"
+            caption: "Alt text" // optional
         }
     ]
 };
