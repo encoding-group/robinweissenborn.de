@@ -11,7 +11,7 @@
 
 <h2>Posts Component</h2>
 <ul>
-  {#if posts}
+  {#if Object.keys(posts) != 0}
     {#each posts as post}
       <li>{post.title}</li>
     {/each}
