@@ -3,11 +3,14 @@
 ## Wordpress setup
 
 Let’s do as little modifications to wordpress as possible.
-- Rename "Tags" taxonomy to "Discipline"
-- Rename "Category" taxonomy to "Client"
 - Add "Short title" custom text field to posts
 - Add a nested repeater field to posts, that let’s you create 2-dimensional galleries with either an image or a external video url
 - Create 2 pages "Info" and "Imprint"
+- Enable api
+
+Cosmetic optionally:
+- Rename "Tags" taxonomy to "Discipline"
+- Rename "Category" taxonomy to "Client"
 
 ## Data schemas
 
