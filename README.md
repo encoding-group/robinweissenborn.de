@@ -45,7 +45,7 @@ let postObject = {
     year: 2019,
     image: imageObject,
     client: "Kunde", // category
-    discipline: "Poster" // tag
+    discipline: ["Poster"] // tags
 };
 ```
 
