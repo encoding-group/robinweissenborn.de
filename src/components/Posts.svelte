@@ -4,7 +4,7 @@
   let posts = {};
   let api = getContext("robinApi");
 
-  api.getPosts((result) => {
+  api.getPostsData((result) => {
     posts = result;
   });
 </script>
@@ -13,7 +13,7 @@
 <ul>
   {#if Object.keys(posts) != 0}
     {#each posts as post}
-      <li>{post.title}</li>
+      <li>{post.id} {post.title} {post.content}</li>
     {/each}
   {:else}
     <li>Loading Posts</li>
