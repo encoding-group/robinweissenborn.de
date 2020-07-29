@@ -1,20 +1,24 @@
 <script>
+  import { Router, Link, Route } from "svelte-routing";
   import { setContext } from "svelte";
   import Api from "./util/Api.js";
-  import Post from "./components/Post.svelte";
-  import Posts from "./components/Posts.svelte";
+  import Home from "./routes/Home.svelte";
+  import Post from "./routes/Post.svelte";
 
   setContext("robinApi", new Api("http://example.com/api/v1"));
 
-  export let name;
+  export let url = "";
 </script>
 
-<style>
-  h1 {
-    color: purple;
-  }
-</style>
-
-<h1>Hello {name}!</h1>
-<Post />
-<Posts />
+<Route {url}>
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="posts">Post</Link>
+  </nav>
+  <div>
+    <Route path="posts/:id" component={Post} />
+    <Route path="/">
+      <Home />
+    </Route>
+  </div>
+</Route>
