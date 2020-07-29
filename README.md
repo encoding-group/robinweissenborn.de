@@ -24,7 +24,7 @@ let imageObject = {
     full: "image-2000.jpg",
     width: 2000,
     height: 1300,
-    caption: "Alt text" // image alt text
+    caption: "Alt text"
 }
 
 let galleryObject = {
@@ -44,9 +44,14 @@ let postObject = {
     titleShort: "Title", // custom text field
     year: 2019,
     image: imageObject,
-    client: "Kunde", // category
-    discipline: ["Poster"] // tags
+    client: "Kunde", // category taxonomy
+    discipline: ["Poster"], // tags taxonomy
 };
+
+let productObject = isProduct ? {
+    info: "Text",        
+    price: 10.00
+} : false;
 ```
 
 ## get post data
@@ -64,7 +69,8 @@ function getPostData(id) {
         galleries: [
             galleryObject
         ],
-        content: "Post content"
+        content: "Post content",
+        product: productObject
     });
 }
 ```
