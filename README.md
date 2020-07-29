@@ -79,7 +79,7 @@ function getPageData( id ) {
 ```
 
 ## get site data
-Can either be site-settings or custom fields of the Info page
+Can either be site-settings or custom fields of the Info page. To be used in html head and on both pages, so it would be best to fetch this only once.
 
 ``` js
 function getSiteData( id ) {
