@@ -103,3 +103,9 @@ function getSiteData( id ) {
 }
 ```
 
+## Routing
+- `/` home
+- `/info` info
+- `/imprint` imprint
+- `/archive` posts (not actually a worpress page)
+- `/archive/my-first-post` single post
