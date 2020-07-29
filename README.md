@@ -10,6 +10,8 @@ Let’s do as little modifications to wordpress as possible.
 - Create 2 pages "Info" and "Imprint"
 - Enable api
 
+can i edit?
+
 Cosmetic optionally:
 - Rename "Tags" taxonomy to "Discipline"
 - Rename "Category" taxonomy to "Client"
