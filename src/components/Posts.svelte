@@ -1,8 +1,9 @@
 <script>
-  import axios from "axios";
-  import Api from "../util/Api.js";
-  let api = new Api("http://robin.test/wp-json/wp/v2/");
+  import { getContext } from "svelte";
+
   let posts = {};
+  let api = getContext("robinApi");
+
   api.getPosts((result) => {
     posts = result;
   });
@@ -14,5 +15,7 @@
     {#each posts as post}
       <li>{post.title}</li>
     {/each}
+  {:else}
+    <li>Loading Posts</li>
   {/if}
 </ul>
