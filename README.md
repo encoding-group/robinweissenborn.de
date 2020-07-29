@@ -7,6 +7,7 @@ Let’s do as little modifications to wordpress as possible.
 - Rename "Category" taxonomy to "Client"
 - Add "Short title" custom text field to posts
 - Add a nested repeater field to posts, that let’s you create 2-dimensional galleries with either an image or a external video url
+- Create 2 pages "Info" and "Imprint"
 
 ## Data schemas
 
@@ -75,6 +76,7 @@ function getPageData( id ) {
 ```
 
 ## get site data
+Can either be site-settings or custom fields of the Info page
 
 ``` js
 function getSiteData( id ) {
