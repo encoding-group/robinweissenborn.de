@@ -1,0 +1,43 @@
+// colors
+$black: #000;
+$grey: #999;
+$white: #fff;
+
+// typography
+@mixin font {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin underline {
+    border-bottom: 1px solid currentColor;
+}
+
+@mixin hyphens {
+	hyphens: auto;
+	-webkit-hyphens: auto;
+}
+
+@mixin tabularFigures {
+	font-variant-numeric: tabular-nums;
+	-moz-font-feature-settings: "tnum";
+	-webkit-font-feature-settings: "tnum";
+	font-feature-settings: "tnum";
+}
+
+// borders
+$border-style: solid;
+$border-width: 1px;
+$border: $border-width solid currentColor;
+
+// effects
+@mixin fadein {
+	animation: fadein 1s;
+}
+
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
