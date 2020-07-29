@@ -39,7 +39,7 @@ let galleryObject = {
 };
 
 let postObject = {
-    url: "url",
+    id: "my-first-post",
     title: "Very long and original project title",
     titleShort: "Title", // custom text field
     year: 2019,
