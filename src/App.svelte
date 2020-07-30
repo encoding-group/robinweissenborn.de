@@ -4,7 +4,7 @@
   import { setContext } from "svelte";
   import WpClient from "./js/wpClient.js";
 
-  setContext("wpClient", new WpClient("https://robin.test/wp-json/wp/v2"));
+  setContext("wpClient", new WpClient("http://robin.test/wp-json/wp/v2"));
 </script>
 
 <style type="text/scss" global>
