@@ -10,7 +10,7 @@
 <ul>
   {#if posts.length != 0}
     {#each posts as post}
-      <li>{post.title}</li>
+      <li>{post.title}, {post.client}, {post.discipline}</li>
     {/each}
   {:else}
     <li>Loading posts...</li>
