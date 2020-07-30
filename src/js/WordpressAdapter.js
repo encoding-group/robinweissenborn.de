@@ -1,7 +1,7 @@
 import axios from "axios";
 import { processPost, processPosts } from "./wpResponseParser.js";
 
-export default class WpClient {
+export default class WordpressAdapter {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
     this.parameters = "?_embed=wp:term";

@@ -2,9 +2,12 @@
   import { Router } from "@sveltech/routify";
   import { routes } from "../.routify/routes";
   import { setContext } from "svelte";
-  import WpClient from "./js/wpClient.js";
+  import WordpressAdapter from "./js/WordpressAdapter.js";
 
-  setContext("wpClient", new WpClient("http://robin.test/wp-json/wp/v2"));
+  setContext(
+    "WordpressAdapter",
+    new WordpressAdapter("http://api.robinweissenborn.de/wp-json/wp/v2")
+  );
 </script>
 
 <style type="text/scss" global>
