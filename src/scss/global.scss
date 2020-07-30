@@ -1,21 +1,20 @@
-@import 'reset';
-@import 'variables';
+$background: #fff;
 
 html {
-	font-size: 1em;
+  font-size: 1em;
 }
 body {
-	background-color: $background;
-	@include font;
+  background-color: $background;
+  @include font;
 }
 
 p {
-	@include hypehns;
-	+ p {
-		margin-top: 1em;
-	}
+  @include hyphens;
+  + p {
+    margin-top: 1em;
+  }
 }
 
 .tnum {
-	@include tabularFigures;
+  @include tabularFigures;
 }
