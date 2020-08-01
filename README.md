@@ -52,6 +52,7 @@ let postObject = {
   slug: "my-first-post",
   title: "Very long and original project title",
   titleShort: "Title", // custom text field
+  titleImage: imageObject,
   year: 2019,
   featured: true // wp sticky post, frue if this post should be shown on home page
 };
