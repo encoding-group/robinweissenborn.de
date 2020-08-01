@@ -53,7 +53,7 @@ let postObject = {
   title: "Very long and original project title",
   titleShort: "Title", // custom text field
   year: 2019,
-  featured: true // wp pinned post, frue if this post should be shown on home page
+  featured: true // wp sticky post, frue if this post should be shown on home page
 };
 
 let productObject = isProduct
