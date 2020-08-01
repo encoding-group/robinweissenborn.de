@@ -87,6 +87,7 @@ function processAcfFields(postData) {
       ...processProductFields(postData),
       ...processGalleryGrid(postData),
       titleShort: postData.acf.short_title,
+      titleImage: processImage(postData.acf.title_image),
       // year: new Date(year, month - 1, day),
       year: parseInt(year, 10),
     };
@@ -131,6 +132,7 @@ function processGalleryGrid(postData) {
 }
 
 function processImage(imageObject) {
+  if (!imageObject) return {};
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],
