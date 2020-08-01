@@ -1,6 +1,8 @@
 <script>
 
-    export let posts = [];
+  import { url } from "@sveltech/routify";
+
+  export let posts = [];
 
 </script>
 
@@ -30,8 +32,8 @@
   {#if posts.length != 0}
     {#each posts as post}
       <li>
-        <a>
-          <div class="col hover"></div>
+        <a href={$url('../:post', { post: post.slug })}>
+          <div class="col hover">{ post.slug }</div>
           <p class="col">{post.year}</p>
           <h3 class="col w3">{post.title}</h3>
           <p class="col w3">{post.client.join(', ')}</p>

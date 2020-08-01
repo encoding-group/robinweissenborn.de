@@ -10,15 +10,17 @@
   });
 </script>
 
-<style>
+<style type="text/scss">
+  @import "../../scss/_variables.scss";
+
   .post {
     margin: 2rem;
     padding: 1rem;
-    border: 1px solid black;
+    border: $border;
   }
+
 </style>
 
-<h1>Portfolio</h1>
 <ul>
   {#if posts.length != 0}
     {#each posts as post}

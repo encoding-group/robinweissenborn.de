@@ -1,6 +1,6 @@
 <script>
   import { getContext } from "svelte";
-  import { asEuro } from "../../../js/utility.js";
+  import { url } from "@sveltech/routify";
 
   import List from "../_components/List.svelte";
   import Grid from "../_components/Grid.svelte";
@@ -11,6 +11,7 @@
     posts = result;
     console.log(posts);
   });
+
 </script>
 
 <style type="text/scss">

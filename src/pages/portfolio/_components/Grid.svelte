@@ -1,8 +1,8 @@
 <script>
 
-    export let posts = [];
+  import { url } from "@sveltech/routify";
 
-    console.log( posts );
+  export let posts = [];
 
 </script>
 
@@ -32,7 +32,7 @@
   {#if posts.length != 0}
     {#each posts as post}
       <li>
-        <a>
+        <a href={$url('../:post', { post: post.slug })}>
           <figure>
             <img alt="Nice poster" src="" width="500" height="1000" />
           </figure>
