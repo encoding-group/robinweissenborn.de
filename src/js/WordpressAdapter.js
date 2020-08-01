@@ -21,6 +21,13 @@ export default class WordpressAdapter {
       .catch((error) => console.log(error));
   }
 
+  getPostBySlug(slug, callback) {
+    axios
+      .get(`${this.baseUrl}/posts?slug=${slug}`)
+      .then((response) => callback(processPost(response.data[0])))
+      .catch((error) => console.log(error));
+  }
+
   getPageData(id, callback) {
     axios
       .get(`${this.baseUrl}/pages/${id}`)
