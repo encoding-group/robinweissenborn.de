@@ -1,5 +1,5 @@
 import axios from "axios";
-import { processPost, processPosts } from "./wpResponseParser.js";
+import { processPost, processPosts, processInfo } from "./wpResponseParser.js";
 
 export default class WordpressAdapter {
   constructor(baseUrl) {
@@ -30,8 +30,8 @@ export default class WordpressAdapter {
 
   getSiteData(callback) {
     axios
-      .get(`${this.baseUrl}/posts`)
-      .then((response) => callback(processPosts(response.data)))
+      .get(`${this.baseUrl}/pages/34`) // TODO: Find better way to set infopage endpoint; get rid of magic number
+      .then((response) => callback(processInfo(response.data)))
       .catch((error) => console.log(error));
   }
 }

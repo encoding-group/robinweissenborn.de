@@ -1,16 +1,50 @@
+function processInfo(pageData) {
+  console.log(pageData);
+  return {
+    ...processBasicFields(pageData),
+    ...processMetaFields(pageData),
+  };
+}
+
 function processPosts(postsArray) {
   return postsArray.map((post) => processPost(post));
 }
 
 function processPost(postData) {
   return {
+    ...processBasicFields(postData),
+    ...processEmbeddedFields(postData),
+    ...processAcfFields(postData),
+  };
+}
+
+function processBasicFields(postData) {
+  return {
     id: postData.id,
     slug: postData.slug,
     title: postData.title.rendered,
     content: postData.content.rendered,
-    ...processEmbeddedFields(postData),
-    ...processAcfFields(postData),
   };
+}
+
+function processMetaFields(postData) {
+  if (
+    postData.hasOwnProperty("acf") &&
+    postData.acf.hasOwnProperty("general")
+  ) {
+    return {
+      title: postData.acf.general.title,
+      keywords: postData.acf.general.keywords.split(/,\s/),
+      description: postData.acf.general.description,
+      image: {
+        url: postData.acf.general.image.sizes.large,
+        width: postData.acf.general.image.sizes["large-width"],
+        height: postData.acf.general.image.sizes["large-height"],
+      },
+    };
+  }
+
+  return {};
 }
 
 function processEmbeddedFields(postData) {
@@ -72,4 +106,4 @@ function processGalleryGrid(postData) {
   return {};
 }
 
-export { processPost, processPosts };
+export { processPost, processPosts, processInfo };
