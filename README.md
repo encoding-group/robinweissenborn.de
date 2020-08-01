@@ -41,13 +41,18 @@ let galleryObject = {
 };
 
 let postObject = {
-  id: "my-first-post",
+  client: ["Kunde"], // category taxonomy
+  content: "<p>lorem ipsum dolor sit amet...</p>", // HTML markup
+  discipline: ["Poster"], // tags taxonomy
+  galleryGrid: [Array(3), Array(3), Array(3)], // 2d Array
+  id: 1,
+  isProduct: true,
+  price: 123.45, // exists only if isProduct is true
+  productInfo: "lorem ipsum dolor sit amet...", // exists only if isProduct is true
+  slug: "my-first-post",
   title: "Very long and original project title",
   titleShort: "Title", // custom text field
   year: 2019,
-  image: imageObject,
-  client: "Kunde", // category taxonomy
-  discipline: ["Poster"], // tags taxonomy
 };
 
 let productObject = isProduct
