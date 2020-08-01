@@ -1,8 +1,8 @@
 function processInfo(pageData) {
-  console.log(pageData);
   return {
     ...processBasicFields(pageData),
     ...processMetaFields(pageData),
+    ...processContactFields(pageData),
   };
 }
 
@@ -40,6 +40,27 @@ function processMetaFields(postData) {
         url: postData.acf.general.image.sizes.large,
         width: postData.acf.general.image.sizes["large-width"],
         height: postData.acf.general.image.sizes["large-height"],
+      },
+    };
+  }
+
+  return {};
+}
+
+function processContactFields(postData) {
+  if (
+    postData.hasOwnProperty("acf") &&
+    postData.acf.hasOwnProperty("contact")
+  ) {
+    return {
+      contact: {
+        person: `${postData.acf.contact.first_name} ${postData.acf.contact.last_name}`,
+        email: postData.acf.contact.email,
+        tel: postData.acf.contact.phone_number,
+        street: postData.acf.contact.street,
+        zip: postData.acf.contact.zip_code,
+        city: postData.acf.contact.city,
+        country: postData.acf.contact.country,
       },
     };
   }
@@ -103,6 +124,10 @@ function processGalleryGrid(postData) {
     };
   }
 
+  return {};
+}
+
+function processImage(imageObject) {
   return {};
 }
 
