@@ -117,7 +117,10 @@ function processGalleryGrid(postData) {
         row.media.map((column) => {
           return {
             type: column.select,
-            url: column.image || column.video_url,
+            media:
+              column.select === "Image"
+                ? processImage(column.image)
+                : column.video_url,
           };
         })
       ),
@@ -128,7 +131,21 @@ function processGalleryGrid(postData) {
 }
 
 function processImage(imageObject) {
-  return {};
+  return {
+    small: imageObject.sizes.thumbnail,
+    smallWidth: imageObject.sizes["thumbnail-width"],
+    smallHeight: imageObject.sizes["thumbnail-height"],
+    medium: imageObject.sizes.medium,
+    mediumWidth: imageObject.sizes["medium-width"],
+    mediumHeight: imageObject.sizes["medium-height"],
+    large: imageObject.sizes.large,
+    largeWidth: imageObject.sizes["large-width"],
+    largeHeight: imageObject.sizes["large-height"],
+    full: imageObject.url,
+    fullWidth: imageObject.width,
+    fullHeight: imageObject.height,
+    caption: imageObject.caption,
+  };
 }
 
 export { processPost, processPosts, processInfo };

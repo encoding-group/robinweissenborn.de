@@ -2,9 +2,12 @@
   import { getContext } from "svelte";
   import { asEuro } from "../../js/utility.js";
 
-  const client = getContext("WordpressAdapter");
   let posts = [];
-  client.getPostsData((result) => (posts = result));
+  const wpAdapter = getContext("WordpressAdapter");
+  wpAdapter.getPostsData((result) => {
+    posts = result;
+    console.log(posts);
+  });
 </script>
 
 <style>
