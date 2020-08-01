@@ -7,11 +7,15 @@ body {
   @include font;
 }
 
-p {
-  @include hyphens;
-  + p {
-    margin-top: 1em;
+.article {
+
+  p {
+    @include hyphens;
+    + p {
+      margin-top: 1em;
+    }
   }
+
 }
 
 .tnum {

@@ -7,8 +7,11 @@
 <style type="text/scss">
   @import "../../../scss/_variables.scss";
 
-  .post {
+  ul {
     border-top: $border;
+  }
+  li {
+    border-bottom: $border;
     > a {
         display: flex;
         .col {
@@ -26,17 +29,17 @@
 <ul>
   {#if posts.length != 0}
     {#each posts as post}
-      <li class="post">
+      <li>
         <a>
-            <div class="col hover"></div>
-            <div class="col">{post.year}</div>
-            <h3 class="col w3">{post.title}</h3>
-            <div class="col w3">{post.client.join(', ')}</div>
-            <div class="col w3">{post.discipline.join(', ')}</div>
+          <div class="col hover"></div>
+          <p class="col">{post.year}</p>
+          <h3 class="col w3">{post.title}</h3>
+          <p class="col w3">{post.client.join(', ')}</p>
+          <p class="col w3">{post.discipline.join(', ')}</p>
         </a>
       </li>
     {/each}
   {:else}
-    <li class="post">Loading posts...</li>
+    <li>Loading posts...</li>
   {/if}
 </ul>

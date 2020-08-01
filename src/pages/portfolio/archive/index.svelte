@@ -20,7 +20,7 @@
         display: flex;
         .panel {
             flex: 1 0 50%;
-            &.grid {
+            &:first-child {
                 border-right: $border;
             }
         }
@@ -30,11 +30,11 @@
 
 <div class="panels">
 
-    <div class="panel grid">
+    <div class="panel">
         <Grid {posts} />
     </div>
 
-    <div class="panel list">
+    <div class="panel">
         <List {posts} />
     </div>
 

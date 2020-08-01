@@ -2,22 +2,27 @@
 
     export let posts = [];
 
+    console.log( posts );
+
 </script>
 
 <style type="text/scss">
   @import "../../../scss/_variables.scss";
 
-  .post {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
     border-top: $border;
+  }
+  li {
+    border-bottom: $border;
+    flex: 0 0 50%;
     > a {
-        display: flex;
-        .col {
-            padding: 0.3em 0.6em;
-            flex: 1 1 auto;
-            &.w3 {
-                flex-basis: 30%;
-            }
-        }
+        display: block;
+        padding: 0.5rem;
+    }
+    &:nth-child(odd){
+      border-right: $border;
     }
   }
 
@@ -26,17 +31,15 @@
 <ul>
   {#if posts.length != 0}
     {#each posts as post}
-      <li class="post">
+      <li>
         <a>
-            <div class="col hover"></div>
-            <div class="col">{post.year}</div>
-            <h3 class="col w3">{post.title}</h3>
-            <div class="col w3">{post.client.join(', ')}</div>
-            <div class="col w3">{post.discipline.join(', ')}</div>
+          <figure>
+            <img alt="Nice poster" src="" width="500" height="1000" />
+          </figure>
         </a>
       </li>
     {/each}
   {:else}
-    <li class="post">Loading posts...</li>
+    <li>Loading posts...</li>
   {/if}
 </ul>
