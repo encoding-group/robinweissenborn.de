@@ -3,6 +3,9 @@ $black: #000;
 $grey: #999;
 $white: #fff;
 
+$background: $white;
+$color: $black;
+
 // typography
 @mixin font {
     font-family: Arial, sans-serif;

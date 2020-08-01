@@ -1,10 +1,9 @@
-$background: #fff;
-
 html {
   font-size: 1em;
 }
 body {
   background-color: $background;
+  color: $color;
   @include font;
 }
 
