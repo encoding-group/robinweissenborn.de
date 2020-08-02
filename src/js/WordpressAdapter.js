@@ -8,37 +8,62 @@ export default class WordpressAdapter {
   }
 
   getPostsData(callback) {
-    axios
-      .get(`${this.baseUrl}/posts${this.parameters}`)
-      .then((response) => callback(processPosts(response.data)))
+    this.posts()
+      .then((posts) => callback(posts))
       .catch((error) => console.log(error));
+  }
+
+  posts() {
+    return axios
+      .get(`${this.baseUrl}/posts${this.parameters}`)
+      .then((response) => processPosts(response.data));
   }
 
   getPostData(id, callback) {
-    axios
-      .get(`${this.baseUrl}/posts/${id}${this.parameters}`)
-      .then((response) => callback(processPost(response.data)))
+    this.post(id)
+      .then((post) => callback(post))
       .catch((error) => console.log(error));
+  }
+
+  post(id) {
+    return axios
+      .get(`${this.baseUrl}/posts/${id}${this.parameters}`)
+      .then((response) => processPost(response.data));
   }
 
   getPostBySlug(slug, callback) {
-    axios
-      .get(`${this.baseUrl}/posts?slug=${slug}`)
-      .then((response) => callback(processPost(response.data[0])))
+    this.postBySlug(slug)
+      .then((post) => callback(post))
       .catch((error) => console.log(error));
+  }
+
+  postBySlug(slug) {
+    return axios
+      .get(`${this.baseUrl}/posts?slug=${slug}`)
+      .then((response) => processPost(response.data[0]));
   }
 
   getPageData(id, callback) {
-    axios
-      .get(`${this.baseUrl}/pages/${id}`)
-      .then((response) => callback(processPage(response.data)))
+    this.page(id)
+      .then((page) => callback(page))
       .catch((error) => console.log(error));
   }
 
+  page(id) {
+    return axios
+      .get(`${this.baseUrl}/pages/${id}`)
+      .then((response) => processPage(response.data));
+  }
+
   getSiteData(callback) {
-    axios
-      .get(`${this.baseUrl}/pages/34`) // TODO: Find better way to set infopage endpoint; get rid of magic number
-      .then((response) => callback(processInfo(response.data)))
+    this.siteData()
+      .then((site) => callback(site))
       .catch((error) => console.log(error));
+  }
+
+  siteData() {
+    return axios
+      .get(`${this.baseUrl}/pages/34`) // TODO: Find better way to set infopage endpoint; get rid of magic number
+      .then((response) => processInfo(response.data));
   }
 }

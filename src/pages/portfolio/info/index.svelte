@@ -2,11 +2,16 @@
   import { getContext } from "svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
-  let data = {};
-  wpAdapter.getSiteData((result) => {
-    data = result;
-    console.log(data);
-  });
 </script>
 
 <h1>Info</h1>
+{#await wpAdapter.siteData()}
+  <p>Loading...</p>
+{:then site}
+  {(console.log(site), '')}
+  <p>
+    {site.contact.person}
+    <br />
+    {site.contact.email}
+  </p>
+{/await}

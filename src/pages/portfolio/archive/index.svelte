@@ -5,12 +5,7 @@
   import List from "../_components/List.svelte";
   import Grid from "../_components/Grid.svelte";
 
-  let posts = [];
   const wpAdapter = getContext("WordpressAdapter");
-  wpAdapter.getPostsData((result) => {
-    posts = result;
-    console.log(posts);
-  });
 </script>
 
 <style type="text/scss">
@@ -26,13 +21,18 @@
 </style>
 
 <div class="panels">
+  {#await wpAdapter.posts()}
+    <p>Loading posts...</p>
+  {:then posts}
+    {(console.log(posts), '')}
+    <div class="panel">
+      <Grid {posts} />
+    </div>
 
-  <div class="panel">
-    <Grid {posts} />
-  </div>
-
-  <div class="panel">
-    <List {posts} />
-  </div>
-
+    <div class="panel">
+      <List {posts} />
+    </div>
+  {:catch error}
+    <p>{error.message}</p>
+  {/await}
 </div>

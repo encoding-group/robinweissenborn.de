@@ -24,21 +24,17 @@
 </style>
 
 <ul>
-  {#if posts.length != 0}
-    {#each posts as post}
-      <li>
-        <a href={$url('../:post', { post: post.slug })}>
-          <figure>
-            <img
-              alt="Nice poster"
-              src={post.titleImage.large}
-              width={post.titleImage.largeWidth}
-              height={post.titleImage.largeHeight} />
-          </figure>
-        </a>
-      </li>
-    {/each}
-  {:else}
-    <li>Loading posts...</li>
-  {/if}
+  {#each posts as post}
+    <li>
+      <a href={$url('../:post', { post: post.slug })}>
+        <figure>
+          <img
+            alt="Nice poster"
+            src={post.titleImage.large}
+            width={post.titleImage.largeWidth}
+            height={post.titleImage.largeHeight} />
+        </figure>
+      </a>
+    </li>
+  {/each}
 </ul>

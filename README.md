@@ -20,25 +20,35 @@ Cosmetic optionally:
 
 ```js
 let imageObject = {
-  small: "image-600.jpg",
-  medium: "image-900.jpg",
-  large: "image-1600.jpg",
-  full: "image-2000.jpg",
-  width: 2000,
-  height: 1300,
-  caption: "Alt text",
+  caption: "",
+  full:
+    "https://admin.robinweissenborn.de/wp-content/uploads/2020/07/10-2500x1667-1.jpg",
+  fullHeight: 1667,
+  fullWidth: 2500,
+  large:
+    "https://admin.robinweissenborn.de/wp-content/uploads/2020/07/10-2500x1667-1-1024x683.jpg",
+  largeHeight: 683,
+  largeWidth: 1024,
+  medium:
+    "https://admin.robinweissenborn.de/wp-content/uploads/2020/07/10-2500x1667-1-300x200.jpg",
+  mediumHeight: 200,
+  mediumWidth: 300,
+  small:
+    "https://admin.robinweissenborn.de/wp-content/uploads/2020/07/10-2500x1667-1-150x150.jpg",
+  smallHeight: 150,
+  smallWidth: 150,
 };
 
-let galleryObject = {
-  headline: "Gallery headline",
-  slides: [
-    imageObject,
-    {
-      video: "https://vimeo.com/23456789",
-      caption: "Alt text", // optional
-    },
+let galleryGrid = [
+  [
+    { type: "Image", media: imageObject },
+    { type: "Video URL", media: "https://video-url.com" },
   ],
-};
+  [
+    { type: "Image", media: imageObject },
+    { type: "Video URL", media: "https://video-url.com" },
+  ],
+];
 
 let postObject = {
   client: ["Kunde"], // category taxonomy
@@ -54,31 +64,41 @@ let postObject = {
   titleShort: "Title", // custom text field
   titleImage: imageObject,
   year: 2019,
-  featured: true // wp sticky post, frue if this post should be shown on home page
+  featured: true, // wp sticky post, frue if this post should be shown on home page
 };
-
-let productObject = isProduct
-  ? {
-      info: "Text",
-      price: 10.0,
-    }
-  : false;
 ```
 
 ### get post data
 
+Returning promises.
+
 ```js
-function getPostsData() {
+function posts() {
   return [postObject];
 }
 
-function getPostData(id) {
-  // extend postObject with galleries and content
-  return Object.assign(postObject, {
-    galleries: [galleryObject],
-    content: "Post content",
-    product: productObject,
-  });
+function post(id) {
+  return postObject;
+}
+
+function postBySlug(slug) {
+  return postObject;
+}
+```
+
+Retrieve data using a callback.
+
+```js
+function getPostsData(callback) {
+  return [postObject];
+}
+
+function getPostData(id, callback) {
+  return postObject;
+}
+
+function getPostBySlug(slug, callback) {
+  return postObject;
 }
 ```
 

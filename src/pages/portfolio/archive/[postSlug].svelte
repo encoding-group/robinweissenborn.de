@@ -4,13 +4,14 @@
 
   export let postSlug;
 
-  let post = {};
   const wpAdapter = getContext("WordpressAdapter");
-  wpAdapter.getPostBySlug(postSlug, (result) => (post = result));
 </script>
 
-{#if Object.keys(post).length !== 0}
-  <h1>{post.title}</h1>
-{:else}
+{#await wpAdapter.postBySlug(postSlug)}
   <p>Loading post...</p>
-{/if}
+{:then post}
+  {(console.log(post), '')}
+  <h1>{post.title}</h1>
+{:catch error}
+  <p>{error.message}</p>
+{/await}

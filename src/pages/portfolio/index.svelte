@@ -2,12 +2,7 @@
   import { getContext } from "svelte";
   import { asEuro } from "../../js/utility.js";
 
-  let posts = [];
   const wpAdapter = getContext("WordpressAdapter");
-  wpAdapter.getPostsData((result) => {
-    posts = result;
-    console.log(posts);
-  });
 </script>
 
 <style type="text/scss">
@@ -19,7 +14,10 @@
 </style>
 
 <ul>
-  {#if posts.length != 0}
+  {#await wpAdapter.posts()}
+    <li>Loading posts...</li>
+  {:then posts}
+    {(console.log(posts), '')}
     {#each posts as post}
       <li class="post">
         <h3>{post.title}</h3>
@@ -33,7 +31,7 @@
         {/if}
       </li>
     {/each}
-  {:else}
-    <li class="post">Loading posts...</li>
-  {/if}
+  {:catch error}
+    <li class="post">Could not find any posts.</li>
+  {/await}
 </ul>
