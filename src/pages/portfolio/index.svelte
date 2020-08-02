@@ -11,14 +11,11 @@
 </script>
 
 <style type="text/scss">
-  @import "../../scss/_variables.scss";
-
   .post {
     margin: 2rem;
     padding: 1rem;
     border: $border;
   }
-
 </style>
 
 <ul>

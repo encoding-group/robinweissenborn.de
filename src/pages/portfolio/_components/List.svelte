@@ -5,8 +5,6 @@
 </script>
 
 <style type="text/scss">
-  @import "../../../scss/_variables.scss";
-
   ul {
     border-top: $border;
   }

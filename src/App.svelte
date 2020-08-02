@@ -11,10 +11,7 @@
 </script>
 
 <style type="text/scss" global>
-  /* @import "../static/global.css"; */
-  @import "./scss/_reset.scss";
-  @import "./scss/_variables.scss";
-  @import "./scss/global.scss";
+  @import "../static/global.css";
 </style>
 
 <Router {routes} />

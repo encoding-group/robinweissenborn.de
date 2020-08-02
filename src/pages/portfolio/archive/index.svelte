@@ -14,8 +14,6 @@
 </script>
 
 <style type="text/scss">
-  @import "../../../scss/_variables.scss";
-
   .panels {
     display: flex;
     .panel {

@@ -1,3 +1,6 @@
+@import "reset";
+@import "variables";
+
 html {
   font-size: 1em;
 }
@@ -8,14 +11,12 @@ body {
 }
 
 .article {
-
   p {
     @include hyphens;
     + p {
       margin-top: 1em;
     }
   }
-
 }
 
 .tnum {
