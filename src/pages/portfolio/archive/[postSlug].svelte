@@ -3,18 +3,28 @@
   import { getContext } from "svelte";
 
   import Gallery from "../_components/Gallery.svelte";
+  import Message from "../_components/Message.svelte";
 
   export let postSlug;
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
+<style type="text/scss">
+  /*
+  navigation should be fixed on post page
+  nav {
+    position: fixed !important;
+  } */
+</style>
+
 {#await wpAdapter.getPost(postSlug)}
-  <p>Loading post...</p>
+  <Message />
 {:then post}
   {(console.log(post), '')}
   <h1>{post.title}</h1>
   <Gallery gallery={post.galleryGrid} />
+
 {:catch error}
-  <p>{error.message}</p>
+  <Message>{error.message}</Message>
 {/await}

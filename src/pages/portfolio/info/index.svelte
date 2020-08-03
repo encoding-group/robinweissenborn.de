@@ -1,19 +1,23 @@
 <script>
   import { getContext } from "svelte";
 
+  import Message from "../_components/Message.svelte";
+
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
 <h1>Info</h1>
 {#await wpAdapter.getPage('info')}
-  <p>Loading...</p>
+  <Message />
 {:then site}
   {(console.log(site), '')}
+
   <p>
     {site.contact.person}
     <br />
     {site.contact.email}
   </p>
+
 {:catch error}
-  <p>{error.message}</p>
+  <Message>{error.message}</Message>
 {/await}
