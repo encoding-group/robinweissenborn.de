@@ -2,6 +2,7 @@
   import { getContext } from "svelte";
 
   import StickyPost from "./_components/StickyPost.svelte";
+  import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
@@ -14,7 +15,7 @@
 
 <ul>
   {#await wpAdapter.getPosts()}
-    <li>Loading posts...</li>
+    <Message />
   {:then posts}
     {(console.log(posts), '')}
     {#each posts as post}
@@ -24,6 +25,6 @@
 
     {/each}
   {:catch error}
-    <li class="post">Could not find any posts.</li>
+    <Message>Could not find any posts.</Message>
   {/await}
 </ul>
