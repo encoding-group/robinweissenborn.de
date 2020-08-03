@@ -1,5 +1,7 @@
 <script>
   import { isActive, url } from "@sveltech/routify";
+
+  export let prefix = "..";
 </script>
 
 <style type="text/scss">
@@ -20,9 +22,9 @@
 
 <nav>
   <div class="left">
-    <a class:active={$isActive("./index")} href={$url("./index")}>Robin Weißenborn</a>
+    <a class:active={$isActive(`${prefix}/index`)} href={$url(`${prefix}/index`)}>Robin Weißenborn</a>
   </div>
   <div class="right">
-    <a class:active={$isActive("./archive")} href={$url("./archive")}>Archive</a>
+    <a class:active={$isActive(`${prefix}/archive`)} href={$url(`${prefix}/archive`)}>Archive</a>
   </div>
 </nav>
