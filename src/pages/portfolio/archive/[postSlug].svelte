@@ -19,7 +19,7 @@
     }
   }
   .panels {
-    padding: 0 25%;
+    padding: 0 20%;
     display: flex;
     > div {
       flex: 1 0 50%;
@@ -58,7 +58,7 @@
       </div>
       <div>
         {#if post.content}
-              {@html post.content}
+          {@html post.content}
         {/if}
       </div>
     </div>
