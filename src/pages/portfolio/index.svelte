@@ -8,9 +8,11 @@
 </script>
 
 <style type="text/scss">
-  :global( nav ){
+  /*
+  navigation should be fixed on home page
+  nav {
     position: fixed !important;
-  }
+  } */
 </style>
 
 <ul>

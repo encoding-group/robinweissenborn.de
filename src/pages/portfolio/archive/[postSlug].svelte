@@ -9,6 +9,14 @@
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
+<style type="text/scss">
+  /*
+  navigation should be fixed on post page
+  nav {
+    position: fixed !important;
+  } */
+</style>
+
 {#await wpAdapter.getPost(postSlug)}
   <Message />
 {:then post}
