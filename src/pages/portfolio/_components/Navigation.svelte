@@ -5,7 +5,7 @@
 </script>
 
 <style type="text/scss">
-  nav {
+  nav.manu {
     position: fixed;
     top: 0;
     width: 100%;
@@ -18,12 +18,12 @@
       }
     }
   }
-  :global( body.nav-sticky nav ){
+  :global( body.nav-sticky nav.menu ){
     position: sticky !important;
   }
 </style>
 
-<nav>
+<nav class="menu">
   <div class="left">
     <a class:active={$isActive("./index")} href={$url("./index")}>Robin Weißenborn</a>
     {#if headline !== false}
