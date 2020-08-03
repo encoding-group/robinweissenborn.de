@@ -1,7 +1,6 @@
 <script>
   import { getContext } from "svelte";
 
-  import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
@@ -10,9 +9,13 @@
 <style type="text/scss">
   .panels {
     display: flex;
+    padding-left: 20%;
     section {
       flex: 1 0 50%;
       padding: 1.5rem;
+      &.w30 {
+        flex-basis: 30%;
+      }
     }
   }
 
@@ -21,15 +24,13 @@
   }
 </style>
 
-<Navigation prefix="../.." />
-
 {#await wpAdapter.getPage('info')}
   <Message />
 {:then site}
   {(console.log(site), '')}
 
   <div class="panels">
-    <section>
+    <section class="w30">
 
       <h1>{site.contact.person}</h1>
       <address>

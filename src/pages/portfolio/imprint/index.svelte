@@ -1,21 +1,25 @@
 <script>
   import { getContext } from "svelte";
 
-  import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
-<Navigation prefix="../.."/>
+<style type="text/scss">
+  section {
+    padding: 4.5rem 1.5rem;
+  }
+</style>
 
-<h1>Imprint</h1>
 {#await wpAdapter.getPage('imprint')}
   <Message />
 {:then site}
   {(console.log(site), '')}
 
-  {@html site.content}
+  <section>
+    {@html site.content}
+  </section>
 
 {:catch error}
   <Message>{error.message}</Message>

@@ -1,12 +1,12 @@
 <script>
   import { isActive, url } from "@sveltech/routify";
 
-  export let prefix = "..";
+  let headline = false;
 </script>
 
 <style type="text/scss">
-  nav {
-    position: sticky;
+  nav.manu {
+    position: fixed;
     top: 0;
     width: 100%;
     padding: 1.5rem;
@@ -18,13 +18,19 @@
       }
     }
   }
+  :global( body.nav-sticky nav.menu ){
+    position: sticky !important;
+  }
 </style>
 
-<nav>
+<nav class="menu">
   <div class="left">
-    <a class:active={$isActive(`${prefix}/index`)} href={$url(`${prefix}/index`)}>Robin Weißenborn</a>
+    <a class:active={$isActive("./index")} href={$url("./index")}>Robin Weißenborn</a>
+    {#if headline !== false}
+      <h1>{headline}</h1>
+    {/if}
   </div>
   <div class="right">
-    <a class:active={$isActive(`${prefix}/archive`)} href={$url(`${prefix}/archive`)}>Archive</a>
+    <a class:active={$isActive("./archive")} href={$url("./archive")}>Archive</a>
   </div>
 </nav>
