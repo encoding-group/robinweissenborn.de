@@ -5,6 +5,7 @@
   import Gallery from "../_components/Gallery.svelte";
   import Message from "../_components/Message.svelte";
   import Headline from "../_components/Headline.svelte";
+  import Product from "../_components/Product.svelte";
 
   export let postSlug;
 
@@ -53,6 +54,10 @@
         {/if}
         {#if post.discipline}
           <p>{post.discipline.join(', ')}</p>
+        {/if}
+
+        {#if post.isProduct === true}
+          <Product {post} />
         {/if}
       </div>
       <div>
