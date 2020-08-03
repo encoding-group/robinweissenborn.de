@@ -7,63 +7,48 @@ export default class WordpressAdapter {
     this.parameters = "?_embed=wp:term";
   }
 
-  getPostsData(callback) {
-    this.posts()
-      .then((posts) => callback(posts))
-      .catch((error) => console.log(error));
+  async getPosts(callback) {
+    callback(await this.getPosts());
   }
 
-  posts() {
-    return axios
-      .get(`${this.baseUrl}/posts${this.parameters}`)
-      .then((response) => processPosts(response.data));
+  async getPosts() {
+    try {
+      const response = await axios.get(
+        `${this.baseUrl}/posts${this.parameters}`
+      );
+      return processPosts(response.data);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
-  getPostData(id, callback) {
-    this.post(id)
-      .then((post) => callback(post))
-      .catch((error) => console.log(error));
+  async getPost(slug, callback) {
+    callback(await this.getPost(slug));
   }
 
-  post(id) {
-    return axios
-      .get(`${this.baseUrl}/posts/${id}${this.parameters}`)
-      .then((response) => processPost(response.data));
+  async getPost(slug) {
+    try {
+      const response = await axios.get(`${this.baseUrl}/posts?slug=${slug}`);
+      if (response.data.length == 0)
+        throw new Error(`Could not find the post '${slug}'`);
+      return processPost(response.data[0]);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
-  getPostBySlug(slug, callback) {
-    this.postBySlug(slug)
-      .then((post) => callback(post))
-      .catch((error) => console.log(error));
+  async getPage(slug, callback) {
+    callback(await this.siteData(slug));
   }
 
-  postBySlug(slug) {
-    return axios
-      .get(`${this.baseUrl}/posts?slug=${slug}`)
-      .then((response) => processPost(response.data[0]));
-  }
-
-  getPageData(id, callback) {
-    this.page(id)
-      .then((page) => callback(page))
-      .catch((error) => console.log(error));
-  }
-
-  page(id) {
-    return axios
-      .get(`${this.baseUrl}/pages/${id}`)
-      .then((response) => processPage(response.data));
-  }
-
-  getSiteData(callback) {
-    this.siteData()
-      .then((site) => callback(site))
-      .catch((error) => console.log(error));
-  }
-
-  siteData() {
-    return axios
-      .get(`${this.baseUrl}/pages/34`) // TODO: Find better way to set infopage endpoint; get rid of magic number
-      .then((response) => processInfo(response.data));
+  async getPage(slug) {
+    try {
+      const response = await axios.get(`${this.baseUrl}/pages?slug=${slug}`);
+      if (response.data.length === 0)
+        throw new Error(`Could not find the page '${slug}'`);
+      return processInfo(response.data[0]);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }

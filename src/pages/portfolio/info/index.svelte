@@ -5,7 +5,7 @@
 </script>
 
 <h1>Info</h1>
-{#await wpAdapter.siteData()}
+{#await wpAdapter.getPage('info')}
   <p>Loading...</p>
 {:then site}
   {(console.log(site), '')}
@@ -14,4 +14,6 @@
     <br />
     {site.contact.email}
   </p>
+{:catch error}
+  <p>{error.message}</p>
 {/await}
