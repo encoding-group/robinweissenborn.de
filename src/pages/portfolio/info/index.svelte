@@ -3,6 +3,7 @@
   import { getContext } from "svelte";
 
   import Message from "../_components/Message.svelte";
+  import LocalTime from "../_components/LocalTime.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
@@ -39,7 +40,8 @@
 
       <ul class="contact">
         <li>
-          <p>13:20:00</p>
+          <!-- leipzig -->
+          <p><LocalTime /></p>
           <address>
             {site.contact.street}<br />
             {site.contact.zip}
@@ -48,7 +50,8 @@
           </address>
         </li>
         <li>
-          <p>13:20:00</p>
+          <!-- Kleinosterhausen -->
+          <p><LocalTime /></p>
           <address>
             {site.contact.street}<br />
             {site.contact.zip}
