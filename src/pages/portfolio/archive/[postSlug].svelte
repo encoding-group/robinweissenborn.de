@@ -2,6 +2,7 @@
   import { params } from "@sveltech/routify";
   import { getContext } from "svelte";
 
+  import Navigation from "../_components/Navigation.svelte";
   import Gallery from "../_components/Gallery.svelte";
   import Message from "../_components/Message.svelte";
 
@@ -11,12 +12,12 @@
 </script>
 
 <style type="text/scss">
-  /*
-  navigation should be fixed on post page
-  nav {
+  :global( nav ) {
     position: fixed !important;
-  } */
+  }
 </style>
+
+<Navigation prefix="../.." />
 
 {#await wpAdapter.getPost(postSlug)}
   <Message />

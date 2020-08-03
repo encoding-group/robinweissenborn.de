@@ -2,6 +2,7 @@
   import { getContext } from "svelte";
   import { url } from "@sveltech/routify";
 
+  import Navigation from "../_components/Navigation.svelte";
   import List from "../_components/List.svelte";
   import Grid from "../_components/Grid.svelte";
   import Message from "../_components/Message.svelte";
@@ -20,6 +21,8 @@
     }
   }
 </style>
+
+<Navigation prefix="../.." />
 
 <div class="panels">
   {#await wpAdapter.getPosts()}
