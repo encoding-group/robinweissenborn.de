@@ -1,7 +1,6 @@
 <script>
   import { getContext } from "svelte";
 
-  import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
@@ -20,8 +19,6 @@
     margin-bottom: 1em;
   }
 </style>
-
-<Navigation prefix="../.." />
 
 {#await wpAdapter.getPage('info')}
   <Message />

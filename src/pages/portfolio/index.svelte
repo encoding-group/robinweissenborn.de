@@ -1,20 +1,11 @@
 <script>
   import { getContext } from "svelte";
 
-  import Navigation from "./_components/Navigation.svelte";
   import StickyPost from "./_components/StickyPost.svelte";
   import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
-
-<style type="text/scss">
-  :global( nav ) {
-    position: fixed !important;
-  }
-</style>
-
-<Navigation />
 
 <ul>
   {#await wpAdapter.getPosts()}
