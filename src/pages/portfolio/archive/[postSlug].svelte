@@ -7,7 +7,7 @@
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
-{#await wpAdapter.postBySlug(postSlug)}
+{#await wpAdapter.getPost(postSlug)}
   <p>Loading post...</p>
 {:then post}
   {(console.log(post), '')}
