@@ -18,7 +18,7 @@
       }
     }
   }
-  :global( body.nav-sticky nav.menu ){
+  :global( body.nav-sticky ) nav.menu {
     position: sticky !important;
   }
 </style>
