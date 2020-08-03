@@ -1,6 +1,8 @@
 <script>
   import { url } from "@sveltech/routify";
 
+  import Headline from "./Headline.svelte";
+
   export let post = [];
 </script>
 
@@ -33,9 +35,7 @@
 <li class="post">
 
     <a href={$url('../archive/:post', { post: post.slug })}>
-        <div class="title">
-            <h3>{post.title}</h3>
-        </div>
+        <Headline><h3>{post.title}</h3></Headline>
         {#if 'titleImage' in post}
             <figure>
                 <img alt="{post.titleImage.caption}" src="{post.titleImage.full}" />

@@ -4,6 +4,7 @@
 
   import Gallery from "../_components/Gallery.svelte";
   import Message from "../_components/Message.svelte";
+  import Headline from "./Headline.svelte";
 
   export let postSlug;
 
@@ -37,9 +38,7 @@
 
   <article>
 
-    <div class="headline">
-      <h3>Info</h3>
-    </div>
+    <Headline><h3>Info</h3></Headline>
 
     <div class="panels">
       <div>
