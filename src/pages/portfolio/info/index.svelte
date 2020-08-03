@@ -9,9 +9,13 @@
 <style type="text/scss">
   .panels {
     display: flex;
+    padding-left: 20%;
     section {
       flex: 1 0 50%;
       padding: 1.5rem;
+      &.w30 {
+        flex-basis: 30%;
+      }
     }
   }
 
@@ -26,7 +30,7 @@
   {(console.log(site), '')}
 
   <div class="panels">
-    <section>
+    <section class="w30">
 
       <h1>{site.contact.person}</h1>
       <address>

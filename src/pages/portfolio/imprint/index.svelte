@@ -6,13 +6,20 @@
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
-<h1>Imprint</h1>
+<style type="text/scss">
+  section {
+    padding: 4.5rem 1.5rem;
+  }
+</style>
+
 {#await wpAdapter.getPage('imprint')}
   <Message />
 {:then site}
   {(console.log(site), '')}
 
-  {@html site.content}
+  <section>
+    {@html site.content}
+  </section>
 
 {:catch error}
   <Message>{error.message}</Message>
