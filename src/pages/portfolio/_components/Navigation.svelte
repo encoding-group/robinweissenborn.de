@@ -25,13 +25,16 @@
 </style>
 
 <nav class="menu">
+
   <div class="left">
-    <a class:active={$isActive("./index")} href={$url("./index")}>Robin Weißenborn</a>
+    <a href={ $isActive("./info") ? $url("./index") : $url("./info") }>Robin Weißenborn</a>
     {#if headline !== false}
       <h1>{headline}</h1>
     {/if}
   </div>
+
   <div class="right">
-    <a class:active={$isActive("./archive")} href={$url("./archive")}>Archive</a>
+    <a href={$url("./archive")}>Archive</a>
   </div>
+
 </nav>
