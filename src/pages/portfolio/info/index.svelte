@@ -1,4 +1,5 @@
 <script>
+  import { url } from "@sveltech/routify";
   import { getContext } from "svelte";
 
   import Message from "../_components/Message.svelte";
@@ -9,18 +10,22 @@
 <style type="text/scss">
   .panels {
     display: flex;
-    padding-left: 20%;
+    padding: 1.5rem;
     section {
       flex: 1 0 50%;
-      padding: 1.5rem;
-      &.w30 {
-        flex-basis: 30%;
+      &:first-child {
+        padding-top: 2rem;
+        padding-right: 1.5rem;
       }
     }
   }
 
-  address {
-    margin-bottom: 1em;
+  .contact li {
+    margin-bottom: 1rem;
+  }
+
+  .imprint {
+    color: #333;
   }
 </style>
 
@@ -30,25 +35,43 @@
   {(console.log(site), '')}
 
   <div class="panels">
-    <section class="w30">
+    <section>
 
-      <h1>{site.contact.person}</h1>
-      <address>
-        {site.contact.street}<br />
-        {site.contact.zip}
-        {site.contact.city}<br />
-        {site.contact.country}
-      </address>
+      <ul class="contact">
+        <li>
+          <p>13:20:00</p>
+          <address>
+            {site.contact.street}<br />
+            {site.contact.zip}
+            {site.contact.city}<br />
+            {site.contact.country}
+          </address>
+        </li>
+        <li>
+          <p>13:20:00</p>
+          <address>
+            {site.contact.street}<br />
+            {site.contact.zip}
+            {site.contact.city}<br />
+            {site.contact.country}
+          </address>
+        </li>
+        <li>
+          <p>
+            <a href="mailto:{site.contact.email}">{site.contact.email}</a><br />
+            <a href="tel:{site.contact.tel}">{site.contact.tel}</a>
+          </p>
+        </li>
+      </ul>
 
-      <p>
-        {site.contact.email}<br />
-        {site.contact.tel}
-      </p>
+      <a class="imprint" href={$url("../../imprint")}>Imprint</a>
 
     </section>
     <section>
+
       <h2>Visual Communication</h2>
-      {site.content}
+      {@html site.content}
+
     </section>
   </div>
 
