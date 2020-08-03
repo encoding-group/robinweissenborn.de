@@ -5,7 +5,7 @@
 </script>
 
 <style type="text/scss">
-  nav.manu {
+  nav.menu {
     position: fixed;
     top: 0;
     width: 100%;
