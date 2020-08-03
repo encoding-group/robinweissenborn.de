@@ -2,6 +2,8 @@
   import { params } from "@sveltech/routify";
   import { getContext } from "svelte";
 
+  import Gallery from "../_components/Gallery.svelte";
+
   export let postSlug;
 
   const wpAdapter = getContext("WordpressAdapter");
@@ -12,6 +14,7 @@
 {:then post}
   {(console.log(post), '')}
   <h1>{post.title}</h1>
+  <Gallery gallery={post.galleryGrid} />
 {:catch error}
   <p>{error.message}</p>
 {/await}
