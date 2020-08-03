@@ -28,7 +28,9 @@ export default class WordpressAdapter {
 
   async getPost(slug) {
     try {
-      const response = await axios.get(`${this.baseUrl}/posts?slug=${slug}`);
+      const response = await axios.get(
+        `${this.baseUrl}/posts?slug=${slug}&_embed=wp:term`
+      );
       if (response.data.length == 0)
         throw new Error(`Could not find the post '${slug}'`);
       return processPost(response.data[0]);
