@@ -1,15 +1,14 @@
 <script>
   import { getContext } from "svelte";
-  import { asEuro } from "../../js/utility.js";
+
+  import StickyPost from "./_components/StickyPost.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
 </script>
 
 <style type="text/scss">
-  .post {
-    margin: 2rem;
-    padding: 1rem;
-    border: $border;
+  :global( nav ){
+    position: fixed !important;
   }
 </style>
 
@@ -19,17 +18,10 @@
   {:then posts}
     {(console.log(posts), '')}
     {#each posts as post}
-      <li class="post">
-        <h3>{post.title}</h3>
-        <p>Client: {post.client.join(', ')}</p>
-        <p>Discipline: {post.discipline.join(', ')}</p>
+      <!-- only show sticky posts -->
 
-        <!-- Product information should probably go into a separat component -->
-        {#if post.isProduct}
-          <p>Product Info: {post.productInfo}</p>
-          <p>Price: {asEuro(post.price)}</p>
-        {/if}
-      </li>
+      <StickyPost {post} />
+
     {/each}
   {:catch error}
     <li class="post">Could not find any posts.</li>
