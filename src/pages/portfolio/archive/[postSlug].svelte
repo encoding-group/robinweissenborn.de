@@ -4,7 +4,7 @@
 
   import Gallery from "../_components/Gallery.svelte";
   import Message from "../_components/Message.svelte";
-  import Headline from "./Headline.svelte";
+  import Headline from "../_components/Headline.svelte";
 
   export let postSlug;
 

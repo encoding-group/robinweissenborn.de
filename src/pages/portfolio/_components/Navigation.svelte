@@ -7,6 +7,7 @@
 <style type="text/scss">
   nav.menu {
     position: fixed;
+    z-index: 100;
     top: 0;
     width: 100%;
     padding: 1.5rem;
