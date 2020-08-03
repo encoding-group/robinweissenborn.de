@@ -14,7 +14,7 @@
 </style>
 
 <ul>
-  {#await wpAdapter.posts()}
+  {#await wpAdapter.getPosts()}
     <li>Loading posts...</li>
   {:then posts}
     {(console.log(posts), '')}

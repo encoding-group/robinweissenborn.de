@@ -21,7 +21,7 @@
 </style>
 
 <div class="panels">
-  {#await wpAdapter.posts()}
+  {#await wpAdapter.getPosts()}
     <p>Loading posts...</p>
   {:then posts}
     {(console.log(posts), '')}
