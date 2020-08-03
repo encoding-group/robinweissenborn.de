@@ -18,6 +18,9 @@
       }
     }
   }
+  :global( body.nav-sticky nav ){
+    position: sticky !important;
+  }
 </style>
 
 <nav>
