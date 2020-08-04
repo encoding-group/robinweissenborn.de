@@ -24,6 +24,7 @@ function processBasicFields(postData) {
     slug: postData.slug,
     title: postData.title.rendered,
     content: postData.content.rendered,
+    sticky: postData.sticky,
   };
 }
 
