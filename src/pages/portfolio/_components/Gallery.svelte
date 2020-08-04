@@ -5,7 +5,7 @@
 </script>
 
 <div id="gallery">
-  {#each gallery as row, i}
-    <GalleryRow rowData={row} rowIndex={i} />
+  {#each gallery as row}
+    <GalleryRow rowData={row} />
   {/each}
 </div>

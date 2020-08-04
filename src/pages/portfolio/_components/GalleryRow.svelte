@@ -1,33 +1,33 @@
 <script>
+  import { onMount } from "svelte";
+  import Swipe from "swipejs";
+
   export let rowData;
-  export let rowIndex;
 
   let row;
+  let swipeGallery;
 
-  function handleNext(event) {
-    const column = event.target.closest(".column");
-    const columnIndex = parseInt(column.dataset.index, 10);
-    const columnWidth = window.innerWidth;
-    row.scrollLeft = (columnIndex + 1) * columnWidth;
-  }
-
-  function handlePrevious(event) {
-    const column = event.target.closest(".column");
-    const columnIndex = parseInt(column.dataset.index, 10);
-    const columnWidth = window.innerWidth;
-    row.scrollLeft = (columnIndex - 1) * columnWidth;
-  }
+  onMount(() => {
+    swipeGallery = new Swipe(row, {
+      draggable: true,
+      continuous: false,
+    });
+  });
 </script>
 
 <style lang="scss">
-  .row {
-    display: flex;
-    scroll-behavior: smooth;
-    flex-direction: row;
+  .swipe {
     height: 100vh;
     width: 100%;
-    overflow: auto;
-    overflow-y: hidden;
+    overflow: hidden;
+    position: relative;
+  }
+  .swipe-wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
   }
   .column {
     width: 100%;
@@ -36,27 +36,41 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     .media {
       padding: 2rem;
       width: 75%;
+      max-height: 80%;
       img {
         object-fit: scale-down;
+        max-height: 100%;
+      }
+    }
+    .nav {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      button {
+        width: 100%;
       }
     }
   }
 </style>
 
-<div class="row" bind:this={row} data-index={rowIndex}>
-  {#each rowData as column, key}
-    <div class="column" data-index={key}>
-      <div class="media">
-        <img src={column.media.large} alt="" />
+<div class="swipe" bind:this={row}>
+  <div class="swipe-wrap">
+    {#each rowData as column, key}
+      <div class="column">
+        <div class="media">
+          <img src={column.media.large} alt="" />
+        </div>
+        <p>{key + 1}/{rowData.length}</p>
+        <div class="nav">
+          <button class="prev" on:click={swipeGallery.prev} />
+          <button class="next" on:click={swipeGallery.next} />
+        </div>
       </div>
-      <p>{key + 1}/{rowData.length}</p>
-      <div class="nav">
-        <button class="nav-button" on:click={handlePrevious}>prev</button>
-        <button class="nav-button" on:click={handleNext}>next</button>
-      </div>
-    </div>
-  {/each}
+    {/each}
+  </div>
 </div>
