@@ -16,11 +16,18 @@
 </script>
 
 <style lang="scss">
-  .swipe {
+  .row {
     height: 100vh;
     width: 100%;
+    h3 {
+      padding: 1.5rem;
+      text-align: center;
+    }
+  }
+  .swipe {
     overflow: hidden;
     position: relative;
+    height: 100%;
   }
   .swipe-wrap {
     height: 100%;
@@ -58,19 +65,22 @@
   }
 </style>
 
-<div class="swipe" bind:this={row}>
-  <div class="swipe-wrap">
-    {#each rowData as column, key}
-      <div class="column">
-        <div class="media">
-          <img src={column.media.large} alt="" />
+<div class="row">
+  <h3>{rowData.headline}</h3>
+  <div class="swipe" bind:this={row}>
+    <div class="swipe-wrap">
+      {#each rowData.media as column, key}
+        <div class="column">
+          <div class="media">
+            <img src={column.media.large} alt="" />
+          </div>
+          <p>{key + 1}/{rowData.media.length}</p>
+          <div class="nav">
+            <button class="prev" on:click={swipeGallery.prev} />
+            <button class="next" on:click={swipeGallery.next} />
+          </div>
         </div>
-        <p>{key + 1}/{rowData.length}</p>
-        <div class="nav">
-          <button class="prev" on:click={swipeGallery.prev} />
-          <button class="next" on:click={swipeGallery.next} />
-        </div>
-      </div>
-    {/each}
+      {/each}
+    </div>
   </div>
 </div>
