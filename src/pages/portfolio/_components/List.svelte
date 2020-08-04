@@ -27,7 +27,7 @@
   {#each posts as post}
     <li>
       <a href={$url('../:slug', { slug: post.slug })}>
-        <div class="col hover">{post.slug}</div>
+        <div class="col hover"></div>
         <p class="col">{post.year}</p>
         <h3 class="col w3">{post.title}</h3>
         <p class="col w3">{post.client.join(', ')}</p>
