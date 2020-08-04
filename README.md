@@ -70,71 +70,53 @@ let postObject = {
 
 ### get post data
 
-Returning promises.
+You can request data either by awaiting a promise or by providing a callback.
+
+Awaiting a promise:
 
 ```js
-function posts() {
-  return [postObject];
-}
-
-function post(id) {
-  return postObject;
-}
-
-function postBySlug(slug) {
-  return postObject;
+async function someOtherFunction() {
+  const posts = await getPosts();
+  // do something with posts here...
 }
 ```
 
-Retrieve data using a callback.
+Using a callback:
 
 ```js
-function getPostsData(callback) {
-  return [postObject];
-}
-
-function getPostData(id, callback) {
-  return postObject;
-}
-
-function getPostBySlug(slug, callback) {
-  return postObject;
-}
+getPosts((result) => {
+  const posts = result;
+  // do something with posts here ...
+});
 ```
 
-### get page data
+The same is possible for single posts and pages:
 
-```js
-function getPageData(id) {
-  return {
-    title: "Titel",
-    content: "Page content",
-  };
-}
-```
+- `getPost(slug)` and `getPost(slug, callback)`
+- `getPage(slug)` and `getPage(slug, callback)`
 
 ### get site data
 
 Can either be site-settings or custom fields of the Info page. To be used in html head and on both pages, so it would be best to fetch this only once.
 
 ```js
-function getSiteData(id) {
-  return {
-    title: "Titel",
-    keywords: ["tag 1", "tag 2"],
-    description: "Text",
-    contact: {
-      person: "Name",
-      email: "e@mail.com",
-      tel: "+49123456789",
-      street: "Street",
-      zip: "01234",
-      city: "City",
-      country: "Germany",
-    },
-    image: "image-1000x1000px.jpg",
-  };
-}
+const info = await getPage("info");
+// Info:
+// {
+//   title: "Titel",
+//   keywords: ["tag 1", "tag 2"],
+//   description: "Text",
+//   contact: {
+//     person: "Name",
+//     email: "e@mail.com",
+//     tel: "+49123456789",
+//     street: "Street",
+//     zip: "01234",
+//     city: "City",
+//     country: "Germany",
+//   },
+//   image: "image-1000x1000px.jpg",
+// };
 ```
 
 ## Routing
