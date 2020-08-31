@@ -23,5 +23,5 @@
     {#if post.price}
         <p class="price">{post.price} €</p>
     {/if}
-    <a href="mailto:e@mail.com">Bestellen</a>
+    <a href="mailto:e@mail.com">Order via E-Mail</a>
 </div>
