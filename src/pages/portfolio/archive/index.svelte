@@ -5,9 +5,11 @@
   import { getContext } from "svelte";
   import { url } from "@sveltech/routify";
 
+  import Message from "../_components/Message.svelte";
+
   import List from "../_components/List.svelte";
   import Grid from "../_components/Grid.svelte";
-  import Message from "../_components/Message.svelte";
+  import GridList from "../_components/GridList.svelte";
 
 	onMount(() => {
     document.body.classList.add('nav-sticky');
@@ -17,7 +19,15 @@
 	});
 
   const wpAdapter = getContext("WordpressAdapter");
+
+  function windowWidth(){
+    return window.innerWidth;
+  }
+  let width = windowWidth();
+
 </script>
+
+<svelte:window on:resize={() => width = windowWidth()}/>
 
 <style type="text/scss">
   .panels {
@@ -37,13 +47,21 @@
   {:then posts}
     {(console.log(posts), '')}
 
-    <div class="panel">
-      <Grid {posts} />
-    </div>
+    {#if width > 840}
 
-    <div class="panel">
-      <List {posts} />
-    </div>
+      <div class="panel">
+        <Grid {posts} />
+      </div>
+
+      <div class="panel">
+        <List {posts} />
+      </div>
+
+    {:else}
+
+      <GridList {posts} />
+
+    {/if}
 
   {:catch error}
     <Message>{error.message}</Message>

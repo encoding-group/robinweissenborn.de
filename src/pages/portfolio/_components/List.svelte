@@ -13,7 +13,7 @@
     > a {
       display: flex;
       .col {
-        padding: 0.3em 0.6em;
+        padding: 0.25em 0.5em;
         flex: 1 1 auto;
         &.w3 {
           flex-basis: 30%;
