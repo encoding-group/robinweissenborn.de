@@ -28,6 +28,26 @@
   .imprint {
     color: #333;
   }
+
+  .about {
+    h2 {
+      margin-bottom: 1em;
+    }
+    :global(em) {
+      font-style: normal;
+      text-decoration: underline;
+    }
+    :global(h3) {
+      float: left;
+    }
+    :global(ul) {
+      padding-left: 4rem;
+      margin-bottom: 1rem;
+    }
+    :global(p) {
+      margin-bottom: 1rem;
+    }
+  }
 </style>
 
 {#await wpAdapter.getPage('info')}
@@ -50,7 +70,7 @@
           </address>
         </li>
         <li>
-          <!-- Kleinosterhausen -->
+          <!-- kleinosterhausen -->
           <p><LocalTime /></p>
           <address>
             {site.contact.street}<br />
@@ -70,7 +90,7 @@
       <a class="imprint" href={$url("../../imprint")}>Imprint</a>
 
     </section>
-    <section>
+    <section class="about">
 
       <h2>Visual Communication</h2>
       {@html site.content}
