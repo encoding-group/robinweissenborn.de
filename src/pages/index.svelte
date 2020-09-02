@@ -1,9 +1,24 @@
 <script>
-  //   import RoutifyIntro from "./example/_components/RoutifyIntro.svelte";
-  import { metatags } from "@sveltech/routify";
-  metatags.title = "Portfolio";
-  metatags.description = "Description coming soon...";
+  import { getContext } from "svelte";
+
+  import StickyPost from "./_components/StickyPost.svelte";
+  import Message from "./_components/Message.svelte";
+
+  const wpAdapter = getContext("WordpressAdapter");
 </script>
 
-<!-- <RoutifyIntro /> -->
-<a href="/portfolio">Go to Portfolio</a>
+<ul>
+  {#await wpAdapter.getPosts()}
+    <Message />
+  {:then posts}
+    {(console.log(posts), '')}
+    {#each posts as post}
+      <!-- only show sticky posts -->
+
+      <StickyPost {post} />
+
+    {/each}
+  {:catch error}
+    <Message>Could not find any posts.</Message>
+  {/await}
+</ul>
