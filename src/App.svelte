@@ -6,7 +6,7 @@
 
   setContext(
     "WordpressAdapter",
-    new WordpressAdapter("http://api.robinweissenborn.de/wp-json/wp/v2")
+    new WordpressAdapter("https://api.robinweissenborn.de/wp-json/wp/v2")
   );
 </script>
 
