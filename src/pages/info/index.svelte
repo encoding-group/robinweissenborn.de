@@ -57,11 +57,12 @@
 
   <div class="panels">
     <section>
-
       <ul class="contact">
         <li>
           <!-- leipzig -->
-          <p><LocalTime /></p>
+          <p>
+            <LocalTime />
+          </p>
           <address>
             {site.contact.street}<br />
             {site.contact.zip}
@@ -71,12 +72,14 @@
         </li>
         <li>
           <!-- kleinosterhausen -->
-          <p><LocalTime /></p>
+          <p>
+            <LocalTime />
+          </p>
           <address>
-            {site.contact.street}<br />
-            {site.contact.zip}
-            {site.contact.city}<br />
-            {site.contact.country}
+            {site.secondary_contact.street}<br />
+            {site.secondary_contact.zip}
+            {site.secondary_contact.city}<br />
+            {site.secondary_contact.country}
           </address>
         </li>
         <li>
@@ -87,17 +90,13 @@
         </li>
       </ul>
 
-      <a class="imprint" href={$url("../../imprint")}>Imprint</a>
-
+      <a class="imprint" href={$url('../../imprint')}>Imprint</a>
     </section>
     <section class="about">
-
       <h2>Visual Communication</h2>
       {@html site.content}
-
     </section>
   </div>
-
 {:catch error}
   <Message>{error.message}</Message>
 {/await}
