@@ -1,7 +1,7 @@
 <script>
   import { getContext } from "svelte";
 
-  import StickyPost from "./_components/StickyPost.svelte";
+  import PostsTeaser from "./_components/PostsTeaser.svelte";
   import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
@@ -17,7 +17,7 @@
     {#each posts.filter(( p )=>{
       return p.featured; }) as post}
 
-      <StickyPost {post} />
+      <PostTeaser {post} />
 
     {/each}
   {:catch error}

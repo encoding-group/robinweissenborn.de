@@ -7,9 +7,9 @@
 
   import Message from "../_components/Message.svelte";
 
-  import List from "../_components/List.svelte";
-  import Grid from "../_components/Grid.svelte";
-  import GridList from "../_components/GridList.svelte";
+  import PostsList from "../_components/PostsList.svelte";
+  import PostsGrid from "../_components/PostsGrid.svelte";
+  import PostsGridList from "../_components/PostsGridList.svelte";
 
 	onMount(() => {
     document.body.classList.add('nav-sticky');
@@ -50,16 +50,16 @@
     {#if width > 840}
 
       <div class="panel">
-        <Grid {posts} />
+        <PostsGrid {posts} />
       </div>
 
       <div class="panel">
-        <List {posts} />
+        <PostsList {posts} />
       </div>
 
     {:else}
 
-      <GridList {posts} />
+      <PostsGridList {posts} />
 
     {/if}
 
