@@ -28,8 +28,7 @@
     <li>
       <a href={$url('../:post', { post: post.slug })}>
         <figure>
-          <img
-            alt="Nice poster"
+          <img alt={post.titleImage.caption}
             src={post.titleImage.large}
             width={post.titleImage.largeWidth}
             height={post.titleImage.largeHeight} />

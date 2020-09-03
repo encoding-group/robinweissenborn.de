@@ -85,7 +85,7 @@
       {#each rowData.media as column, key}
         <div class="column">
           <div class="media">
-            <img src={column.media.large} alt="" />
+            <img src={column.media.large} alt="{column.media.caption}" />
             <figcaption>{key + 1}/{rowData.media.length}</figcaption>
           </div>
           <div class="nav">
