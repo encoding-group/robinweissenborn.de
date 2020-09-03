@@ -16,9 +16,8 @@
       <!-- only show sticky posts -->
 
       <StickyPost {post} />
-
     {/each}
   {:catch error}
-    <Message>Could not find any posts.</Message>
+    <Message>Could not load posts. ({error})</Message>
   {/await}
 </ul>
