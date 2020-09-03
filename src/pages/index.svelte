@@ -12,8 +12,10 @@
     <Message />
   {:then posts}
     {(console.log(posts), '')}
-    {#each posts as post}
-      <!-- only show sticky posts -->
+
+    <!-- filter featured posts -->
+    {#each posts.filter(( p )=>{
+      return p.featured; }) as post}
 
       <StickyPost {post} />
 

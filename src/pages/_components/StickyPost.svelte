@@ -22,15 +22,13 @@
 	}
 </style>
 
-{#if post.featured}
-  <li class="post">
-    <a href={$url('../archive/:post', { post: post.slug })}>
-      <Headline>
-        <h3>{post.title}</h3>
-      </Headline>
-      {#if 'titleImage' in post}
-        <Figure image={post.titleImage} />
-      {/if}
-    </a>
-  </li>
-{/if}
+<li class="post">
+  <a href={$url('../archive/:post', { post: post.slug })}>
+    <Headline>
+      <h3>{post.title}</h3>
+    </Headline>
+    {#if 'titleImage' in post}
+      <Figure image={post.titleImage} />
+    {/if}
+  </a>
+</li>
