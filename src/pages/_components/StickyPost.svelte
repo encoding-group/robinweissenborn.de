@@ -20,16 +20,6 @@
 			}
 		}
 	}
-  figure {
-    padding: 0 1.5rem 4.5rem;
-    flex: 1;
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
 </style>
 
 {#if post.featured}
