@@ -49,12 +49,11 @@ function processMetaFields(postData) {
 }
 
 function processContactFields(postData) {
-  if (
-    postData.hasOwnProperty("acf") &&
-    postData.acf.hasOwnProperty("contact")
-  ) {
-    return {
-      contact: {
+  if (postData.hasOwnProperty("acf")) {
+    let result = {};
+
+    if (postData.acf.hasOwnProperty("contact")) {
+      result.contact = {
         person: `${postData.acf.contact.first_name} ${postData.acf.contact.last_name}`,
         email: postData.acf.contact.email,
         tel: postData.acf.contact.phone_number,
@@ -62,8 +61,21 @@ function processContactFields(postData) {
         zip: postData.acf.contact.zip_code,
         city: postData.acf.contact.city,
         country: postData.acf.contact.country,
-      },
-    };
+      };
+    }
+
+    if (postData.acf.hasOwnProperty("secondary_contact")) {
+      result.secondary_contact = {
+        person: `${postData.acf.secondary_contact.first_name} ${postData.acf.secondary_contact.last_name}`,
+        email: postData.acf.secondary_contact.email,
+        tel: postData.acf.secondary_contact.phone_number,
+        street: postData.acf.secondary_contact.street,
+        zip: postData.acf.secondary_contact.zip_code,
+        city: postData.acf.secondary_contact.city,
+        country: postData.acf.secondary_contact.country,
+      };
+    }
+    return result;
   }
 
   return {};
