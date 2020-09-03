@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import Swipe from "swipejs";
 
+  import Headline from "./Headline.svelte";
+
   export let rowData;
 
   let row;
@@ -19,11 +21,13 @@
   .row {
     height: 100vh;
     width: 100%;
-    h3 {
-      padding: 1.5rem;
-      text-align: center;
+    position: relative;
+    :global(.headline) {
+        position: absolute;
+        top: 0;
     }
   }
+
   .swipe {
     overflow: hidden;
     position: relative;
@@ -38,19 +42,26 @@
   }
   .column {
     width: 100%;
-    flex-shrink: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     .media {
-      padding: 2rem;
-      width: 75%;
-      max-height: 80%;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      padding: 4.5rem 1.5rem;
+      position: absolute;
       img {
-        object-fit: scale-down;
-        max-height: 100%;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
       }
     }
     .nav {
@@ -66,15 +77,17 @@
 </style>
 
 <div class="row">
-  <h3>{rowData.headline}</h3>
+
+  <Headline><h3>{rowData.headline}</h3></Headline>
+
   <div class="swipe" bind:this={row}>
     <div class="swipe-wrap">
       {#each rowData.media as column, key}
         <div class="column">
           <div class="media">
             <img src={column.media.large} alt="" />
+            <figcaption>{key + 1}/{rowData.media.length}</figcaption>
           </div>
-          <p>{key + 1}/{rowData.media.length}</p>
           <div class="nav">
             <button class="prev" on:click={swipeGallery.prev} />
             <button class="next" on:click={swipeGallery.next} />
@@ -83,4 +96,5 @@
       {/each}
     </div>
   </div>
+
 </div>

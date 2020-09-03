@@ -11,17 +11,19 @@
         height: 100vh;
         > a {
             height: 100%;
-            display: block;
             display: flex;
-            flex-direction: column;
+            position: relative;
+            :global(.headline) {
+                position: absolute;
+                top: 0;
+            }
         }
     }
-    .title {
-        padding: 1.5rem;
-        text-align: center;
-    }
     figure {
-        padding: 0 1.5rem 4.5rem;
+        padding: 4.5rem 1.5rem;
+        @media only screen and (max-height: 600px) {
+            padding-bottom: 1.5rem;
+        }
         flex: 1;
         img {
             height: 100%;
