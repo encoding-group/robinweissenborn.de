@@ -19,22 +19,18 @@
       }
     }
   }
-  :global( body.nav-sticky ) nav.menu {
+  :global(body.nav-sticky) nav.menu {
     position: sticky !important;
   }
 </style>
 
 <nav class="menu">
-
   <div class="left">
-    <a href={ $isActive("./info") ? $url("./index") : $url("./info") }>Robin Weißenborn</a>
+    <a href={$isActive('./info') ? $url('/') : $url('./info')}>Robin Weißenborn</a>
     {#if headline !== false}
       <h1>{headline}</h1>
     {/if}
   </div>
 
-  <div class="right">
-    <a href={$url("./archive")}>Archive</a>
-  </div>
-
+  <div class="right"><a href={$url('./archive')}>Archive</a></div>
 </nav>
