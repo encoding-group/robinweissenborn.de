@@ -5,12 +5,17 @@
 ## Development
 
 Install and run
+
 ```
 git clone git@github.com:encoding-group/robinweissenborn.de.git
 cd robinweissenborn.de
 npm install
 npm run dev
 ```
+
+## Deployment
+
+See [Routify docs](https://routify.dev/guide/starter-Template/deployment).
 
 ## Wordpress setup
 
