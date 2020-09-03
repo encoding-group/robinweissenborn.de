@@ -1,6 +1,8 @@
 <script>
   import { url } from "@sveltech/routify";
 
+  import Image from "./Image.svelte";
+
   export let posts = [];
 </script>
 
@@ -28,10 +30,7 @@
     <li>
       <a href={$url('../:post', { post: post.slug })}>
         <figure>
-          <img alt={post.titleImage.caption}
-            src={post.titleImage.large}
-            width={post.titleImage.largeWidth}
-            height={post.titleImage.largeHeight} />
+          <Image image={post.titleImage} />
         </figure>
       </a>
     </li>
