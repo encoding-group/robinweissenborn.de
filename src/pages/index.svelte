@@ -1,7 +1,7 @@
 <script>
   import { getContext } from "svelte";
 
-  import PostsTeaser from "./_components/PostsTeaser.svelte";
+  import PostTeaser from "./_components/PostTeaser.svelte";
   import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
