@@ -7,11 +7,12 @@
 
   export let rowData;
 
-  let row;
+  let container;
   let swipeGallery;
 
+  // https://swipe.js.org
   onMount(() => {
-    swipeGallery = new Swipe(row, {
+    swipeGallery = new Swipe(container, {
       draggable: true,
       continuous: false,
     });
@@ -24,33 +25,48 @@
     width: 100%;
     position: relative;
     :global(.headline) {
-        position: absolute;
-        top: 0;
+      position: absolute;
+      top: 0;
     }
   }
 
   .swipe {
     overflow: hidden;
+    visibility: hidden;
     position: relative;
     height: 100%;
-  }
-  .swipe-wrap {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    position: relative;
-  }
-  .column {
-    width: 100%;
-    display: flex;
-    .nav {
-      position: absolute;
-      width: 100%;
+
+    .swipe-wrap {
+      overflow: hidden;
+      position: relative;
       height: 100%;
-      display: flex;
-      button {
+
+      > div {
+        height: 100%;
+        float: left;
         width: 100%;
+        position: relative;
+      }
+    }
+  }
+
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    button {
+      position: absolute;
+      width: 50%;
+      top: 0;
+      height: 100%;
+      &.prev {
+        left: 0;
+      }
+      &.next {
+        left: 50%;
       }
     }
   }
@@ -60,10 +76,11 @@
 
   <Headline><h3>{rowData.headline}</h3></Headline>
 
-  <div class="swipe" bind:this={row}>
+  <div class="swipe" bind:this={container}>
+
     <div class="swipe-wrap">
       {#each rowData.media as column, key}
-        <div class="column">
+        <div>
 
           <Figure image={column.media}>
             <figcaption>{key + 1}/{rowData.media.length}</figcaption>
@@ -77,6 +94,8 @@
         </div>
       {/each}
     </div>
+
+
   </div>
 
 </div>
