@@ -85,6 +85,25 @@ let postObject = {
   year: 2019,
   featured: true, // wp sticky post, frue if this post should be shown on home page
 };
+
+let siteMetaDataObject = {
+  title, // website site title get_bloginfo('name')
+  description, // custom field on info page
+  tags, // custom field on info page
+  image, //custom field on info page
+  contact: {
+    name,
+    mail,
+    phone,
+    address1: {
+      street,
+      zip,
+      city,
+      country
+    }
+    address2: {}
+  },
+};
 ```
 
 ### get post data
