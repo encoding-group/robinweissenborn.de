@@ -125,26 +125,28 @@ function processProductFields(postData) {
 }
 
 function processGalleryGrid(postData) {
-  if (postData.acf.hasOwnProperty("2d_gallery")) {
-    return {
-      galleryGrid: postData.acf["2d_gallery"].map((row) => {
-        return {
-          headline: row.headline,
-          media: row.media.map((column) => {
-            return {
-              type: column.select,
-              media:
-                column.select === "Image"
-                  ? processImage(column.image)
-                  : column.video_url,
-            };
-          }),
-        };
-      }),
-    };
+  if (!postData.acf.hasOwnProperty("2d_gallery")) {
+    return {};
   }
-
-  return {};
+  if (typeof postData.acf["2d_gallery"] !== "object") {
+    return {};
+  }
+  return {
+    galleryGrid: postData.acf["2d_gallery"].map((row) => {
+      return {
+        headline: row.headline,
+        media: row.media.map((column) => {
+          return {
+            type: column.select,
+            media:
+              column.select === "Image"
+                ? processImage(column.image)
+                : column.video_url,
+          };
+        }),
+      };
+    }),
+  };
 }
 
 function processImage(imageObject) {
