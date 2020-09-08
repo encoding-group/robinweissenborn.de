@@ -11,13 +11,14 @@
   ul {
     li {
       margin-bottom: 1rem;
-      > a {
-        display: block;
-      }
     }
   }
   figure {
     padding: 0 0.5em;
+    :global( img ){
+      width: 100%;
+      height: auto;
+    }
   }
 </style>
 

@@ -29,9 +29,11 @@
   {#each posts as post}
     <li>
       <a href={$url('../:post', { post: post.slug })}>
+
         <figure>
           <Image image={post.titleImage} />
         </figure>
+        
       </a>
     </li>
   {/each}
