@@ -21,11 +21,19 @@
     }
   }
   .panels {
-    padding: 0 20%;
-    display: flex;
     > div {
-      flex: 1 0 50%;
-      padding: 0.5em;
+      margin: 0 1.5rem 1.5rem;
+    }
+    @media only screen and (min-width: 600px) {
+      margin: 0 1.5rem;
+      > div {
+        margin: 0 1.5rem 1.5rem 0;
+      }
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media only screen and (min-width: 920px) {
+      margin: 0 25vw;
     }
   }
 </style>
