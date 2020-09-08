@@ -1,6 +1,8 @@
 <script>
   import { url } from "@sveltech/routify";
 
+  import ListItem from "./PostsListItem.svelte";
+
   export let posts = [];
 </script>
 
@@ -10,16 +12,6 @@
   }
   li {
     border-bottom: $border;
-    > a {
-      display: flex;
-      .col {
-        padding: 0.25em 0.5em;
-        flex: 1 1 auto;
-        &.w3 {
-          flex-basis: 30%;
-        }
-      }
-    }
   }
 </style>
 
@@ -27,11 +19,7 @@
   {#each posts as post}
     <li>
       <a href={$url('../:slug', { slug: post.slug })}>
-        <div class="col hover"></div>
-        <p class="col">{post.year}</p>
-        <h3 class="col w3">{post.title}</h3>
-        <p class="col w3">{post.client.join(', ')}</p>
-        <p class="col w3">{post.discipline.join(', ')}</p>
+        <ListItem {post} />
       </a>
     </li>
   {/each}

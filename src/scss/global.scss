@@ -20,6 +20,10 @@ body {
   }
 }
 
+li > a {
+  display: block;
+}
+
 .tnum {
   @include tabularFigures;
 }
