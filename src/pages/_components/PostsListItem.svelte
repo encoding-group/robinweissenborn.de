@@ -28,6 +28,6 @@
     <div class="col hover"></div>
     <p class="col year">{post.year}</p>
     <h3 class="col title">{post.title}</h3>
-    <p class="col client">{post.client.join(', ')}</p>
-    <p class="col discipline">{post.discipline.join(', ')}</p>
+    <p class="col client">{post.client.length > 0 ? post.client.join(', ') : '—'}</p>
+    <p class="col discipline">{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</p>
 </div>
