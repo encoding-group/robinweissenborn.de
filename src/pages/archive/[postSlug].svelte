@@ -2,6 +2,7 @@
   import { params } from "@sveltech/routify";
   import { getContext } from "svelte";
 
+  import Navigation from "../_components/Navigation.svelte";
   import Gallery from "../_components/Gallery.svelte";
   import Message from "../_components/Message.svelte";
   import Headline from "../_components/Headline.svelte";
@@ -37,6 +38,8 @@
     }
   }
 </style>
+
+<Navigation />
 
 {#await wpAdapter.getPost(postSlug)}
   <Message />

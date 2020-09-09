@@ -7,9 +7,6 @@
 </script>
 
 <style type="text/scss">
-  ul {
-    border-top: $border;
-  }
   li {
     border-bottom: $border;
   }
