@@ -1,4 +1,5 @@
 <script>
+  import Marquee from './Marquee.svelte';
   export let post = {};
 </script>
 
@@ -6,8 +7,9 @@
     .item {
         display: flex;
         .col {
-            padding: 0.25em 0.5em;
+            padding: 0.25em 0.25em;
             flex: 1 1 auto;
+            overflow: hidden;
             &.year {
                 flex-basis: 10%;
             }
@@ -27,7 +29,13 @@
 <div class="item">
     <div class="col hover"></div>
     <p class="col year">{post.year}</p>
-    <h3 class="col title">{post.title}</h3>
-    <p class="col client">{post.client.length > 0 ? post.client.join(', ') : '—'}</p>
-    <p class="col discipline">{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</p>
+    <h3 class="col title">
+        <Marquee>{post.title}</Marquee>
+    </h3>
+    <p class="col client">
+        <Marquee>{post.client.length > 0 ? post.client.join(', ') : '—'}</Marquee>
+    </p>
+    <p class="col discipline">
+        <Marquee>{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</Marquee>
+    </p>
 </div>
