@@ -89,8 +89,8 @@ function processEmbeddedFields(postData) {
   if (postData.hasOwnProperty("_embedded")) {
     const [categories, tags] = postData._embedded["wp:term"];
     return {
-      client: categories.map((category) => category.name),
-      discipline: tags.map((tag) => tag.name),
+      discipline: categories.map((category) => category.name),
+      client: tags.map((tag) => tag.name),
     };
   }
 
