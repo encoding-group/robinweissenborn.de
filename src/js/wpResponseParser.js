@@ -153,6 +153,7 @@ function processGalleryGrid(postData) {
 
 function processImage(imageObject) {
   if (!imageObject) return {};
+  console.log(createSrcString(imageObject));
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],
@@ -167,7 +168,28 @@ function processImage(imageObject) {
     fullWidth: imageObject.width,
     fullHeight: imageObject.height,
     caption: imageObject.caption,
+    srcset: createSrcString(imageObject),
+    sizes: createSrcSizes(imageObject),
   };
+}
+
+function createSrcString(imageObject) {
+  return [
+    `${imageObject.sizes.thumbnail} 150w`,
+    `${imageObject.sizes.medium} 300w`,
+    `${imageObject.sizes.large} 1024w`,
+    `${imageObject.url} ${imageObject.width}w`,
+  ].join(",");
+}
+
+// Needs more work
+function createSrcSizes(imageObject) {
+  return [
+    "(max-width: 375px) 150px",
+    "(max-width: 768px) 300px",
+    "(max-width: 1024px) 1024px",
+    `${imageObject.width}px`,
+  ].join(",");
 }
 
 export { processPost, processPosts, processInfo };
