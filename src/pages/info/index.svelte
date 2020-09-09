@@ -64,10 +64,10 @@
             <LocalTime />
           </p>
           <address>
-            {site.contact.street}<br />
-            {site.contact.zip}
-            {site.contact.city}<br />
-            {site.contact.country}
+            {site['address-1'].street}<br />
+            {site['address-1'].zip}
+            {site['address-1'].city}<br />
+            {site['address-1'].country}
           </address>
         </li>
         <li>
@@ -76,10 +76,10 @@
             <LocalTime />
           </p>
           <address>
-            {site.secondary_contact.street}<br />
-            {site.secondary_contact.zip}
-            {site.secondary_contact.city}<br />
-            {site.secondary_contact.country}
+            {site['address-2'].street}<br />
+            {site['address-2'].zip}
+            {site['address-2'].city}<br />
+            {site['address-2'].country}
           </address>
         </li>
         <li>

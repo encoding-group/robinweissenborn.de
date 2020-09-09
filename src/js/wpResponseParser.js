@@ -59,22 +59,24 @@ function processContactFields(postData) {
         person: `${postData.acf.contact.first_name} ${postData.acf.contact.last_name}`,
         email: postData.acf.contact.email,
         tel: postData.acf.contact.phone_number,
-        street: postData.acf.contact.street,
-        zip: postData.acf.contact.zip_code,
-        city: postData.acf.contact.city,
-        country: postData.acf.contact.country,
       };
     }
 
-    if (postData.acf.hasOwnProperty("secondary_contact")) {
-      result.secondary_contact = {
-        person: `${postData.acf.secondary_contact.first_name} ${postData.acf.secondary_contact.last_name}`,
-        email: postData.acf.secondary_contact.email,
-        tel: postData.acf.secondary_contact.phone_number,
-        street: postData.acf.secondary_contact.street,
-        zip: postData.acf.secondary_contact.zip_code,
-        city: postData.acf.secondary_contact.city,
-        country: postData.acf.secondary_contact.country,
+    if (postData.acf.hasOwnProperty("address-1")) {
+      result["address-1"] = {
+        street: postData.acf["address-1"].street,
+        zip: postData.acf["address-1"].zip_code,
+        city: postData.acf["address-1"].city,
+        country: postData.acf["address-1"].country,
+      };
+    }
+
+    if (postData.acf.hasOwnProperty("address-2")) {
+      result["address-2"] = {
+        street: postData.acf["address-2"].street,
+        zip: postData.acf["address-2"].zip_code,
+        city: postData.acf["address-2"].city,
+        country: postData.acf["address-2"].country,
       };
     }
     return result;
