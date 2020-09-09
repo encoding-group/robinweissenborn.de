@@ -153,7 +153,7 @@ function processGalleryGrid(postData) {
 
 function processImage(imageObject) {
   if (!imageObject) return {};
-  console.log(createSrcString(imageObject));
+
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],
