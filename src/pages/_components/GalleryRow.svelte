@@ -80,16 +80,18 @@
   <div class="swipe" bind:this={container}>
     <div class="swipe-wrap">
       {#each rowData.media as column, key}
-        <div>
-          <Figure image={column.media}>
-            <figcaption>{key + 1}/{rowData.media.length}</figcaption>
-          </Figure>
+        {#if column.media}
+          <div>
+            <Figure image={column.media}>
+              <figcaption>{key + 1}/{rowData.media.length}</figcaption>
+            </Figure>
 
-          <div class="nav-buttons">
-            <button class="prev" on:click={swipeGallery.prev} />
-            <button class="next" on:click={swipeGallery.next} />
+            <div class="nav-buttons">
+              <button class="prev" on:click={swipeGallery.prev} />
+              <button class="next" on:click={swipeGallery.next} />
+            </div>
           </div>
-        </div>
+        {/if}
       {/each}
     </div>
   </div>
