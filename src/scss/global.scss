@@ -17,12 +17,18 @@ body {
   }
 }
 
-p a {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
+p {
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  em, i {
+    font-style: italic;
   }
 }
+
 
 li > a {
   display: block;
