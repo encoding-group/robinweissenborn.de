@@ -7,7 +7,9 @@ function processInfo(pageData) {
 }
 
 function processPosts(postsArray) {
-  return postsArray.map((post) => processPost(post));
+  return postsArray
+    .map((post) => processPost(post))
+    .sort((a, b) => b.year - a.year);
 }
 
 function processPost(postData) {
@@ -95,14 +97,12 @@ function processEmbeddedFields(postData) {
 
 function processAcfFields(postData) {
   if (postData.hasOwnProperty("acf")) {
-    const [day, month, year] = postData.acf.year.split(".");
     return {
       ...processProductFields(postData),
       ...processGalleryGrid(postData),
       titleShort: postData.acf.short_title,
       titleImage: processImage(postData.acf.title_image),
-      // year: new Date(year, month - 1, day),
-      year: parseInt(year, 10),
+      year: parseInt(postData.acf.year, 10),
     };
   }
 
