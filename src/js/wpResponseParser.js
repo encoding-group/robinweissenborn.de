@@ -89,8 +89,8 @@ function processEmbeddedFields(postData) {
   if (postData.hasOwnProperty("_embedded")) {
     const [categories, tags] = postData._embedded["wp:term"];
     return {
-      client: categories.map((category) => category.name),
-      discipline: tags.map((tag) => tag.name),
+      discipline: categories.map((category) => category.name),
+      client: tags.map((tag) => tag.name),
     };
   }
 
@@ -153,6 +153,7 @@ function processGalleryGrid(postData) {
 
 function processImage(imageObject) {
   if (!imageObject) return {};
+
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],
@@ -167,7 +168,28 @@ function processImage(imageObject) {
     fullWidth: imageObject.width,
     fullHeight: imageObject.height,
     caption: imageObject.caption,
+    srcset: createSrcString(imageObject),
+    sizes: createSrcSizes(imageObject),
   };
+}
+
+function createSrcString(imageObject) {
+  return [
+    `${imageObject.sizes.thumbnail} 150w`,
+    `${imageObject.sizes.medium} 300w`,
+    `${imageObject.sizes.large} 1024w`,
+    `${imageObject.url} ${imageObject.width}w`,
+  ].join(",");
+}
+
+// Needs more work
+function createSrcSizes(imageObject) {
+  return [
+    "(max-width: 375px) 150px",
+    "(max-width: 768px) 300px",
+    "(max-width: 1024px) 1024px",
+    `${imageObject.width}px`,
+  ].join(",");
 }
 
 export { processPost, processPosts, processInfo };
