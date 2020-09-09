@@ -153,7 +153,7 @@ function processGalleryGrid(postData) {
 
 function processImage(imageObject) {
   if (!imageObject) return {};
-
+  console.log(imageObject);
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],
@@ -167,7 +167,10 @@ function processImage(imageObject) {
     full: imageObject.url,
     fullWidth: imageObject.width,
     fullHeight: imageObject.height,
+    title: imageObject.title,
+    alt: imageObject.alt,
     caption: imageObject.caption,
+    description: imageObject.description,
     srcset: createSrcString(imageObject),
     sizes: createSrcSizes(imageObject),
   };
