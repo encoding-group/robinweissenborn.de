@@ -1,26 +1,64 @@
 <script>
-  import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 
-  let time = new Date();
+	let time = new Date();
 
-  // these automatically update when `time`
-  // changes, because of the `$:` prefix
-  $: hours = time.getHours();
-  $: minutes = time.getMinutes();
-  $: seconds = time.getSeconds();
+	$: hours = time.getHours();
+	$: minutes = time.getMinutes();
+	$: seconds = time.getSeconds();
 
-  // https://svelte.dev/repl/a15e5bf484bf4eddafe68996d4235187?version=3.18.2
-  const pad = (n) => (n < 10 ? `0${n}` : n);
+	onMount(() => {
+		const interval = setInterval(() => {
+			time = new Date();
+		}, 1000);
 
-  onMount(() => {
-    const interval = setInterval(() => {
-      time = new Date();
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  });
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
 
-<span>{pad(hours)}:{pad(minutes)}:{pad(seconds)}</span>
+<style>
+  div {
+    text-align: center;
+    margin-top: 2em;
+    display: inline-block;
+  }
+  p {
+    margin-top: 0.5em;
+  }
+	svg {
+		width: 40px;
+		height: 40px;
+	}
+	circle, line {
+		stroke: #fff;
+		fill: none;
+		stroke-width: 5px;
+	}
+</style>
+
+<div>
+
+  <svg viewBox='-110 -110 220 220'>
+    <circle class='clock-face' r='100'/>
+    <line class='hour'
+      y1='0'
+      y2='-70'
+      transform='rotate({30 * hours + minutes / 2})'
+    />
+    <line class='minute'
+      y1='0'
+      y2='-100'
+      transform='rotate({6 * minutes + seconds / 10})'
+    />
+    <line class='second'
+      y1='0'
+      y2='-100'
+      transform='rotate({6 * seconds})'
+    />
+  </svg>
+
+  <p>Kleinosterhausen</p>
+
+</div>
