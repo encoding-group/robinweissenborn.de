@@ -8,7 +8,7 @@
 
 <style type="text/scss">
   section {
-    padding: 4.5rem 1.5rem;
+    padding: 3.8rem 1.5rem;
   }
 </style>
 

@@ -8,7 +8,7 @@
   figure {
     width: 100%;
     height: 100%;
-    padding: 4.5rem 1.5rem;
+    padding: 3.8rem 1.5rem;
     position: absolute;
 
     :global(img) {
