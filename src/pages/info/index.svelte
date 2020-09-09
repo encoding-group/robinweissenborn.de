@@ -9,30 +9,21 @@
 </script>
 
 <style type="text/scss">
+
   .panels {
-    display: flex;
-    padding: 1.5rem;
+    padding: 3.8rem 0.75rem 1.5rem;
     section {
-      flex: 1 0 50%;
-      &:first-child {
-        padding-top: 2rem;
-        padding-right: 1.5rem;
-      }
+      margin-bottom: 1em;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
   }
-
-  .contact li {
-    margin-bottom: 1rem;
-  }
-
-  .imprint {
-    color: #333;
-  }
-
-  .about {
-    h2 {
+  .contact {
+    h1, p, address {
       margin-bottom: 1em;
     }
+  }
+  .about {
     :global(em) {
       font-style: normal;
       text-decoration: underline;
@@ -41,11 +32,51 @@
       float: left;
     }
     :global(ul) {
-      padding-left: 4rem;
-      margin-bottom: 1rem;
+      padding-left: 3.5em;
+      margin-bottom: 1em;
     }
-    :global(p) {
-      margin-bottom: 1rem;
+    :global(p){
+      margin-bottom: 1em;
+    }
+  }
+  .imprint {
+    margin: 1.5em;
+    color: #333;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .panels {
+      display: flex;
+      flex-wrap: wrap;
+      section {
+        flex: 0 0 50%;
+        &.about {
+          margin-bottom: 0;
+        }
+        &.about + .about {
+          margin-left: 50%;
+        }
+      }
+    }
+    .imprint {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  }
+  @media only screen and (min-width: 920px) {
+    .panels {
+      flex-wrap: nowrap;
+      padding-top: 1.5rem;
+      section {
+        flex-basis: 25%;
+        &.contact {
+          margin-left: 12.5%;
+        }
+        &.about + .about {
+          margin-left: 0;
+        }
+      }
     }
   }
 </style>
@@ -56,47 +87,40 @@
   {(console.log(site), '')}
 
   <div class="panels">
-    <section>
-      <ul class="contact">
-        <li>
-          <!-- leipzig -->
-          <p>
-            <LocalTime />
-          </p>
-          <address>
-            {site['address-1'].street}<br />
-            {site['address-1'].zip}
-            {site['address-1'].city}<br />
-            {site['address-1'].country}
-          </address>
-        </li>
-        <li>
-          <!-- kleinosterhausen -->
-          <p>
-            <LocalTime />
-          </p>
-          <address>
-            {site['address-2'].street}<br />
-            {site['address-2'].zip}
-            {site['address-2'].city}<br />
-            {site['address-2'].country}
-          </address>
-        </li>
-        <li>
-          <p>
-            <a href="mailto:{site.contact.email}">{site.contact.email}</a><br />
-            <a href="tel:{site.contact.tel}">{site.contact.tel}</a>
-          </p>
-        </li>
-      </ul>
 
-      <a class="imprint" href={$url('../../imprint')}>Imprint</a>
+    <section class="contact">
+      <h1>(P: Bureau for Visual Comunication)</h1>
+
+      <h2>{site.contact.person}</h2>
+
+      <address>
+        {site['address-1'].street}<br />
+        {site['address-1'].zip}
+        {site['address-1'].city}<br />
+        {site['address-1'].country}
+      </address>
+
+      <p>
+        <a href="mailto:{site.contact.email}">{site.contact.email}</a><br />
+        <a href="tel:{site.contact.tel}">{site.contact.tel}</a>
+      </p>
+
+      <LocalTime />
     </section>
+
     <section class="about">
-      <h2>Visual Communication</h2>
+      <h2>(P: Visual Communication)</h2>
       {@html site.content}
     </section>
+
+    <section class="about">
+      <p>(P: At the moment...)</p>
+      <p>*P: Platzhalter und muss noch durch Custom Field ersetzt werden</p>
+    </section>
+
   </div>
 {:catch error}
   <Message>{error.message}</Message>
 {/await}
+
+<a class="imprint" href={$url('../../imprint')}>Imprint</a>

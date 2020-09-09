@@ -36,7 +36,11 @@
 
 <nav class="menu" class:panels>
   <div class="left">
-    <a href={$isActive('/info') ? $url('/') : $url('/info')}>Robin Weißenborn</a>
+    {#if $isActive('/info')}
+      <a href={$url('/')}>Back</a>
+    {:else}
+      <a href={$url('/info')}>Robin Weißenborn</a>
+    {/if}
     {#if headline !== false}
       <h1>{headline}</h1>
     {/if}
