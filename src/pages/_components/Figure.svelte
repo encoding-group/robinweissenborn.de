@@ -1,7 +1,6 @@
 <script>
   export let image;
   import Image from "./Image.svelte";
-  console.log(image);
 </script>
 
 <style lang="scss">
