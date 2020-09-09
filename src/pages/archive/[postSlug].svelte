@@ -37,6 +37,16 @@
       margin: 0 25vw;
     }
   }
+  .info {
+    :global(div) {
+      margin-top: 1em;
+    }
+  }
+  .content {
+    :global(p) {
+      margin-bottom: 1em;
+    }
+  }
 </style>
 
 <Navigation />
@@ -53,12 +63,13 @@
     <Headline><h3>Info</h3></Headline>
 
     <div class="panels">
-      <div>
+      <div class="info">
+
         {#if post.year}
           <p>{post.year}</p>
         {/if}
         {#if post.title}
-          <p>{post.title}</p>
+          <h2>{post.title}</h2>
         {/if}
         {#if post.client}
           <p>{post.client.join(', ')}</p>
@@ -67,11 +78,15 @@
           <p>{post.discipline.join(', ')}</p>
         {/if}
 
+        <div>
+          <p>(Placeholder project info)</p>
+        </div>
+
         {#if post.isProduct === true}
           <Product {post} />
         {/if}
       </div>
-      <div>
+      <div class="content">
         {#if post.content}
           {@html post.content}
         {/if}

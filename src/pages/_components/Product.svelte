@@ -5,9 +5,6 @@
 </script>
 
 <style type="text/scss">
-    div {
-        margin-top: 1rem;
-    }
     .price {
         margin: 1rem 0;
     }
