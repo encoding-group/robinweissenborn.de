@@ -14,11 +14,21 @@ body {
 .article {
   p {
     @include hyphens;
-    + p {
-      margin-top: 1em;
-    }
   }
 }
+
+p {
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  em, i {
+    font-style: italic;
+  }
+}
+
 
 li > a {
   display: block;

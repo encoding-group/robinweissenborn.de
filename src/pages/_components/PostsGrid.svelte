@@ -10,10 +10,13 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-    border-top: $border;
   }
   li {
     border-bottom: $border;
+    &:last-child,
+    &:nth-last-child(2):nth-child(odd){
+      border-bottom: none;
+    }
     flex: 0 0 50%;
     > a {
       display: block;

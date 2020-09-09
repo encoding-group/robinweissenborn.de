@@ -5,65 +5,79 @@
   import { getContext } from "svelte";
   import { url } from "@sveltech/routify";
 
+  import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
   import PostsList from "../_components/PostsList.svelte";
   import PostsGrid from "../_components/PostsGrid.svelte";
   import PostsGridList from "../_components/PostsGridList.svelte";
 
-	onMount(() => {
-    document.body.classList.add('nav-sticky');
-  });
-	onDestroy(() => {
-    document.body.classList.remove('nav-sticky');
-	});
-
   const wpAdapter = getContext("WordpressAdapter");
 
-  function windowWidth(){
-    return window.innerWidth;
+  let panels = false;
+  function panelsLayout(){
+    panels = window.innerWidth >= 840;
+    return panels;
   }
-  let width = windowWidth();
+  panelsLayout();
 
 </script>
 
-<svelte:window on:resize={() => width = windowWidth()}/>
+<svelte:window on:resize={() => panelsLayout()}/>
 
 <style type="text/scss">
-  .panels {
+  .page :global(nav) {
+    position: sticky !important;
+  }
+  .page.panels {
+    height: 100vh;
     display: flex;
-    .panel {
-      flex: 1 0 50%;
-      &:first-child {
-        border-right: $border;
+    flex-direction: column;
+    .container {
+      flex: 1;
+      display: flex;
+      .panel {
+        flex: 1 1 50%;
+        height: 100%;
+        overflow-y: auto;
+        &:first-child {
+          border-right: $border;
+        }
       }
     }
   }
 </style>
 
-<div class="panels">
-  {#await wpAdapter.getPosts()}
-    <Message />
-  {:then posts}
-    {(console.log(posts), '')}
+<div class="page" class:panels>
 
-    {#if width > 840}
+  <Navigation {panels} />
 
-      <div class="panel">
-        <PostsGrid {posts} />
-      </div>
+  <div class="container">
 
-      <div class="panel">
-        <PostsList {posts} />
-      </div>
+    {#await wpAdapter.getPosts()}
+      <Message />
+    {:then posts}
+      {(console.log(posts), '')}
 
-    {:else}
+      {#if panels}
 
-      <PostsGridList {posts} />
+        <div class="panel">
+          <PostsGrid {posts} />
+        </div>
 
-    {/if}
+        <div class="panel">
+          <PostsList {posts} />
+        </div>
 
-  {:catch error}
-    <Message>{error.message}</Message>
-  {/await}
+      {:else}
+
+        <PostsGridList {posts} />
+
+      {/if}
+
+    {:catch error}
+      <Message>{error.message}</Message>
+    {/await}
+  </div>
+
 </div>
