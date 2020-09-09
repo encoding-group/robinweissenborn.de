@@ -73,29 +73,24 @@
 </style>
 
 <div class="row">
-
-  <Headline><h3>{rowData.headline}</h3></Headline>
+  <Headline>
+    <h3>{rowData.headline}</h3>
+  </Headline>
 
   <div class="swipe" bind:this={container}>
-
     <div class="swipe-wrap">
       {#each rowData.media as column, key}
         <div>
-
           <Figure image={column.media}>
             <figcaption>{key + 1}/{rowData.media.length}</figcaption>
           </Figure>
 
-          <div class="nav">
+          <div class="nav-buttons">
             <button class="prev" on:click={swipeGallery.prev} />
             <button class="next" on:click={swipeGallery.next} />
           </div>
-
         </div>
       {/each}
     </div>
-
-
   </div>
-
 </div>

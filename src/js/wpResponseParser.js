@@ -143,7 +143,8 @@ function processGalleryGrid(postData) {
             media:
               column.select === "Image"
                 ? processImage(column.image)
-                : column.video_url,
+                : // : column.video_url,
+                  column.embedded_media,
           };
         }),
       };
@@ -153,7 +154,7 @@ function processGalleryGrid(postData) {
 
 function processImage(imageObject) {
   if (!imageObject) return {};
-  console.log(imageObject);
+
   return {
     small: imageObject.sizes.thumbnail,
     smallWidth: imageObject.sizes["thumbnail-width"],

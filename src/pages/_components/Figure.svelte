@@ -1,10 +1,10 @@
 <script>
   export let image;
   import Image from "./Image.svelte";
+  console.log(image);
 </script>
 
 <style lang="scss">
-
   figure {
     width: 100%;
     height: 100%;
@@ -26,14 +26,24 @@
       padding: 1.5rem;
       text-align: center;
     }
-
   }
-
+  .video {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 
 <figure>
-  <Image image={image} />
+  {#if typeof image === 'object'}
+    <Image {image} />
+  {:else}
+    <div class="video">
+      {@html image}
+    </div>
+  {/if}
   <figcaption>
-      <slot></slot>
+    <slot />
   </figcaption>
 </figure>
