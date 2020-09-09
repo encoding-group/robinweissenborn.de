@@ -5,7 +5,6 @@
 
   export let duration = 10;
   export let repeat = 1;
-  export let paused = true;
 
 </script>
 
@@ -47,8 +46,8 @@
   }
 </style>
 
-<div class="container" class:paused>
-	<div c<lass="text" style="animation-duration: {duration}s">
+<div class="container">
+	<div class="text" style="animation-duration: {duration}s">
 			<slot />
-	</div>>
+	</div>
 </div>
