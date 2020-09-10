@@ -14,6 +14,7 @@ export const config = {
   svelteWrapper: (svelte) => {
     svelte.preprocess = [
       autoPreprocess({
+        preserve: ['ld+json'],
         postcss: { plugins: [postcssImport()] },
         // defaults: { style: 'postcss' },
         defaults: { style: "scss" },
