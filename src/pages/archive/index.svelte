@@ -21,6 +21,8 @@
   }
   panelsLayout();
 
+  let data = wpAdapter.getPosts();
+
 </script>
 
 <svelte:window on:resize={() => panelsLayout()}/>
@@ -55,30 +57,40 @@
 
   <div class="container">
 
-    {#await wpAdapter.getPosts()}
-      <Message />
-    {:then posts}
-      {(console.log(posts), '')}
+    {#if panels}
 
-      {#if panels}
-
-        <div class="panel">
+      <div class="panel">
+        {#await data}
+          <Message />
+        {:then posts}
           <PostsGrid {posts} />
-        </div>
+        {:catch error}
+          <Message>{error.message}</Message>
+        {/await}
+      </div>
 
-        <div class="panel">
+      <div class="panel">
+        {#await data}
+          <Message />
+        {:then posts}
           <PostsList {posts} />
-        </div>
+        {:catch error}
+          <Message>{error.message}</Message>
+        {/await}
+      </div>
 
-      {:else}
+    {:else}
 
+      {#await data}
+        <Message />
+      {:then posts}
         <PostsGridList {posts} />
+      {:catch error}
+        <Message>{error.message}</Message>
+      {/await}
 
-      {/if}
+    {/if}
 
-    {:catch error}
-      <Message>{error.message}</Message>
-    {/await}
   </div>
 
 </div>
