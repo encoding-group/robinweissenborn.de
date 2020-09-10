@@ -14,7 +14,7 @@ export default class WordpressAdapter {
   async getPosts() {
     try {
       const response = await axios.get(
-        `${this.baseUrl}/posts${this.parameters}`
+        `${this.baseUrl}/posts${this.parameters}&per_page=40`
       );
       return processPosts(response.data);
     } catch (error) {
