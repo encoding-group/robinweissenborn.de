@@ -14,9 +14,13 @@
     width: 100%;
     display: flex;
     animation: fadein 1s;
+    justify-content: space-between;
     > div {
       padding: 1.5rem;
-      flex: 0 0 50%;
+      flex: 0 0 40%;
+      @media only screen and (min-width: 400px) {
+        flex-basis: 50%;
+      }
       &.right {
         text-align: right;
       }
@@ -40,7 +44,7 @@
     {#if $isActive('/info')}
       <a href={$url('/')}>Back</a>
     {:else}
-      <a href={$url('/info')}>Robin Weißenborn</a>
+      <a class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
     {/if}
     {#if headline !== false}
       <h1>{headline}</h1>
