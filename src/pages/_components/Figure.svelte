@@ -9,6 +9,8 @@
     height: 100%;
     padding: 3.8rem 1.5rem;
     position: absolute;
+    z-index: 10;
+    pointer-events: none;
 
     :global(img) {
       height: 100%;
@@ -31,6 +33,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    :global(iframe){
+      pointer-events: all;
+    }
   }
 </style>
 
