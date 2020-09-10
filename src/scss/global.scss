@@ -37,3 +37,8 @@ li > a {
 .tnum {
   @include tabularFigures;
 }
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

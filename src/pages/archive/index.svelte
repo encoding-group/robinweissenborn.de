@@ -37,6 +37,7 @@
       flex: 1;
       display: flex;
       .panel {
+        animation: fadein 1s;
         flex: 1 1 50%;
         height: 100%;
         overflow-y: auto;

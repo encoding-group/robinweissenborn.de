@@ -9,6 +9,7 @@
 
 <style type="text/scss">
   li {
+    animation: fadein 1s;
 		height: 100vh;
 		> a {
 			height: 100%;

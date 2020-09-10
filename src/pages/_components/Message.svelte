@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadein 1s;
+    color: #999;
     em {
         text-align: center;
     }

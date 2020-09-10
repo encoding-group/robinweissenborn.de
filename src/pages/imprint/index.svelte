@@ -9,6 +9,7 @@
 <style type="text/scss">
   section {
     padding: 3.8rem 1.5rem;
+    animation: fadein 1s;
   }
 </style>
 

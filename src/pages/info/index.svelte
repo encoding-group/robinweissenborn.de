@@ -11,6 +11,7 @@
 <style type="text/scss">
 
   .panels {
+    animation: fadein 1s;
     padding: 3.8rem 0.75rem 1.5rem;
     section {
       margin-bottom: 1em;

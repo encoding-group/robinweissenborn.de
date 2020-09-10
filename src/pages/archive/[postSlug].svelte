@@ -14,6 +14,9 @@
 </script>
 
 <style type="text/scss">
+  main {
+    animation: fadein 1s;
+  }
   article {
     height: 100vh;
     .headline {
@@ -56,44 +59,48 @@
 {:then post}
   {(console.log(post), '')}
 
-  <Gallery gallery={post.galleryGrid} />
+  <main>
 
-  <article>
+    <Gallery gallery={post.galleryGrid} />
 
-    <Headline><h3>Info</h3></Headline>
+    <article>
 
-    <div class="panels">
-      <div class="info">
+      <Headline><h3>Info</h3></Headline>
 
-        {#if post.year}
-          <p>{post.year}</p>
-        {/if}
-        {#if post.title}
-          <h2>{post.title}</h2>
-        {/if}
-        {#if post.client}
-          <p>{post.client.join(', ')}</p>
-        {/if}
-        {#if post.discipline}
-          <p>{post.discipline.join(', ')}</p>
-        {/if}
+      <div class="panels">
+        <div class="info">
 
-        <div>
-          <p>(Placeholder project info)</p>
+          {#if post.year}
+            <p>{post.year}</p>
+          {/if}
+          {#if post.title}
+            <h2>{post.title}</h2>
+          {/if}
+          {#if post.client}
+            <p>{post.client.join(', ')}</p>
+          {/if}
+          {#if post.discipline}
+            <p>{post.discipline.join(', ')}</p>
+          {/if}
+
+          <div>
+            <p>(Placeholder project info)</p>
+          </div>
+
+          {#if post.isProduct === true}
+            <Product {post} />
+          {/if}
         </div>
-
-        {#if post.isProduct === true}
-          <Product {post} />
-        {/if}
+        <div class="content">
+          {#if post.content}
+            {@html post.content}
+          {/if}
+        </div>
       </div>
-      <div class="content">
-        {#if post.content}
-          {@html post.content}
-        {/if}
-      </div>
-    </div>
 
-  </article>
+    </article>
+
+  </main>
 
 {:catch error}
   <Message>{error.message}</Message>

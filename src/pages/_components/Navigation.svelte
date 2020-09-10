@@ -13,6 +13,7 @@
     top: 0;
     width: 100%;
     display: flex;
+    animation: fadein 1s;
     > div {
       padding: 1.5rem;
       flex: 0 0 50%;
