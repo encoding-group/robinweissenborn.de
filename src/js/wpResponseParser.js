@@ -105,6 +105,7 @@ function processAcfFields(postData) {
     return {
       ...processProductFields(postData),
       ...processGalleryGrid(postData),
+      projectInfo: postData.acf.project_info,
       titleShort: postData.acf.short_title,
       titleImage: processImage(postData.acf.title_image),
       year: parseInt(postData.acf.year, 10),

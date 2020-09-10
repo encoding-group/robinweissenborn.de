@@ -60,16 +60,15 @@
   {(console.log(post), '')}
 
   <main>
-
     <Gallery gallery={post.galleryGrid} />
 
     <article>
-
-      <Headline><h3>Info</h3></Headline>
+      <Headline>
+        <h3>Info</h3>
+      </Headline>
 
       <div class="panels">
         <div class="info">
-
           {#if post.year}
             <p>{post.year}</p>
           {/if}
@@ -84,7 +83,7 @@
           {/if}
 
           <div>
-            <p>(Placeholder project info)</p>
+            {@html post.projectInfo}
           </div>
 
           {#if post.isProduct === true}
@@ -97,11 +96,8 @@
           {/if}
         </div>
       </div>
-
     </article>
-
   </main>
-
 {:catch error}
   <Message>{error.message}</Message>
 {/await}
