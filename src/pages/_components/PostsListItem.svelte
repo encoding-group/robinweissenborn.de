@@ -12,15 +12,21 @@
             padding: 0.25em 0.25em;
             flex: 1 1 auto;
             overflow: hidden;
-            &.year {
-                flex-basis: 10%;
+            &.year { flex-basis: 15%; }
+            &.title { flex-basis: 45%; }
+            @media only screen and (min-width: 400px) {
+                &.year { flex-basis: 12%; }
+                &.title { flex-basis: 48%; }
             }
-            &.title {
-                flex-basis: 40%;
+            @media only screen and (min-width: 700px) {
+                &.year { flex-basis: 10%; }
+                &.title { flex-basis: 50%; }
             }
-            &.client {
-                flex-basis: 25%;
+            @media only screen and (min-width: 1000px) {
+                &.year { flex-basis: 7%; }
+                &.title { flex-basis: 53%; }
             }
+            &.client,
             &.discipline {
                 flex-basis: 25%;
             }
