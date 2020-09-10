@@ -1,5 +1,13 @@
 function processInfo(pageData) {
+  console.log(pageData);
+  let info = {};
+  if (pageData.hasOwnProperty("acf")) {
+    info.info = pageData.acf.info;
+    info.officeName = pageData.acf.office_name;
+    info.service = pageData.acf.service;
+  }
   return {
+    ...info,
     ...processBasicFields(pageData),
     ...processMetaFields(pageData),
     ...processContactFields(pageData),

@@ -9,7 +9,6 @@
 </script>
 
 <style type="text/scss">
-
   .panels {
     animation: fadein 1s;
     padding: 3.8rem 0.75rem 1.5rem;
@@ -20,7 +19,9 @@
     }
   }
   .contact {
-    h1, p, address {
+    h1,
+    p,
+    address {
       margin-bottom: 1em;
     }
   }
@@ -36,7 +37,7 @@
       padding-left: 3.5em;
       margin-bottom: 1em;
     }
-    :global(p){
+    :global(p) {
       margin-bottom: 1em;
     }
   }
@@ -88,9 +89,8 @@
   {(console.log(site), '')}
 
   <div class="panels">
-
     <section class="contact">
-      <h1>(P: Bureau for Visual Comunication)</h1>
+      <h1>{site.officeName}</h1>
 
       <h2>{site.contact.person}</h2>
 
@@ -110,15 +110,13 @@
     </section>
 
     <section class="about">
-      <h2>(P: Visual Communication)</h2>
+      <h2>{site.service}</h2>
       {@html site.content}
     </section>
 
     <section class="about">
-      <p>(P: At the moment...)</p>
-      <p>*P: Platzhalter und muss noch durch Custom Field ersetzt werden</p>
+      {@html site.info}
     </section>
-
   </div>
 {:catch error}
   <Message>{error.message}</Message>
