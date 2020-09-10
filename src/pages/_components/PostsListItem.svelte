@@ -6,6 +6,8 @@
 <style type="text/scss">
     .item {
         display: flex;
+        -webkit-user-select: none;
+        user-select: none;
         .col {
             padding: 0.25em 0.25em;
             flex: 1 1 auto;

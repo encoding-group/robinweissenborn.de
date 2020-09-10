@@ -3,8 +3,25 @@
 
   import { onMount } from "svelte";
 
-  export let duration = 10;
-  export let repeat = 1;
+  let container, text;
+  let marquee = false;
+  let hover = false;
+
+  let offset = 0;
+
+  function dimensions(){
+    let v = container.clientWidth;
+    let w = text.clientWidth;
+    offset = Math.min(0, (v-w-10));
+    marquee = v < w;
+    return marquee;
+  }
+	onMount(() => {
+    dimensions();
+    setTimeout(function(){
+      dimensions();
+    }, 100);
+  });
 
 </script>
 
@@ -13,7 +30,7 @@
 		position: relative;
 		overflow: hidden;
 	}
-	.container:after {
+	.container.marquee:after {
 		content: '';
 		position: absolute;
 		width: 1em;
@@ -22,32 +39,18 @@
 		right: 0;
 		top: 0;
 	}
-
   .text {
-		margin-right: 2em;
 		display: inline-block;
-		animation-name: reset;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
     white-space: nowrap;
-  }
-	.container:hover .text {
-		animation-name: run;
-  }
-  @keyframes run {
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  @keyframes reset {
-    100% {
-      transform: translateX(0);
-    }
+    transform: translateX(0);
+    transition-timing-function: linear;
+    transition-property: transform;
+    transition-duration: 200ms;
   }
 </style>
 
-<div class="container">
-	<div class="text" style="animation-duration: {duration}s">
-			<slot />
+<div class="container" bind:this={container} class:marquee on:mouseover={()=> hover = true} on:mouseout={()=> hover = false}>
+	<div bind:this={text} class="text" style="{hover ? `transform: translateX(${offset}px); transition-duration: ${-offset*10}ms;` : ''}">
+    <slot />
 	</div>
 </div>
