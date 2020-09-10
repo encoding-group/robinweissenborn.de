@@ -201,9 +201,9 @@ function createSrcString(imageObject) {
 // Needs more work
 function createSrcSizes(imageObject) {
   return [
-    "(max-width: 375px) 150px",
-    "(max-width: 768px) 300px",
-    "(max-width: 1024px) 1024px",
+    "(max-width: 300px) 150px",
+    "(max-width: 600px) 300px",
+    "(max-width: 2000px) 1024px",
     `${imageObject.width}px`,
   ].join(",");
 }
