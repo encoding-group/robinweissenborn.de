@@ -21,7 +21,7 @@
 <style>
   div {
     text-align: center;
-    margin-top: 2em;
+    margin: 1.5em 0;
     display: inline-block;
   }
   p {
