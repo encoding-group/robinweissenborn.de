@@ -28,7 +28,7 @@
   }
   figure {
     :global(img) {
-      height: 14vw; /* 100 / 4 / 16 * 9 */
+      height: 13.6vw; /* 100 / 4 / 16 * 9 */
       width: 100%;
       object-fit: contain;
       object-position: center;
@@ -44,7 +44,7 @@
         <figure>
           <Image image={post.titleImage} />
         </figure>
-        
+
       </a>
     </li>
   {/each}
