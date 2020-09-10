@@ -62,15 +62,12 @@
       width: 50%;
       top: 0;
       height: 100%;
-      opacity: 0.3;
       &.prev {
         left: 0;
-        background-color: blue;
         cursor: w-resize;
       }
       &.next {
         left: 50%;
-        background-color: red;
         cursor: e-resize;
       }
     }
