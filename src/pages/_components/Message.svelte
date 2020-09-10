@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     animation: fadein 1s;
-    color: #999;
+    color: #555;
     em {
         text-align: center;
     }

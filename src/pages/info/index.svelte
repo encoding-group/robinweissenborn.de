@@ -42,7 +42,7 @@
   }
   .imprint {
     margin: 1.5em;
-    color: #333;
+    color: #555;
   }
 
   @media only screen and (min-width: 640px) {
