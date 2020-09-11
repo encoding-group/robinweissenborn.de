@@ -27,62 +27,45 @@ export default class WordpressAdapter {
     this.parameters = "?_embed=wp:term";
   }
 
-  async getPosts(callback) {
-    callback(await this.getPosts());
-  }
-
   async getPosts() {
-    try {
-      if (isCacheStale("posts_cache")) {
-        console.log("new");
-        const response = await axios.get(
-          `${this.baseUrl}/posts${this.parameters}&per_page=40`
-        );
-        refreshCache("posts_cache", response.data);
-        return processPosts(response.data);
-      } else {
-        console.log("cache");
-        return processPosts(getCache("posts_cache"));
-      }
-    } catch (error) {
-      throw new Error(error.message);
+    if (isCacheStale("posts_cache")) {
+      return axios
+        .get(`${this.baseUrl}/posts${this.parameters}&per_page=40`)
+        .then((res) => {
+          refreshCache("posts_cache", res.data);
+          return processPosts(res.data);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      return processPosts(getCache("posts_cache"));
     }
-  }
-
-  async getPost(slug, callback) {
-    callback(await this.getPost(slug));
   }
 
   async getPost(slug) {
-    try {
-      if (isCacheStale(`post_cache_${slug}`)) {
-        const response = await axios.get(
-          `${this.baseUrl}/posts?slug=${slug}&_embed=wp:term`
-        );
-        if (response.data.length == 0)
-          throw new Error(`Could not find the post '${slug}'`);
-        refreshCache(`post_cache_${slug}`, response.data[0]);
-        return processPost(response.data[0]);
-      } else {
-        return processPost(getCache(`post_cache_${slug}`));
-      }
-    } catch (error) {
-      throw new Error(error.message);
+    if (isCacheStale(`post_cache_${slug}`)) {
+      return axios
+        .get(`${this.baseUrl}/posts?slug=${slug}&_embed=wp:term`)
+        .then((res) => {
+          refreshCache(`post_cache_${slug}`, res.data[0]);
+          return processPost(res.data[0]);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      return processPost(getCache(`post_cache_${slug}`));
     }
   }
 
-  async getPage(slug, callback) {
-    callback(await this.siteData(slug));
-  }
-
   async getPage(slug) {
-    try {
-      const response = await axios.get(`${this.baseUrl}/pages?slug=${slug}`);
-      if (response.data.length === 0)
-        throw new Error(`Could not find the page '${slug}'`);
-      return processInfo(response.data[0]);
-    } catch (error) {
-      throw new Error(error.message);
+    if (isCacheStale(`page_cache_${slug}`)) {
+      return axios
+        .get(`${this.baseUrl}/pages?slug=${slug}`)
+        .then((res) => {
+          refreshCache(`page_cache_${slug}`, res.data[0]);
+          return processInfo(res.data[0]);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      return processInfo(getCache(`page_cache_${slug}`));
     }
   }
 }
