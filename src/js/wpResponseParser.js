@@ -114,6 +114,9 @@ function processAcfFields(postData) {
       ...processGalleryGrid(postData),
       projectInfo: postData.acf.project_info ?? "",
       titleImage: processImage(postData.acf.title_image),
+      secondaryTitleImage: processImage(
+        postData.acf.secondary_title_image ?? postData.acf.title_image
+      ),
       isFrameless: postData.acf.is_frameless ?? false,
       color: postData.acf.color ?? "#000000",
       year: parseInt(postData.acf.year, 10),
