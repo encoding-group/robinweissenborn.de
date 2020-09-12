@@ -9,10 +9,13 @@
   let data;
   $: getData();
   function getData() {
-    wpAdapter.getPosts().then((json) => {
-      data = json;
-      $ready();
-    });
+    wpAdapter
+      .getPosts()
+      .then((json) => {
+        data = json;
+        $ready();
+      })
+      .catch((error) => console.log(error));
   }
 </script>
 
