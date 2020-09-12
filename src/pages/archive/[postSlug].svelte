@@ -1,5 +1,5 @@
 <script>
-  import { params } from "@sveltech/routify";
+  import { params, ready } from "@sveltech/routify";
   import { getContext } from "svelte";
 
   import Navigation from "../_components/Navigation.svelte";
@@ -11,6 +11,14 @@
   export let postSlug;
 
   const wpAdapter = getContext("WordpressAdapter");
+  let data;
+  $: getData();
+  function getData() {
+    wpAdapter.getPost(postSlug).then((json) => {
+      data = json;
+      $ready();
+    });
+  }
 </script>
 
 <style type="text/scss">
@@ -54,13 +62,9 @@
 
 <Navigation />
 
-{#await wpAdapter.getPost(postSlug)}
-  <Message />
-{:then post}
-  {(console.log(post), '')}
-
+{#if data}
   <main>
-    <Gallery gallery={post.galleryGrid} />
+    <Gallery gallery={data.galleryGrid} />
 
     <article>
       <Headline>
@@ -69,35 +73,35 @@
 
       <div class="panels">
         <div class="info">
-          {#if post.year}
-            <p>{post.year}</p>
+          {#if data.year}
+            <p>{data.year}</p>
           {/if}
-          {#if post.title}
-            <h2>{post.title}</h2>
+          {#if data.title}
+            <h2>{data.title}</h2>
           {/if}
-          {#if post.client}
-            <p>{post.client.join(', ')}</p>
+          {#if data.client}
+            <p>{data.client.join(', ')}</p>
           {/if}
-          {#if post.discipline}
-            <p>{post.discipline.join(', ')}</p>
+          {#if data.discipline}
+            <p>{data.discipline.join(', ')}</p>
           {/if}
 
           <div>
-            {@html post.projectInfo}
+            {@html data.projectInfo}
           </div>
 
-          {#if post.isProduct === true}
-            <Product {post} />
+          {#if data.isProduct === true}
+            <Product {data} />
           {/if}
         </div>
         <div class="content">
-          {#if post.content}
-            {@html post.content}
+          {#if data.content}
+            {@html data.content}
           {/if}
         </div>
       </div>
     </article>
   </main>
-{:catch error}
-  <Message>{error.message}</Message>
-{/await}
+{:else}
+  <Message />
+{/if}

@@ -29,6 +29,7 @@ export default class WordpressAdapter {
 
   async getPosts() {
     if (isCacheStale("posts_cache")) {
+      // if (true) {
       return axios
         .get(`${this.baseUrl}/posts${this.parameters}&per_page=40`)
         .then((res) => {

@@ -1,11 +1,20 @@
 <script>
-  import { url } from "@sveltech/routify";
+  import { url, ready } from "@sveltech/routify";
   import { getContext } from "svelte";
 
-  import Message from "../_components/Message.svelte";
-  import LocalTime from "../_components/LocalTime.svelte";
+  import Message from "./_components/Message.svelte";
+  import LocalTime from "./_components/LocalTime.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
+
+  let data;
+  $: getData();
+  function getData() {
+    wpAdapter.getPage("info").then((json) => {
+      data = json;
+      $ready();
+    });
+  }
 </script>
 
 <style type="text/scss">
@@ -83,43 +92,39 @@
   }
 </style>
 
-{#await wpAdapter.getPage('info')}
-  <Message />
-{:then site}
-  {(console.log(site), '')}
-
+{#if data}
   <div class="panels">
     <section class="contact">
-      <h1>{site.officeName}</h1>
+      <h1>{data.officeName}</h1>
 
-      <h2>{site.contact.person}</h2>
+      <h2>{data.contact.person}</h2>
 
       <address>
-        {site['address-1'].street}<br />
-        {site['address-1'].zip}
-        {site['address-1'].city}<br />
-        {site['address-1'].country}
+        {data['address-1'].street}<br />
+        {data['address-1'].zip}
+        {data['address-1'].city}<br />
+        {data['address-1'].country}
       </address>
 
       <p>
-        <a href="mailto:{site.contact.email}">{site.contact.email}</a><br />
-        <a href="tel:{site.contact.tel}">{site.contact.tel}</a>
+        <a href="mailto:{data.contact.email}">{data.contact.email}</a><br />
+        <a href="tel:{data.contact.tel}">{data.contact.tel}</a>
       </p>
 
       <LocalTime />
     </section>
 
     <section class="about">
-      <h2>{site.service}</h2>
-      {@html site.content}
+      <h2>{data.service}</h2>
+      {@html data.content}
     </section>
 
     <section class="about">
-      {@html site.info}
+      {@html data.info}
     </section>
   </div>
-{:catch error}
-  <Message>{error.message}</Message>
-{/await}
+{:else}
+  <Message />
+{/if}
 
-<a class="imprint" href={$url('../../imprint')}>Imprint</a>
+<a class="imprint" href={$url('/imprint')}>Imprint</a>

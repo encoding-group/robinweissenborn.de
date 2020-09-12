@@ -1,9 +1,9 @@
 <script>
-  import { onMount } from 'svelte';
-  import { onDestroy } from 'svelte';
+  import { onMount } from "svelte";
+  import { onDestroy } from "svelte";
 
   import { getContext } from "svelte";
-  import { url } from "@sveltech/routify";
+  import { url, ready } from "@sveltech/routify";
 
   import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
@@ -12,20 +12,23 @@
   import PostsGrid from "../_components/PostsGrid.svelte";
   import PostsGridList from "../_components/PostsGridList.svelte";
 
-  const wpAdapter = getContext("WordpressAdapter");
-
   let panels = false;
-  function panelsLayout(){
+  function panelsLayout() {
     panels = window.innerWidth >= 840;
     return panels;
   }
   panelsLayout();
 
-  let data = wpAdapter.getPosts();
-
+  const wpAdapter = getContext("WordpressAdapter");
+  let data;
+  $: getData();
+  function getData() {
+    wpAdapter.getPosts().then((json) => {
+      data = json;
+      $ready();
+    });
+  }
 </script>
-
-<svelte:window on:resize={() => panelsLayout()}/>
 
 <style type="text/scss">
   .page :global(nav) {
@@ -51,46 +54,31 @@
   }
 </style>
 
+<svelte:window on:resize={() => panelsLayout()} />
 <div class="page" class:panels>
-
   <Navigation {panels} />
 
   <div class="container">
-
     {#if panels}
-
       <div class="panel">
-        {#await data}
+        {#if data}
+          <PostsGrid posts={data} />
+        {:else}
           <Message />
-        {:then posts}
-          <PostsGrid {posts} />
-        {:catch error}
-          <Message>{error.message}</Message>
-        {/await}
+        {/if}
       </div>
 
       <div class="panel">
-        {#await data}
+        {#if data}
+          <PostsList posts={data} />
+        {:else}
           <Message />
-        {:then posts}
-          <PostsList {posts} />
-        {:catch error}
-          <Message>{error.message}</Message>
-        {/await}
+        {/if}
       </div>
-
+    {:else if data}
+      <PostsGridList posts={data} />
     {:else}
-
-      {#await data}
-        <Message />
-      {:then posts}
-        <PostsGridList {posts} />
-      {:catch error}
-        <Message>{error.message}</Message>
-      {/await}
-
+      <Message />
     {/if}
-
   </div>
-
 </div>
