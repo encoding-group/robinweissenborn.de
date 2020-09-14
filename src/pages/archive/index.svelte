@@ -29,7 +29,8 @@
       .then((json) => {
         data = processPosts(json);
         $ready();
-      });
+      })
+      .catch((err) => consoel.log(err));
   }
 
   let hover = false;
