@@ -31,14 +31,14 @@
     <div class="col hover"></div>
     <p class="col year">{post.year}</p>
     <h3 class="col title">
-        <Marquee>{post.title}</Marquee>
+        <Marquee text={post.title} />
     </h3>
     {#if details === true}
         <p class="col client">
-            <Marquee>{post.client.length > 0 ? post.client.join(', ') : '—'}</Marquee>
+            <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
         </p>
         <p class="col discipline">
-            <Marquee>{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</Marquee>
+            <Marquee text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
         </p>
     {/if}
 </div>

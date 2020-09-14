@@ -3,15 +3,17 @@
 
   import { onMount } from "svelte";
 
-  let container, text;
+  export let text = "—";
+
+  let outer, inner;
   let marquee = false;
   let hover = false;
 
   let offset = 0;
 
   function dimensions(){
-    let v = container.clientWidth;
-    let w = text.clientWidth;
+    let v = outer.clientWidth;
+    let w = inner.clientWidth;
     offset = Math.min(0, (v-w-10));
     marquee = v < w;
     return marquee;
@@ -26,11 +28,11 @@
 </script>
 
 <style>
-	.container {
+	.outer {
 		position: relative;
 		overflow: hidden;
 	}
-	.container.marquee:after {
+	.outer.marquee:after {
 		content: '';
 		position: absolute;
 		width: 1em;
@@ -39,7 +41,7 @@
 		right: 0;
 		top: 0;
 	}
-  .text {
+  .inner {
 		display: inline-block;
     white-space: nowrap;
     transform: translateX(0);
@@ -49,8 +51,8 @@
   }
 </style>
 
-<div class="container" bind:this={container} class:marquee on:mouseover={()=> hover = true} on:mouseout={()=> hover = false}>
-	<div bind:this={text} class="text" style="{hover ? `transform: translateX(${offset}px); transition-duration: ${-offset*10}ms;` : ''}">
-    <slot />
+<div class="outer" title={text} bind:this={outer} class:marquee on:mouseover={()=> hover = true} on:mouseout={()=> hover = false}>
+	<div bind:this={inner} class="inner" style="{hover ? `transform: translateX(${offset}px); transition-duration: ${-offset*10}ms;` : ''}">
+    {text}
 	</div>
 </div>
