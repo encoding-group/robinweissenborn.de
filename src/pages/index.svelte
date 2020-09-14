@@ -1,21 +1,19 @@
 <script>
-  import { getContext } from "svelte";
   import { ready } from "@sveltech/routify";
+  import { processPosts } from "../js/wpResponseParser.js";
 
   import TeaserItem from "./_components/TeaserItem.svelte";
   import Message from "./_components/Message.svelte";
 
-  const wpAdapter = getContext("WordpressAdapter");
   let data;
   $: getData();
   function getData() {
-    wpAdapter
-      .getPosts()
+    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=5")
+      .then((response) => response.json())
       .then((json) => {
-        data = json;
+        data = processPosts(json);
         $ready();
-      })
-      .catch((error) => console.log(error));
+      });
   }
 </script>
 
@@ -26,6 +24,7 @@
     overflow-y: scroll;
   }
 </style>
+
 <ul>
   {#if data}
     <!-- filter featured posts -->

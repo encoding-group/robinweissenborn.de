@@ -1,18 +1,18 @@
 <script>
-  import { getContext } from "svelte";
   import { ready } from "@sveltech/routify";
+  import { processInfo } from "../js/wpResponseParser.js";
 
   import Message from "./_components/Message.svelte";
-
-  const wpAdapter = getContext("WordpressAdapter");
 
   let data;
   $: getData();
   function getData() {
-    wpAdapter.getPage("imprint").then((json) => {
-      data = json;
-      $ready();
-    });
+    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=imprint")
+      .then((response) => response.json())
+      .then((json) => {
+        data = processInfo(json);
+        $ready();
+      });
   }
 </script>
 

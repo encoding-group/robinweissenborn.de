@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
 
-  import { getContext } from "svelte";
   import { url, ready } from "@sveltech/routify";
+  import { processPosts } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
@@ -19,20 +19,23 @@
   }
   panelsLayout();
 
-  const wpAdapter = getContext("WordpressAdapter");
   let data;
   $: getData();
   function getData() {
-    wpAdapter.getPosts().then((json) => {
-      data = json;
-      $ready();
-    });
+    fetch(
+      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=40&_embed=wp:term"
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        data = processPosts(json);
+        $ready();
+      });
   }
 
   let hover = false;
   function onItemHover(event) {
     hover = event.detail;
-	}
+  }
 </script>
 
 <style type="text/scss">
@@ -76,13 +79,11 @@
     {#if panels}
       <div class="panel">
         {#if data}
-
           <ul class="grid">
             {#each data as post}
               <GridItem {post} on:hover={onItemHover} />
             {/each}
           </ul>
-
         {:else}
           <Message />
         {/if}
@@ -90,25 +91,21 @@
 
       <div class="panel">
         {#if data}
-
           <ul class="list">
             {#each data as post}
               <ListItem {post} hover={hover === post.id} />
             {/each}
           </ul>
-
         {:else}
           <Message />
         {/if}
       </div>
     {:else if data}
-
       <ul class="mixed">
         {#each data as post}
           <MixedItem {post} />
         {/each}
       </ul>
-
     {:else}
       <Message />
     {/if}

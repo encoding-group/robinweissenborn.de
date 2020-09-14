@@ -1,6 +1,6 @@
 <script>
   import { url } from "@sveltech/routify";
-  import Marquee from './Marquee.svelte';
+  import Marquee from "./Marquee.svelte";
 
   export let post = {};
 
@@ -48,24 +48,22 @@
 
 <li class:hover>
   <a href={$url('../:slug', { slug: post.slug })}>
-
     <p class="col year">{post.year}</p>
 
-    <div class="col bubble">
-      <span></span>
-    </div>
+    <div class="col bubble"><span /></div>
 
     <h3 class="col title">
       <Marquee text={post.title} />
     </h3>
 
     <p class="col client">
+      {(console.log(post), '')}
       <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
     </p>
 
     <p class="col discipline">
-      <Marquee text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
+      <Marquee
+        text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
     </p>
-
   </a>
 </li>

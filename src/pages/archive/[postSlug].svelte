@@ -1,6 +1,6 @@
 <script>
   import { params, ready } from "@sveltech/routify";
-  import { getContext } from "svelte";
+  import { processPost } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
   import Gallery from "../_components/Gallery.svelte";
@@ -10,14 +10,18 @@
 
   export let postSlug;
 
-  const wpAdapter = getContext("WordpressAdapter");
   let data;
-  $: getData();
-  function getData() {
-    wpAdapter.getPost(postSlug).then((json) => {
-      data = json;
-      $ready();
-    });
+  $: getData(postSlug);
+  function getData(slug) {
+    fetch(
+      `https://api.robinweissenborn.de/wp-json/wp/v2/posts?slug=${slug}&_embed=wp:term`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        data = processPost(json[0]);
+        $ready();
+      });
   }
 </script>
 
@@ -27,7 +31,7 @@
     scroll-snap-type: y mandatory;
     max-height: 100vh;
     overflow-y: scroll;
-    :global(section){
+    :global(section) {
       scroll-snap-align: start;
     }
   }
@@ -70,7 +74,6 @@
 
 {#if data}
   <main>
-
     {#each data.galleryGrid as gallery}
       <Gallery {gallery} />
     {/each}
