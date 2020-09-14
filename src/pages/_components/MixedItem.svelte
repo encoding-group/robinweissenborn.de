@@ -2,6 +2,7 @@
   import { url } from "@sveltech/routify";
 
   import Image from "./Image.svelte";
+  import Marquee from "./Marquee.svelte";
 
   export let posts = [];
 </script>
@@ -28,7 +29,7 @@
   }
   figure {
     padding: 0 0.5em;
-    :global( img ){
+    :global(img) {
       width: 100%;
       height: auto;
     }
@@ -39,21 +40,17 @@
   {#each posts as post}
     <li>
       <a href={$url('../:slug', { slug: post.slug })}>
-
         <figure>
           <Image image={post.titleImage} />
         </figure>
 
         <div class="item">
-
           <p class="col year">{post.year}</p>
 
           <h3 class="col title">
-            <Marquee text={post.title} />
+            <!-- <Marquee text={post.title} /> -->
           </h3>
-
         </div>
-
       </a>
     </li>
   {/each}

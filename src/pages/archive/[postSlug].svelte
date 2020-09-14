@@ -11,14 +11,13 @@
   export let postSlug;
 
   let data;
-  $: getData(postSlug);
+  $: getData($params.postSlug);
   function getData(slug) {
     fetch(
       `https://api.robinweissenborn.de/wp-json/wp/v2/posts?slug=${slug}&_embed=wp:term`
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         data = processPost(json[0]);
         $ready();
       });

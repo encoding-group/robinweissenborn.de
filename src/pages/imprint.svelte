@@ -4,15 +4,16 @@
 
   import Message from "./_components/Message.svelte";
 
-  let data;
+  let data = { content: "stuff" };
   $: getData();
   function getData() {
     fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=imprint")
       .then((response) => response.json())
       .then((json) => {
-        data = processInfo(json);
+        data = processInfo(json[0]);
         $ready();
-      });
+      })
+      .catch((err) => console.log(err));
   }
 </script>
 

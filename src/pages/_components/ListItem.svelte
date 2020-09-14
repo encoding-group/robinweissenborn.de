@@ -57,7 +57,6 @@
     </h3>
 
     <p class="col client">
-      {(console.log(post), '')}
       <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
     </p>
 
