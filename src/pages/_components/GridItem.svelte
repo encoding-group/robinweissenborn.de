@@ -40,7 +40,7 @@
   }
 </style>
 
-<li>
+<li style="background-color:{post.color}">
   <a href={$url('../:post', { post: post.slug })} on:mouseenter={()=> hoverEvent(true)} on:mouseleave={()=> hoverEvent(false)}>
 
     <figure>
