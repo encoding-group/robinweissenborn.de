@@ -7,6 +7,14 @@
   export let height = image.largeHeight || "auto";
   export let srcset = image.srcset || "";
   export let sizes = image.sizes || "";
+
+  export let hide = false;
 </script>
 
-<img {alt} {src} {width} {height} {srcset} {sizes} />
+<style>
+  img.hide {
+    display: none;
+  }
+</style>
+
+<img class:hide {alt} {src} {width} {height} {srcset} {sizes} />

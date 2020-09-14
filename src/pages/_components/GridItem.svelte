@@ -7,8 +7,9 @@
   export let post = {};
 
   const dispatch = createEventDispatcher();
-  function hover( state ) {
-
+  let hover = false;
+  function hoverEvent( state ) {
+    hover = state;
 		dispatch('hover', state === true ? post.id : false);
 	}
 </script>
@@ -40,10 +41,15 @@
 </style>
 
 <li>
-  <a href={$url('../:post', { post: post.slug })} on:mouseenter={()=> hover(true)} on:mouseleave={()=> hover(false)}>
+  <a href={$url('../:post', { post: post.slug })} on:mouseenter={()=> hoverEvent(true)} on:mouseleave={()=> hoverEvent(false)}>
 
     <figure>
-      <Image image={post.titleImage} />
+      {#if 'large' in post.secondaryTitleImage}
+        <Image hide={hover} image={post.titleImage} />
+        <Image hide={!hover} image={post.secondaryTitleImage} />
+      {:else}
+        <Image image={post.titleImage} />
+      {/if}
     </figure>
 
   </a>
