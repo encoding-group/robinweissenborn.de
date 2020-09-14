@@ -2,7 +2,6 @@
   import { url } from "@sveltech/routify";
 
   import Image from "./Image.svelte";
-  import PostsListItem from "./PostsListItem.svelte";
 
   export let posts = [];
 </script>

@@ -8,8 +8,6 @@
   import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
-  import PostsGridList from "../_components/PostsGridList.svelte";
-
   import GridItem from "../_components/GridItem.svelte";
   import ListItem from "../_components/ListItem.svelte";
   import MixedItem from "../_components/MixedItem.svelte";
