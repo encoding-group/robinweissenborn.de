@@ -15,5 +15,5 @@
 </style>
 
 <li class="message">
-    <em><slot>Loading posts...</slot></em>
+    <em><slot>Loading ...</slot></em>
 </li>
