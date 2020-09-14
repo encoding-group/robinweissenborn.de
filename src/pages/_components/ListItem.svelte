@@ -3,11 +3,27 @@
   import Marquee from './Marquee.svelte';
 
   export let post = {};
+
+  export let hover = false;
 </script>
 
 <style type="text/scss">
+  .bubble span {
+    width: 0.8em;
+    height: 0.8em;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 2em;
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
   li {
     border-bottom: $border;
+    &.hover {
+      .bubble span {
+        opacity: 1;
+      }
+    }
     a {
       display: block;
       display: flex;
@@ -30,12 +46,14 @@
   }
 </style>
 
-<li>
+<li class:hover>
   <a href={$url('../:slug', { slug: post.slug })}>
 
     <p class="col year">{post.year}</p>
 
-    <div class="col hover"></div>
+    <div class="col bubble">
+      <span></span>
+    </div>
 
     <h3 class="col title">
       <Marquee text={post.title} />

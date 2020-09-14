@@ -28,6 +28,11 @@
       $ready();
     });
   }
+
+  let hover = false;
+  function onItemHover(event) {
+    hover = event.detail;
+	}
 </script>
 
 <style type="text/scss">
@@ -74,7 +79,7 @@
 
           <ul class="grid">
             {#each data as post}
-              <GridItem {post} />
+              <GridItem {post} on:hover={onItemHover} />
             {/each}
           </ul>
 
@@ -88,7 +93,7 @@
 
           <ul class="list">
             {#each data as post}
-              <ListItem {post} />
+              <ListItem {post} hover={hover === post.id} />
             {/each}
           </ul>
 

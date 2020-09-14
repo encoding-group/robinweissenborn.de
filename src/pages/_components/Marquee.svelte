@@ -51,7 +51,7 @@
   }
 </style>
 
-<div class="outer" title={text} bind:this={outer} class:marquee on:mouseover={()=> hover = true} on:mouseout={()=> hover = false}>
+<div class="outer" title={text} bind:this={outer} class:marquee on:mouseenter={()=> hover = true} on:mouseleave={()=> hover = false}>
 	<div bind:this={inner} class="inner" style="{hover ? `transform: translateX(${offset}px); transition-duration: ${-offset*10}ms;` : ''}">
     {text}
 	</div>

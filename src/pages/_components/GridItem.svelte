@@ -1,9 +1,16 @@
 <script>
   import { url } from "@sveltech/routify";
+  import { createEventDispatcher } from 'svelte';
 
   import Image from "./Image.svelte";
 
   export let post = {};
+
+  const dispatch = createEventDispatcher();
+  function hover( state ) {
+
+		dispatch('hover', state === true ? post.id : false);
+	}
 </script>
 
 <style type="text/scss">
@@ -33,7 +40,7 @@
 </style>
 
 <li>
-  <a href={$url('../:post', { post: post.slug })}>
+  <a href={$url('../:post', { post: post.slug })} on:mouseenter={()=> hover(true)} on:mouseleave={()=> hover(false)}>
 
     <figure>
       <Image image={post.titleImage} />
