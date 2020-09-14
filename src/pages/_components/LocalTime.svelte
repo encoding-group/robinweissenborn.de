@@ -59,6 +59,6 @@
     />
   </svg>
 
-  <p>Kleinosterhausen</p>
+  <p><slot /></p>
 
 </div>

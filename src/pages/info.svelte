@@ -111,7 +111,7 @@
         <a href="tel:{data.contact.tel}">{data.contact.tel}</a>
       </p>
 
-      <LocalTime />
+      <LocalTime>{data['address-1'].city}</LocalTime>
     </section>
 
     <section class="about">
