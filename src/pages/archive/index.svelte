@@ -30,7 +30,7 @@
         data = processPosts(json);
         $ready();
       })
-      .catch((err) => consoel.log(err));
+      .catch((err) => console.log(err));
   }
 
   let hover = false;
