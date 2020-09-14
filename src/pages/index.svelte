@@ -1,26 +1,33 @@
 <script>
   import { getContext } from "svelte";
+  import { ready } from "@sveltech/routify";
 
   import PostTeaser from "./_components/PostTeaser.svelte";
   import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
+  let data;
+  $: getData();
+  function getData() {
+    wpAdapter
+      .getPosts()
+      .then((json) => {
+        data = json;
+        $ready();
+      })
+      .catch((error) => console.log(error));
+  }
 </script>
 
 <ul>
-  {#await wpAdapter.getPosts()}
-    <Message />
-  {:then posts}
-    {(console.log(posts), '')}
-
+  {#if data}
     <!-- filter featured posts -->
-    {#each posts.filter(( p )=>{
-      return p.featured; }) as post}
-
+    {#each data.filter((p) => {
+      return p.featured;
+    }) as post}
       <PostTeaser {post} />
-
     {/each}
-  {:catch error}
-    <Message>Could not load posts. ({error})</Message>
-  {/await}
+  {:else}
+    <Message />
+  {/if}
 </ul>

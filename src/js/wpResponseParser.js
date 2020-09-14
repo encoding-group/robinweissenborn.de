@@ -1,5 +1,4 @@
 function processInfo(pageData) {
-  console.log(pageData);
   let info = {};
   if (pageData.hasOwnProperty("acf")) {
     info.info = pageData.acf.info;
@@ -21,6 +20,7 @@ function processPosts(postsArray) {
 }
 
 function processPost(postData) {
+  if (!postData) return {};
   return {
     ...processBasicFields(postData),
     ...processEmbeddedFields(postData),
@@ -97,7 +97,6 @@ function processEmbeddedFields(postData) {
   if (postData.hasOwnProperty("_embedded")) {
     const [categories, tags] = postData._embedded["wp:term"];
     return {
-      // discipline: categories.map((category) => category.name),
       discipline: categories.map((category) =>
         category.name === "Uncategorized" ? "" : category.name
       ),
@@ -113,9 +112,13 @@ function processAcfFields(postData) {
     return {
       ...processProductFields(postData),
       ...processGalleryGrid(postData),
-      projectInfo: postData.acf.project_info,
-      titleShort: postData.acf.short_title,
+      projectInfo: postData.acf.project_info ?? "",
       titleImage: processImage(postData.acf.title_image),
+      secondaryTitleImage: processImage(
+        postData.acf.secondary_title_image ?? postData.acf.title_image
+      ),
+      isFrameless: postData.acf.is_frameless ?? false,
+      color: postData.acf.color ?? "#000000",
       year: parseInt(postData.acf.year, 10),
     };
   }
@@ -155,8 +158,7 @@ function processGalleryGrid(postData) {
             media:
               column.select === "Image"
                 ? processImage(column.image)
-                : // : column.video_url,
-                  column.embedded_media,
+                : column.embedded_media,
           };
         }),
       };
