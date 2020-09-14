@@ -10,7 +10,8 @@
 <style type="text/scss">
   li {
     animation: fadein 1s;
-		height: 100vh;
+    height: 100vh;
+    scroll-snap-align: start;
 		> a {
 			height: 100%;
 			display: flex;
