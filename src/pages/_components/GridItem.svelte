@@ -1,6 +1,6 @@
 <script>
   import { url } from "@sveltech/routify";
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
   import Image from "./Image.svelte";
 
@@ -8,17 +8,17 @@
 
   const dispatch = createEventDispatcher();
   let hover = false;
-  function hoverEvent( state ) {
+  function hoverEvent(state) {
     hover = state;
-		dispatch('hover', state === true ? post.id : false);
-	}
+    dispatch("hover", state === true ? post.id : false);
+  }
 </script>
 
 <style type="text/scss">
   li {
     border-bottom: $border;
     &:last-child,
-    &:nth-last-child(2):nth-child(odd){
+    &:nth-last-child(2):nth-child(odd) {
       border-bottom: none;
     }
     flex: 0 0 50%;
@@ -41,16 +41,17 @@
 </style>
 
 <li style="background-color:{post.color}">
-  <a href={$url('../:post', { post: post.slug })} on:mouseenter={()=> hoverEvent(true)} on:mouseleave={()=> hoverEvent(false)}>
-
+  <a
+    href={$url('../:post', { post: post.slug })}
+    on:mouseenter={() => hoverEvent(true)}
+    on:mouseleave={() => hoverEvent(false)}>
     <figure>
-      {#if 'large' in post.secondaryTitleImage}
+      {#if post.secondaryTitleImage}
         <Image hide={hover} image={post.titleImage} />
         <Image hide={!hover} image={post.secondaryTitleImage} />
       {:else}
         <Image image={post.titleImage} />
       {/if}
     </figure>
-
   </a>
 </li>
