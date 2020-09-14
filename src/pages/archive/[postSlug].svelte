@@ -24,8 +24,14 @@
 <style type="text/scss">
   main {
     animation: fadein 1s;
+    scroll-snap-type: y mandatory;
+    max-height: 100vh;
+    overflow-y: scroll;
+    :global(section){
+      scroll-snap-align: start;
+    }
   }
-  article {
+  section.info {
     height: 100vh;
     .headline {
       padding: 1.5rem;
@@ -48,11 +54,11 @@
       margin: 0 25vw;
     }
   }
-  .info {
+  /* .info {
     :global(div) {
       margin-top: 1em;
     }
-  }
+  } */
   .content {
     :global(p) {
       margin-bottom: 1em;
@@ -64,9 +70,12 @@
 
 {#if data}
   <main>
-    <Gallery gallery={data.galleryGrid} />
 
-    <article>
+    {#each data.galleryGrid as gallery}
+      <Gallery {gallery} />
+    {/each}
+
+    <section class="info">
       <Headline>
         <h3>Info</h3>
       </Headline>
@@ -100,7 +109,7 @@
           {/if}
         </div>
       </div>
-    </article>
+    </section>
   </main>
 {:else}
   <Message />
