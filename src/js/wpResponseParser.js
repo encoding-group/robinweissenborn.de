@@ -1,9 +1,13 @@
 function processInfo(pageData) {
   let info = {};
   if (pageData.hasOwnProperty("acf")) {
-    info.info = pageData.acf.info;
-    info.officeName = pageData.acf.office_name;
-    info.service = pageData.acf.service;
+    info.info = pageData.acf.hasOwnProperty("info") ? pageData.acf.info : "";
+    info.officeName = pageData.acf.hasOwnProperty("office_name")
+      ? pageData.acf.office_name
+      : "";
+    info.service = pageData.acf.hasOwnProperty("service")
+      ? pageData.acf.service
+      : "";
   }
   return {
     ...info,
