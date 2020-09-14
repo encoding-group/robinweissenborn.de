@@ -5,15 +5,20 @@
   import Message from "./_components/Message.svelte";
   import LocalTime from "./_components/LocalTime.svelte";
 
+  import axios from "axios";
+
   const wpAdapter = getContext("WordpressAdapter");
 
   let data;
   $: getData();
   function getData() {
-    wpAdapter.getPage("info").then((json) => {
-      data = json;
-      $ready();
-    });
+    // wpAdapter.getPage("info").then((json) => {
+    //   data = json;
+    //   $ready();
+    // });
+    axios
+      .get("http://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=info")
+      .then((json) => console.log(json));
   }
 </script>
 
