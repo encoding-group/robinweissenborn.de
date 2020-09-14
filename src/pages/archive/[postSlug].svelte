@@ -20,7 +20,8 @@
       .then((json) => {
         data = processPost(json[0]);
         $ready();
-      });
+      })
+      .catch((err) => console.log(err));
   }
 </script>
 
