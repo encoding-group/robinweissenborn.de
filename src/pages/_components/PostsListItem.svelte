@@ -1,6 +1,7 @@
 <script>
   import Marquee from './Marquee.svelte';
   export let post = {};
+  export let details = true;
 </script>
 
 <style type="text/scss">
@@ -10,21 +11,13 @@
         user-select: none;
         .col {
             padding: 0.25em 0.25em;
-            flex: 1 1 auto;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: auto;
             overflow: hidden;
-            &.year { flex-basis: 15%; }
-            &.title { flex-basis: 45%; }
-            @media only screen and (min-width: 400px) {
-                &.year { flex-basis: 12%; }
-                &.title { flex-basis: 48%; }
-            }
-            @media only screen and (min-width: 700px) {
-                &.year { flex-basis: 10%; }
-                &.title { flex-basis: 50%; }
-            }
-            @media only screen and (min-width: 1000px) {
-                &.year { flex-basis: 7%; }
-                &.title { flex-basis: 53%; }
+            &.title {
+                flex-grow: 1;
+                flex-shrink: 1;
             }
             &.client,
             &.discipline {
@@ -40,10 +33,12 @@
     <h3 class="col title">
         <Marquee>{post.title}</Marquee>
     </h3>
-    <p class="col client">
-        <Marquee>{post.client.length > 0 ? post.client.join(', ') : '—'}</Marquee>
-    </p>
-    <p class="col discipline">
-        <Marquee>{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</Marquee>
-    </p>
+    {#if details === true}
+        <p class="col client">
+            <Marquee>{post.client.length > 0 ? post.client.join(', ') : '—'}</Marquee>
+        </p>
+        <p class="col discipline">
+            <Marquee>{post.discipline.length > 0 ? post.discipline.join(', ') : '—'}</Marquee>
+        </p>
+    {/if}
 </div>

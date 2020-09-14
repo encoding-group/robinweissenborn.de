@@ -31,7 +31,7 @@
           <Image image={post.titleImage} />
         </figure>
 
-        <ListItem {post} />
+        <ListItem {post} details={false} />
       </a>
     </li>
   {/each}

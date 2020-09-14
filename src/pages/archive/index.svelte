@@ -55,6 +55,7 @@
 </style>
 
 <svelte:window on:resize={() => panelsLayout()} />
+
 <div class="page" class:panels>
   <Navigation {panels} />
 
