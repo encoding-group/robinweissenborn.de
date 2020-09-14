@@ -1,17 +1,8 @@
 <script>
-  import { getContext } from "svelte";
-  import { ready } from "@sveltech/routify";
-
-  import TeaserItem from "./_components/TeaserItem.svelte";
-  import Message from "./_components/Message.svelte";
+    import RoutifyIntro from './example/_components/RoutifyIntro.svelte'
+    import { metatags } from '@sveltech/routify'
+    metatags.title = 'My Routify app'
+    metatags.description = 'Description coming soon...'
 </script>
 
-<style type="text/scss">
-  ul {
-    scroll-snap-type: y mandatory;
-    max-height: 100vh;
-    overflow-y: scroll;
-  }
-</style>
-
-<h1>test</h1>
+<RoutifyIntro />
