@@ -3,14 +3,10 @@
 
   import Image from "./Image.svelte";
 
-  export let posts = [];
+  export let post = {};
 </script>
 
 <style type="text/scss">
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
   li {
     border-bottom: $border;
     &:last-child,
@@ -36,16 +32,12 @@
   }
 </style>
 
-<ul>
-  {#each posts as post}
-    <li>
-      <a href={$url('../:post', { post: post.slug })}>
+<li>
+  <a href={$url('../:post', { post: post.slug })}>
 
-        <figure>
-          <Image image={post.titleImage} />
-        </figure>
+    <figure>
+      <Image image={post.titleImage} />
+    </figure>
 
-      </a>
-    </li>
-  {/each}
-</ul>
+  </a>
+</li>

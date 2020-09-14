@@ -2,7 +2,7 @@
   import { getContext } from "svelte";
   import { ready } from "@sveltech/routify";
 
-  import PostTeaser from "./_components/PostTeaser.svelte";
+  import TeaserItem from "./_components/TeaserItem.svelte";
   import Message from "./_components/Message.svelte";
 
   const wpAdapter = getContext("WordpressAdapter");
@@ -25,7 +25,7 @@
     {#each data.filter((p) => {
       return p.featured;
     }) as post}
-      <PostTeaser {post} />
+      <TeaserItem {post} />
     {/each}
   {:else}
     <Message />

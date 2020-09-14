@@ -8,9 +8,11 @@
   import Navigation from "../_components/Navigation.svelte";
   import Message from "../_components/Message.svelte";
 
-  import PostsList from "../_components/PostsList.svelte";
-  import PostsGrid from "../_components/PostsGrid.svelte";
   import PostsGridList from "../_components/PostsGridList.svelte";
+
+  import GridItem from "../_components/GridItem.svelte";
+  import ListItem from "../_components/ListItem.svelte";
+  import MixedItem from "../_components/MixedItem.svelte";
 
   let panels = false;
   function panelsLayout() {
@@ -52,6 +54,14 @@
       }
     }
   }
+  ul {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  ul.grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
 </style>
 
 <svelte:window on:resize={() => panelsLayout()} />
@@ -63,7 +73,13 @@
     {#if panels}
       <div class="panel">
         {#if data}
-          <PostsGrid posts={data} />
+
+          <ul class="grid">
+            {#each data as post}
+              <GridItem {post} />
+            {/each}
+          </ul>
+
         {:else}
           <Message />
         {/if}
@@ -71,13 +87,25 @@
 
       <div class="panel">
         {#if data}
-          <PostsList posts={data} />
+
+          <ul class="list">
+            {#each data as post}
+              <ListItem {post} />
+            {/each}
+          </ul>
+
         {:else}
           <Message />
         {/if}
       </div>
     {:else if data}
-      <PostsGridList posts={data} />
+
+      <ul class="mixed">
+        {#each data as post}
+          <MixedItem {post} />
+        {/each}
+      </ul>
+
     {:else}
       <Message />
     {/if}
