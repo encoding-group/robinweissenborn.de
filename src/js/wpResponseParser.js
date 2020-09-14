@@ -136,11 +136,15 @@ function processProductFields(postData) {
     postData.acf.hasOwnProperty("is_product") &&
     postData.acf.is_product == true
   ) {
-    return {
+    let result = {
       isProduct: true,
-      productInfo: postData.acf.product_info,
-      price: parseFloat(postData.acf.price),
+      productInfo: postData.acf.hasOwnProperty("product_info")
+        ? postData.acf.product_info
+        : "",
     };
+    if (postData.acf.hasOwnProperty("price")) result.price = postData.acf.price;
+
+    return result;
   }
 
   return { isProduct: false };
