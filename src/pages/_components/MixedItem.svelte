@@ -4,7 +4,7 @@
   import Image from "./Image.svelte";
   import Marquee from "./Marquee.svelte";
 
-  export let posts = [];
+  export let post = {};
 </script>
 
 <style type="text/scss">
@@ -14,7 +14,7 @@
       .item {
         display: flex;
         .col {
-          padding: 0.25em 0.25em;
+          padding: 0.25em;
           flex-grow: 0;
           flex-shrink: 0;
           flex-basis: auto;
@@ -36,22 +36,18 @@
   }
 </style>
 
-<ul>
-  {#each posts as post}
-    <li>
-      <a href={$url('../:slug', { slug: post.slug })}>
-        <figure>
-          <Image image={post.titleImage} />
-        </figure>
+<li>
+  <a href={$url('../:slug', { slug: post.slug })}>
+    <figure>
+      <Image image={post.titleImage} />
+    </figure>
 
-        <div class="item">
-          <p class="col year">{post.year}</p>
+    <div class="item">
+      <p class="col year">{post.year}</p>
 
-          <h3 class="col title">
-            <!-- <Marquee text={post.title} /> -->
-          </h3>
-        </div>
-      </a>
-    </li>
-  {/each}
-</ul>
+      <h3 class="col title">
+        <Marquee text={post.title} />
+      </h3>
+    </div>
+  </a>
+</li>
