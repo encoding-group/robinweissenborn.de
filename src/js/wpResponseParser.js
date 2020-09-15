@@ -121,7 +121,7 @@ function processAcfFields(postData) {
     };
 
     if (postData.acf.hasOwnProperty("project_info")) {
-      result.projectInfo = postData.acf.hasOwnProperty("project_info");
+      result.projectInfo = postData.acf.project_info;
     }
 
     if (postData.acf.hasOwnProperty("is_frameless")) {
