@@ -25,11 +25,10 @@
   }
 </style>
 
-{#if post}
-  <div>
-    {#if post.productInfo}
-      <p class="info">{post.productInfo}</p>
-    {/if}
-    <p class="price">Price: {post.price || '0'} € + shipping</p>
-    <a href="mailto:{to}?subject={encode(subject)}&body={encode(text)}">Order via E-Mail</a>
+<div>
+  {#if 'productInfo' in post}
+    <p class="info">{post.productInfo}</p>
+  {/if}
+  <p class="price">Price: {post.price || '0'} € + shipping</p>
+  <a href="mailto:{to}?subject={encode(subject)}&body={encode(text)}">Order via E-Mail</a>
 </div>
