@@ -8,21 +8,20 @@
 </script>
 
 <style type="text/scss">
-  ul {
-    li {
-      margin-bottom: 1rem;
-      .item {
-        display: flex;
-        .col {
-          padding: 0.25em;
-          flex-grow: 0;
-          flex-shrink: 0;
-          flex-basis: auto;
-          overflow: hidden;
-          &.title {
-            flex-grow: 1;
-            flex-shrink: 1;
-          }
+  li {
+    margin-bottom: 1rem;
+    .info {
+      display: flex;
+      padding: 0 0.25em;
+      .col {
+        padding: 0.25em;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        overflow: hidden;
+        &.title {
+          flex-grow: 1;
+          flex-shrink: 1;
         }
       }
     }
@@ -42,7 +41,7 @@
       <Image image={post.titleImage} />
     </figure>
 
-    <div class="item">
+    <div class="info">
       <p class="col year">{post.year}</p>
 
       <h3 class="col title">
