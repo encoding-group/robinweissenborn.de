@@ -116,12 +116,22 @@ function processAcfFields(postData) {
     let result = {
       ...processProductFields(postData),
       ...processGalleryGrid(postData),
-      projectInfo: postData.acf.project_info ?? "",
       titleImage: processImage(postData.acf.title_image),
-      isFrameless: postData.acf.is_frameless ?? false,
-      color: postData.acf.color ?? "#000000",
       year: parseInt(postData.acf.year, 10),
     };
+
+    if (postData.acf.hasOwnProperty("project_info")) {
+      result.projectInfo = postData.acf.hasOwnProperty("project_info");
+    }
+
+    if (postData.acf.hasOwnProperty("is_frameless")) {
+      result.isFrameless = postData.acf.is_frameless;
+    }
+
+    if (postData.acf.hasOwnProperty("color")) {
+      result.color = postData.acf.color;
+    }
+
     if (postData.acf.secondary_title_image) {
       result.secondaryTitleImage = processImage(postData.acf.title_image);
     }
@@ -138,10 +148,12 @@ function processProductFields(postData) {
   ) {
     let result = {
       isProduct: true,
-      productInfo: postData.acf.hasOwnProperty("product_info")
-        ? postData.acf.product_info
-        : "",
     };
+
+    if (postData.acf.hasOwnProperty("product_info")) {
+      result.productInfo = postData.acf.product_info;
+    }
+
     if (postData.acf.hasOwnProperty("price")) result.price = postData.acf.price;
 
     return result;
