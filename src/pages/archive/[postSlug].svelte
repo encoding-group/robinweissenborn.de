@@ -22,9 +22,9 @@
         $ready();
         return { data };
       })
-      .catch((err) => {
-        console.log(err);
-        return { statusCode: 500, msg: err.message };
+      .catch((error) => {
+        console.log(error);
+        return { statusCode: 500, msg: error.message };
       });
   }
 </script>

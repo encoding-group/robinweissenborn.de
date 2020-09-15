@@ -205,7 +205,7 @@ function createSrcString(imageObject) {
     `${imageObject.sizes.thumbnail} 150w`,
     `${imageObject.sizes.medium} 300w`,
     `${imageObject.sizes.large} 1024w`,
-    `${imageObject.url} ${imageObject.width}w`,
+    `${imageObject.sizes.huge} ${imageObject.width}w`,
   ].join(",");
 }
 
