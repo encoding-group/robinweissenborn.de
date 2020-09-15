@@ -1,5 +1,4 @@
 <script>
-
   export let post;
 
   let to = 'info@robinweißenborn.de';
@@ -18,17 +17,18 @@
 </script>
 
 <style type="text/scss">
-    .price {
-        margin: 1rem 0;
-    }
-    a {
-        border-bottom: $border;
-    }
+  .price {
+    margin: 1rem 0;
+  }
+  a {
+    border-bottom: $border;
+  }
 </style>
 
-<div>
+{#if post}
+  <div>
     {#if post.productInfo}
-        <p class="info">{post.productInfo}</p>
+      <p class="info">{post.productInfo}</p>
     {/if}
     <p class="price">Price: {post.price || '0'} € + shipping</p>
     <a href="mailto:{to}?subject={encode(subject)}&body={encode(text)}">Order via E-Mail</a>
