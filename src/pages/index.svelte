@@ -8,7 +8,7 @@
   let data;
   $: getData();
   function getData() {
-    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=5")
+    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?sticky=true")
       .then((response) => response.json())
       .then((json) => {
         data = processPosts(json);
@@ -28,9 +28,7 @@
 <ul>
   {#if data}
     <!-- filter featured posts -->
-    {#each data.filter((p) => {
-      return p.featured;
-    }) as post}
+    {#each data as post}
       <TeaserItem {post} />
     {/each}
   {:else}
