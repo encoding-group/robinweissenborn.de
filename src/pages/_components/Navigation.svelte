@@ -51,5 +51,11 @@
     {/if}
   </div>
 
-  <div class="right"><a href={$url('/archive')}>Archive</a></div>
+  <div class="right">
+    {#if $isActive('/archive')}
+      <a href={$url('/')}>Back</a>
+    {:else}
+      <a href={$url('/archive')}>Archive</a>
+    {/if}
+  </div>
 </nav>

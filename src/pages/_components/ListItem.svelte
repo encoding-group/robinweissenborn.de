@@ -19,6 +19,7 @@
   }
   li {
     border-bottom: $border;
+    :hover,
     &.hover {
       .bubble span {
         opacity: 1;
@@ -27,8 +28,9 @@
     a {
       display: block;
       display: flex;
+      padding: 0 0.25em;
       .col {
-        padding: 0.25em 0.25em;
+        padding: 0.25em;
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: auto;
