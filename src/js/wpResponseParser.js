@@ -208,7 +208,7 @@ function processImage(imageObject) {
     caption: imageObject.caption,
     description: imageObject.description,
     srcset: createSrcString(imageObject),
-    sizes: createSrcSizes(imageObject),
+    sizes: createSrcSizes(),
   };
 }
 
@@ -217,17 +217,17 @@ function createSrcString(imageObject) {
     `${imageObject.sizes.thumbnail} 500w`,
     `${imageObject.sizes.medium} 1000w`,
     `${imageObject.sizes.large} 2000w`,
-    `${imageObject.url} ${imageObject.width}w`,
+    `${imageObject.sizes.huge} 3000w`,
   ].join(",");
 }
 
 // Needs more work
-function createSrcSizes(imageObject) {
+function createSrcSizes() {
   return [
     "(max-width: 500px) 500px",
     "(max-width: 1000px) 1000px",
     "(max-width: 2000px) 2000px",
-    `${imageObject.width}px`,
+    "(max-width: 3000px) 3000px",
   ].join(",");
 }
 
