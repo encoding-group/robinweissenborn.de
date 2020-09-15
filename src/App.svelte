@@ -3,6 +3,8 @@
   import { metatags } from "@sveltech/routify";
   import { routes } from "../.routify/routes";
 
+  import { checkExternalLinks } from './js/externalLinks.js';
+
   metatags.title = "Robin Weißenborn"; // site.title
   metatags.author = "Robin Weißenborn"; // site.contact.name
   metatags.description = "Description..."; // site.description
@@ -38,6 +40,8 @@
 <style type="text/scss" global>
   @import "../static/global.css";
 </style>
+
+<svelte:window on:click={checkExternalLinks}></svelte:window>
 
 <svelte:head>
   <!-- {@html `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>`} -->
