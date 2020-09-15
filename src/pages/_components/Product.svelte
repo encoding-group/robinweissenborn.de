@@ -1,7 +1,7 @@
 <script>
   export let post;
 
-  let to = 'info@robinweißenborn.de';
+  let to = 'info@robinweissenborn.de';
   let subject = `Order inquiry for ${post.title}`;
   let text = 'Dear Robin,'
     + '\n'
