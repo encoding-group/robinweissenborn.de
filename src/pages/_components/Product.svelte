@@ -2,6 +2,19 @@
 
   export let post;
 
+  let to = 'info@robinweißenborn.de';
+  let subject = `Order inquiry for ${post.title}`;
+  let text = 'Dear Robin,'
+    + '\n'
+    + `\nI am interested in ordering a ${post.title} for ${post.price || '0'} € + shipping.`
+    + '\nCould you drop me a mail with all required information?'
+    + '\n'
+    + '\nThank you';
+
+  function encode(str){
+    return encodeURIComponent(str);
+  }
+
 </script>
 
 <style type="text/scss">
@@ -17,8 +30,6 @@
     {#if post.productInfo}
         <p class="info">{post.productInfo}</p>
     {/if}
-    {#if post.price}
-        <p class="price">{post.price} €</p>
-    {/if}
-    <a href="mailto:e@mail.com">(( Placeholder Link ))</a>
+    <p class="price">Price: {post.price || '0'} € + shipping</p>
+    <a href="mailto:{to}?subject={encode(subject)}&body={encode(text)}">Order via E-Mail</a>
 </div>

@@ -58,14 +58,12 @@
       margin: 0 25vw;
     }
   }
-  /* .info {
-    :global(div) {
-      margin-top: 1em;
-    }
-  } */
+  .panels .info div {
+    margin-top: 1.1em;
+  }
   .content {
     :global(p) {
-      margin-bottom: 1em;
+      margin-bottom: 1.1em;
     }
   }
 </style>
@@ -103,7 +101,7 @@
           </div>
 
           {#if data.isProduct === true}
-            <Product {data} />
+            <Product post={data} />
           {/if}
         </div>
         <div class="content">
