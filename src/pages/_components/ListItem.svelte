@@ -19,6 +19,7 @@
   }
   li {
     border-bottom: $border;
+    :hover,
     &.hover {
       .bubble span {
         opacity: 1;
