@@ -202,19 +202,19 @@ function processImage(imageObject) {
 
 function createSrcString(imageObject) {
   return [
-    `${imageObject.sizes.thumbnail} 150w`,
-    `${imageObject.sizes.medium} 300w`,
-    `${imageObject.sizes.large} 1024w`,
-    `${imageObject.sizes.huge} ${imageObject.width}w`,
+    `${imageObject.sizes.thumbnail} 500w`,
+    `${imageObject.sizes.medium} 1000w`,
+    `${imageObject.sizes.large} 2000w`,
+    `${imageObject.url} ${imageObject.width}w`,
   ].join(",");
 }
 
 // Needs more work
 function createSrcSizes(imageObject) {
   return [
-    "(max-width: 300px) 150px",
-    "(max-width: 600px) 300px",
-    "(max-width: 2000px) 1024px",
+    "(max-width: 500px) 500px",
+    "(max-width: 1000px) 1000px",
+    "(max-width: 2000px) 2000px",
     `${imageObject.width}px`,
   ].join(",");
 }
