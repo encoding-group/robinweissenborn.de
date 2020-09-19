@@ -133,7 +133,9 @@ function processAcfFields(postData) {
     }
 
     if (postData.acf.secondary_title_image) {
-      result.secondaryTitleImage = processImage(postData.acf.title_image);
+      result.secondaryTitleImage = processImage(
+        postData.acf.secondary_title_image
+      );
     }
     return result;
   }
