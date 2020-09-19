@@ -52,10 +52,8 @@
   </div>
 
   <div class="right">
-    {#if $isActive('/archive')}
+    {#if $isActive('/archive/index', true)}
       <a href={$url('/')}>Back</a>
-    {:else}
-      <a href={$url('/archive')}>Archive</a>
-    {/if}
+    {:else}<a href={$url('/archive')}>Archive</a>{/if}
   </div>
 </nav>
