@@ -51,3 +51,12 @@ noscript {
   text-align: center;
   padding: 1.5rem;
 }
+
+img.lazyload,
+img.lazyloading {
+  opacity: 0;
+}
+img.lazyloaded {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
