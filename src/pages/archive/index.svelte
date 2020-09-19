@@ -23,7 +23,7 @@
   $: getData();
   function getData() {
     fetch(
-      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=40&_embed=wp:term"
+      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=100&_embed=wp:term"
     )
       .then((response) => response.json())
       .then((json) => {
