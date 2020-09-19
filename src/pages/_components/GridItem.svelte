@@ -12,6 +12,8 @@
     hover = state;
     dispatch("hover", state === true ? post.id : false);
   }
+
+  console.log( post )
 </script>
 
 <style type="text/scss">
@@ -24,23 +26,30 @@
     flex: 0 0 50%;
     > a {
       display: block;
-      padding: 0.5rem;
     }
     &:nth-child(odd) {
       border-right: $border;
     }
   }
   figure {
+    height: 14.0625vw; /* 100 / 4 / 16 * 9 */
+    padding: 0.5rem;
     :global(img) {
-      height: 13.4vw; /* 100 / 4 / 16 * 9 */
+      height: 100%;
       width: 100%;
       object-fit: contain;
       object-position: center;
     }
   }
+  .frameless {
+    background-color: #000 !important;
+    figure {
+      padding: 0;
+    }
+  }
 </style>
 
-<li style="background-color:{post.color}">
+<li style="background-color:{post.color}" class:frameless={post.isFrameless}>
   <a
     href={$url('../:post', { post: post.slug })}
     on:mouseenter={() => hoverEvent(true)}
