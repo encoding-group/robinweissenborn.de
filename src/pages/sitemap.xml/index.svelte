@@ -1,7 +1,5 @@
 <script>
 
-  const url = ''
-
   let pages = [
     {
       slug: '',

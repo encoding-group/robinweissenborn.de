@@ -32,7 +32,7 @@
   }
   figure {
     :global(img) {
-      height: 13.6vw; /* 100 / 4 / 16 * 9 */
+      height: 13.4vw; /* 100 / 4 / 16 * 9 */
       width: 100%;
       object-fit: contain;
       object-position: center;
@@ -48,7 +48,7 @@
     <figure>
       {#if post.secondaryTitleImage}
         <Image hide={hover} image={post.titleImage} />
-        <Image hide={!hover} image={post.secondaryTitleImage} />
+        <Image hide={!hover} image={post.secondaryTitleImage} lazyload={false} />
       {:else}
         <Image image={post.titleImage} />
       {/if}

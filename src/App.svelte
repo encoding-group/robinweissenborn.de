@@ -5,6 +5,8 @@
   import { processInfo } from "./js/wpResponseParser.js";
   import { checkExternalLinks } from "./js/externalLinks.js";
 
+  import 'lazysizes';
+
   let jsonld;
   $: getData();
   function getData() {

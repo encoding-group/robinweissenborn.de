@@ -8,7 +8,7 @@
   let data;
   $: getData();
   function getData() {
-    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?sticky=true")
+    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?sticky=true&per_page=100")
       .then((response) => response.json())
       .then((json) => {
         data = processPosts(json);

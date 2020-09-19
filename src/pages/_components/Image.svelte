@@ -9,6 +9,8 @@
   export let sizes = image.sizes || "";
 
   export let hide = false;
+  export let lazyload = true;
+
 </script>
 
 <style>
@@ -17,4 +19,14 @@
   }
 </style>
 
-<img class:hide {alt} {src} {width} {height} {srcset} {sizes} />
+{#if lazyload === true}
+  <img class:hide class:lazyload {alt} {width} {height}
+    data-src={src}
+    data-srcset={srcset}
+    data-sizes={sizes} />
+{:else}
+  <img class:hide {alt} {width} {height}
+    src={src}
+    srcset={srcset}
+    sizes={sizes} />
+{/if}
