@@ -32,7 +32,7 @@
   }
   figure {
     :global(img) {
-      height: 13.6vw; /* 100 / 4 / 16 * 9 */
+      height: 13.4vw; /* 100 / 4 / 16 * 9 */
       width: 100%;
       object-fit: contain;
       object-position: center;
