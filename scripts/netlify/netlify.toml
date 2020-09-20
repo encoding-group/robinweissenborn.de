@@ -1,16 +1,24 @@
 
 [build]
-  publish = "public/"
-  functions = "api/"
-  ignore = "git diff --quiet HEAD^ HEAD ../../"
+functions = "api/"
+ignore = "git diff --quiet HEAD^ HEAD ../../"
+publish = "public/"
 
 [[redirects]]
-  # SSR and SPA
-  from = "/*"
-  to = "/.netlify/functions/ssr"
-  status = 200
-  
-  # SPA only
-  # from = "/*"
-  # to = "/__app.html"
-  # status = 200
+# Sitemap
+force = true
+from = "/sitemap.xml"
+headers = {Content-Type = "xml"}
+status = 200
+to = "/static/sitemap.xml"
+
+[[redirects]]
+# SSR and SPA
+from = "/*"
+status = 200
+to = "/.netlify/functions/ssr"
+
+# SPA only
+# from = "/*"
+# to = "/__app.html"
+# status = 200
