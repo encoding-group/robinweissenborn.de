@@ -12,8 +12,6 @@
     hover = state;
     dispatch("hover", state === true ? post.id : false);
   }
-
-  console.log( post )
 </script>
 
 <style type="text/scss">
@@ -57,7 +55,10 @@
     <figure>
       {#if post.secondaryTitleImage}
         <Image hide={hover} image={post.titleImage} />
-        <Image hide={!hover} image={post.secondaryTitleImage} lazyload={false} />
+        <Image
+          hide={!hover}
+          image={post.secondaryTitleImage}
+          lazyload={false} />
       {:else}
         <Image image={post.titleImage} />
       {/if}
