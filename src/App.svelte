@@ -5,7 +5,7 @@
   import { processInfo } from "./js/wpResponseParser.js";
   import { checkExternalLinks } from "./js/externalLinks.js";
 
-  import 'lazysizes';
+  import "lazysizes";
 
   let jsonld;
   $: getData();
@@ -14,13 +14,13 @@
       .then((response) => response.json())
       .then((json) => {
         getMeta(json[0]);
-        jsonld = getJsonLd(json[0])
+        jsonld = getJsonLd(json[0]);
         $ready();
       });
   }
 
+  metatags.title = "Robin Weißenborn";
   function getMeta(data) {
-    metatags.title = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
     metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
     metatags.description = data.acf["website-metadata"].description;
     metatags.keywords = data.acf["website-metadata"].keywords;
@@ -65,7 +65,7 @@
 <svelte:window on:click={checkExternalLinks} />
 
 <svelte:head>
-  {@html '<script type="application/ld+json">' + jsonld + '</script>'}
+  {@html '<script type="application/ld+json" ✂prettier:content✂="JyArIGpzb25sZCArICc=">{}</script>'}
 </svelte:head>
 
 <Router {routes} />
