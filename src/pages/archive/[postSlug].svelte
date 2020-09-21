@@ -48,7 +48,8 @@
   }
   .panels {
     > div {
-      margin: 0 1.5rem 1.5rem;
+      margin: 0 1.5rem;
+      padding-bottom: 0.4rem;
     }
     @media only screen and (min-width: 600px) {
       margin: 0 1.5rem;
