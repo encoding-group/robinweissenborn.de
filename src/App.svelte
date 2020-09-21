@@ -65,7 +65,7 @@
 <svelte:window on:click={checkExternalLinks} />
 
 <svelte:head>
-  {@html '<script type="application/ld+json" ✂prettier:content✂="JyArIGpzb25sZCArICc=">{}</script>'}
+  {@html '<script type="application/ld+json">' + jsonld + '</script>'}
 </svelte:head>
 
 <Router {routes} />
