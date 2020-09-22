@@ -8,37 +8,36 @@
   import "lazysizes";
 
   let jsonld;
-  $: getData();
-  function getData() {
+  $: getData(metatags);
+  function getData(meta) {
     fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=info")
       .then((response) => response.json())
       .then((json) => {
-        getMeta(json[0]);
+        getMeta(meta, json[0]);
         jsonld = getJsonLd(json[0]);
         $ready();
       });
   }
 
-  metatags.title = "Robin Weißenborn";
 
-  function getMeta(data) {
-
-    metatags.author = "Robin Weißenborn";
+  function getMeta(metaObject, data) {
+    metaObject.title = "Robin Weißenborn";
+    metaObject.author = "Robin Weißenborn";
     if( data.acf["website-metadata"].description ){
-      metatags["description"] = data.acf["website-metadata"].description;
+      metaObject["description"] = data.acf["website-metadata"].description;
     }
     if( data.acf["website-metadata"].keywords ){
-      metatags["keywords"] = data.acf["website-metadata"].keywords;
+      metaObject["keywords"] = data.acf["website-metadata"].keywords;
     }
-    metatags.generator = "encoding.group";
-    metatags["geo.region"] = "DE";
+    metaObject.generator = "encoding.group";
+    metaObject["geo.region"] = "DE";
 
     if( data.acf["website-metadata"].image ){
-      metatags["og:image"] = data.acf["website-metadata"].image;
+      metaObject["og:image"] = data.acf["website-metadata"].image;
     }
-    metatags["og:type"] = "website";
-    metatags["og:url"] = "https://robinweissenborn.de"; // site.url
-    metatags["og:locale"] = "de_DE";
+    metaObject["og:type"] = "website";
+    metaObject["og:url"] = "https://robinweissenborn.de"; // site.url
+    metaObject["og:locale"] = "de_DE";
   }
 
   function getJsonLd(data) {
