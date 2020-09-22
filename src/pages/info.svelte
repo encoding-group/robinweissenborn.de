@@ -1,9 +1,11 @@
 <script>
-  import { url, ready } from "@sveltech/routify";
+  import { url, metatags, ready } from "@sveltech/routify";
   import { processInfo } from "../js/wpResponseParser.js";
 
   import Message from "./_components/Message.svelte";
   import LocalTime from "./_components/LocalTime.svelte";
+
+  metatags.title = "Info | Robin Weißenborn";
 
   let data;
   $: getData();

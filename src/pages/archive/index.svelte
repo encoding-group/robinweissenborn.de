@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
 
-  import { url, ready } from "@sveltech/routify";
+  import { metatags, url, ready } from "@sveltech/routify";
   import { processPosts } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
@@ -11,6 +11,8 @@
   import GridItem from "../_components/GridItem.svelte";
   import ListItem from "../_components/ListItem.svelte";
   import MixedItem from "../_components/MixedItem.svelte";
+
+  metatags.title = "Archive | Robin Weißenborn";
 
   let panels = false;
   function panelsLayout() {

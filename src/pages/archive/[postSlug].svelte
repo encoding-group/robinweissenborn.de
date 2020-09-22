@@ -1,5 +1,5 @@
 <script>
-  import { params, ready } from "@sveltech/routify";
+  import { metatags, params, ready } from "@sveltech/routify";
   import { processPost } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
@@ -26,6 +26,10 @@
         console.log(error);
         return { statusCode: 500, msg: error.message };
       });
+  }
+
+  $: if (data) {
+    metatags.title = `${data.title} | Robin Weißenborn`;
   }
 </script>
 

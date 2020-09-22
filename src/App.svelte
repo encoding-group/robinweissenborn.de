@@ -31,7 +31,7 @@
     removeJsonLdBlockIfExists();
     document.head.appendChild(jsonLdNode);
 
-    metatags.title = "Robin Weißenborn";
+    // metatags.title = "Robin Weißenborn";
     metatags.author = `${metaData.acf.contact.first_name}`;
     if( metaData.acf["website-metadata"].description ){
       metatags["description"] = metaData.acf["website-metadata"].description;

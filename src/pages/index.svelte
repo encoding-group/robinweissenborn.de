@@ -1,9 +1,11 @@
 <script>
-  import { ready } from "@sveltech/routify";
+  import { metatags, ready } from "@sveltech/routify";
   import { processPosts } from "../js/wpResponseParser.js";
 
   import TeaserItem from "./_components/TeaserItem.svelte";
   import Message from "./_components/Message.svelte";
+
+  metatags.title = "Robin Weißenborn";
 
   let data;
   $: getData();

@@ -1,8 +1,10 @@
 <script>
-  import { ready } from "@sveltech/routify";
+  import { metatags, ready } from "@sveltech/routify";
   import { processInfo } from "../js/wpResponseParser.js";
 
   import Message from "./_components/Message.svelte";
+
+  metatags.title = "Imprint | Robin Weißenbord";
 
   let data = { content: "stuff" };
   $: getData();
