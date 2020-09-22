@@ -13,6 +13,7 @@
     fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=info")
       .then((response) => response.json())
       .then((json) => {
+        console.log('fetching...');
         getMeta(json[0]);
         jsonld = getJsonLd(json[0]);
         $ready();
