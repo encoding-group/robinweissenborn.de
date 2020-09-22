@@ -27,10 +27,7 @@
 
     let author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
 
-    console.log(data);
-    console.log(author);
-
-    metatags.author = author;
+    // metatags.author = author;
     metatags.description = data.acf["website-metadata"].description;
     metatags.keywords = data.acf["website-metadata"].keywords;
     metatags.generator = "encoding.group";
