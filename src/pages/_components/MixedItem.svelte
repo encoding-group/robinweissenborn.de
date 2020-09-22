@@ -32,6 +32,7 @@
   }
   figure {
     padding: 0 0.5em;
+    margin-bottom: 0.5rem;
     :global(img) {
       width: 100%;
       height: 56.25vw;
