@@ -7,37 +7,39 @@
 
   import "lazysizes";
 
-  let jsonld;
-  $: getData(metatags);
-  function getData(meta) {
+  let metaData;
+  $: getData();
+  function getData() {
     fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=info")
       .then((response) => response.json())
       .then((json) => {
-        getMeta(meta, json[0]);
-        jsonld = getJsonLd(json[0]);
+        metaData = json[0];
         $ready();
       });
   }
 
+  $: if (metaData) {
+    const jsonLdNode = document.createElement("script");
+    jsonLdNode.setAttribute('type', 'application/ld+json');
+    jsonLdNode.innerText = getJsonLd(metaData);
+    document.head.appendChild(jsonLdNode);
+    metatags.title = "Robin Weißenborn";
+    metatags.author = `${metaData.acf.contact.first_name}`;
+    if( metaData.acf["website-metadata"].description ){
+      metatags["description"] = metaData.acf["website-metadata"].description;
+    }
+    if( metaData.acf["website-metadata"].keywords ){
+      metatags["keywords"] = metaData.acf["website-metadata"].keywords;
+    }
+    metatags.generator = "encoding.group";
+    metatags["geo.region"] = "DE";
 
-  function getMeta(metaObject, data) {
-    metaObject.title = "Robin Weißenborn";
-    metaObject.author = "Robin Weißenborn";
-    if( data.acf["website-metadata"].description ){
-      metaObject["description"] = data.acf["website-metadata"].description;
+    if( metaData.acf["website-metadata"].image ){
+      metatags["og:image"] = metaData.acf["website-metadata"].image;
     }
-    if( data.acf["website-metadata"].keywords ){
-      metaObject["keywords"] = data.acf["website-metadata"].keywords;
-    }
-    metaObject.generator = "encoding.group";
-    metaObject["geo.region"] = "DE";
-
-    if( data.acf["website-metadata"].image ){
-      metaObject["og:image"] = data.acf["website-metadata"].image;
-    }
-    metaObject["og:type"] = "website";
-    metaObject["og:url"] = "https://robinweissenborn.de"; // site.url
-    metaObject["og:locale"] = "de_DE";
+    metatags["og:type"] = "website";
+    metatags["og:url"] = "https://robinweissenborn.de"; // site.url
+    metatags["og:locale"] = "de_DE";
   }
 
   function getJsonLd(data) {
@@ -70,9 +72,5 @@
 </style>
 
 <svelte:window on:click={checkExternalLinks} />
-
-<svelte:head>
-  {@html '<script type="application/ld+json">' + jsonld + '</script>'}
-</svelte:head>
 
 <Router {routes} />
