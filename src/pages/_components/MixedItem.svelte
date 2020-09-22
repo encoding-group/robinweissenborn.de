@@ -5,14 +5,17 @@
   import Marquee from "./Marquee.svelte";
 
   export let post = {};
+  let hover = false;
 </script>
 
 <style type="text/scss">
   li {
-    margin-bottom: 2rem;
+    &.hover {
+      background-color: #666;
+    }
     .info {
       display: flex;
-      padding: 0 1.25rem;
+      padding: 0.25rem 1.25rem 2rem;
       .col {
         padding: 0.25em;
         flex-grow: 0;
@@ -32,7 +35,6 @@
   }
   figure {
     padding: 0 0.5em;
-    margin-bottom: 0.5rem;
     :global(img) {
       width: 100%;
       height: 56.25vw;
@@ -40,10 +42,22 @@
   }
 </style>
 
-<li>
-  <a href={$url('../:slug', { slug: post.slug })}>
+<li class:hover>
+  <a href={$url('../:slug', { slug: post.slug })}
+    on:touchstart={() => hover = true}
+    on:touchend={() => hover = false}
+    on:mouseenter={() => hover = true}
+    on:mouseleave={() => hover = false}>
     <figure>
-      <Image image={post.titleImage} fit={true} />
+      {#if post.secondaryTitleImage}
+        <Image hide={hover} image={post.titleImage} fit={true} />
+        <Image
+          hide={!hover}
+          image={post.secondaryTitleImage}
+          lazyload={false} fit={true} />
+      {:else}
+        <Image image={post.titleImage} fit={true} />
+      {/if}
     </figure>
 
     <div class="info">
