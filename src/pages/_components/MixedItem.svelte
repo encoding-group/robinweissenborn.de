@@ -23,6 +23,10 @@
           flex-grow: 1;
           flex-shrink: 1;
         }
+        &.client,
+        &.discipline {
+          flex-basis: 25%;
+        }
       }
     }
   }
@@ -47,6 +51,16 @@
       <h3 class="col title">
         <Marquee text={post.title} />
       </h3>
+
+      <p class="col client">
+        <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
+      </p>
+
+      <p class="col discipline">
+        <Marquee
+          text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
+      </p>
+
     </div>
   </a>
 </li>
