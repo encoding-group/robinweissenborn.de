@@ -10,9 +10,6 @@
 
 <style type="text/scss">
   li {
-    &.hover {
-      background-color: #666;
-    }
     .info {
       display: flex;
       padding: 0.25rem 1.25rem 2rem;
