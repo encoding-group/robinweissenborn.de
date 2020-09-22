@@ -20,9 +20,9 @@
   }
 
   metatags.title = "Robin Weißenborn";
-  function getMeta(data) {
+  metatags.author = 'moritz';
 
-    metatags.author = 'moritz';
+  function getMeta(data) {
 
     if( data.acf["website-metadata"].description ){
       metatags.description = data.acf["website-metadata"].description;
