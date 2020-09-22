@@ -2,7 +2,6 @@
   import { Router } from "@sveltech/routify";
   import { metatags, ready } from "@sveltech/routify";
   import { routes } from "../.routify/routes";
-  import { processInfo } from "./js/wpResponseParser.js";
   import { checkExternalLinks } from "./js/externalLinks.js";
 
   import "lazysizes";
@@ -18,11 +17,20 @@
       });
   }
 
+  function removeJsonLdBlockIfExists() {
+    const sc = document.querySelector('[type="application/ld+json"]');
+    if (sc) {
+      sc.remove();
+    }
+  }
+
   $: if (metaData) {
     const jsonLdNode = document.createElement("script");
     jsonLdNode.setAttribute('type', 'application/ld+json');
     jsonLdNode.innerText = getJsonLd(metaData);
+    removeJsonLdBlockIfExists();
     document.head.appendChild(jsonLdNode);
+
     metatags.title = "Robin Weißenborn";
     metatags.author = `${metaData.acf.contact.first_name}`;
     if( metaData.acf["website-metadata"].description ){
