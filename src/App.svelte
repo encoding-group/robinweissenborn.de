@@ -21,6 +21,10 @@
 
   metatags.title = "Robin Weißenborn";
   function getMeta(data) {
+
+    console.log(data.acf.contact);
+    console.log(`${data.acf.contact.first_name} ${data.acf.contact.last_name}`);
+
     metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
     metatags.description = data.acf["website-metadata"].description;
     metatags.keywords = data.acf["website-metadata"].keywords;
