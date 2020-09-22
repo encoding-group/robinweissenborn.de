@@ -22,12 +22,14 @@
   metatags.title = "Robin Weißenborn";
   function getMeta(data) {
 
-    // if( `${data.acf.contact.first_name} ${data.acf.contact.last_name}` ){
-    //   metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
-    // }
+    /*
+    doesn’t work
+    if( `${data.acf.contact.first_name} ${data.acf.contact.last_name}` ){
+      metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
+    }
+    */
 
-    let author = 'Robin';
-    metatags.author = author;
+    metatags.author = 'Robin Weißenborn';
 
     if( data.acf["website-metadata"].description ){
       metatags.description = data.acf["website-metadata"].description;
