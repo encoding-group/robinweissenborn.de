@@ -26,7 +26,7 @@
     //   metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
     // }
 
-    let author = 'Robin'
+    let author = 'Robin';
     metatags.author = author;
 
     if( data.acf["website-metadata"].description ){
