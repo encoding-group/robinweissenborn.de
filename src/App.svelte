@@ -7,6 +7,8 @@
 
   import "lazysizes";
 
+  metatags.author = 'moritz';
+
   let jsonld;
   $: getData();
   function getData() {
@@ -15,7 +17,6 @@
       .then((json) => {
         getMeta(json[0]);
         jsonld = getJsonLd(json[0]);
-        console.log(jsonld);
         $ready();
       });
   }
@@ -23,33 +24,28 @@
   metatags.title = "Robin Weißenborn";
   function getMeta(data) {
 
-    if( `${data.acf.contact.first_name} ${data.acf.contact.last_name}` ){
-      metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
-    }
+    // if( `${data.acf.contact.first_name} ${data.acf.contact.last_name}` ){
+    //   metatags.author = `${data.acf.contact.first_name} ${data.acf.contact.last_name}`;
+    // }
+
     if( data.acf["website-metadata"].description ){
       metatags.description = data.acf["website-metadata"].description;
     }
     if( data.acf["website-metadata"].keywords ){
-      metatags.description = data.acf["website-metadata"].keywords;
+      metatags.keywords = data.acf["website-metadata"].keywords;
     }
-    if( data.acf["website-metadata"].image ){
-      metatags["og:image"] = data.acf["website-metadata"].image;
-    }
-
-    // metatags.description = data.acf["website-metadata"].description;
-    // metatags.keywords = data.acf["website-metadata"].keywords;
     metatags.generator = "encoding.group";
     metatags["geo.region"] = "DE";
 
+    if( data.acf["website-metadata"].image ){
+      metatags["og:image"] = data.acf["website-metadata"].image;
+    }
     metatags["og:type"] = "website";
     metatags["og:url"] = "https://robinweissenborn.de"; // site.url
-    // metatags["og:image"] = data.acf["website-metadata"].image;
     metatags["og:locale"] = "de_DE";
   }
 
   function getJsonLd(data) {
-    console.log(data);
-    console.log('getJsonLd()');
     return JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
