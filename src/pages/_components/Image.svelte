@@ -10,6 +10,7 @@
 
   export let hide = false;
   export let lazyload = true;
+  export let fit = false;
 
 </script>
 
@@ -17,15 +18,19 @@
   img.hide {
     display: none;
   }
+  img.fit {
+    object-fit: contain;
+    object-position: center;
+  }
 </style>
 
 {#if lazyload === true}
-  <img class:hide class:lazyload {alt} {width} {height}
+  <img class:hide class:lazyload class:fit {alt} {width} {height}
     data-src={src}
     data-srcset={srcset}
     data-sizes={sizes} />
 {:else}
-  <img class:hide {alt} {width} {height}
+  <img class:hide class:fit {alt} {width} {height}
     src={src}
     srcset={srcset}
     sizes={sizes} />

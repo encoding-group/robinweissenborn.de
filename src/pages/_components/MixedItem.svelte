@@ -9,10 +9,10 @@
 
 <style type="text/scss">
   li {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     .info {
       display: flex;
-      padding: 0 0.25em;
+      padding: 0 1.25rem;
       .col {
         padding: 0.25em;
         flex-grow: 0;
@@ -30,7 +30,7 @@
     padding: 0 0.5em;
     :global(img) {
       width: 100%;
-      height: auto;
+      height: 56.25vw;
     }
   }
 </style>
@@ -38,7 +38,7 @@
 <li>
   <a href={$url('../:slug', { slug: post.slug })}>
     <figure>
-      <Image image={post.titleImage} />
+      <Image image={post.titleImage} fit={true} />
     </figure>
 
     <div class="info">
