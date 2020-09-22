@@ -20,15 +20,15 @@
   }
 
   metatags.title = "Robin Weißenborn";
-  metatags.author = 'moritz';
 
   function getMeta(data) {
 
+    metatags.author = "Robin Weißenborn";
     if( data.acf["website-metadata"].description ){
-      metatags.description = data.acf["website-metadata"].description;
+      metatags["description"] = data.acf["website-metadata"].description;
     }
     if( data.acf["website-metadata"].keywords ){
-      metatags.keywords = data.acf["website-metadata"].keywords;
+      metatags["keywords"] = data.acf["website-metadata"].keywords;
     }
     metatags.generator = "encoding.group";
     metatags["geo.region"] = "DE";
