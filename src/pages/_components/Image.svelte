@@ -8,6 +8,11 @@
   export let srcset = image.srcset || "";
   export let sizes = image.sizes || "";
 
+  if( image.full.endsWith(".gif") ){
+    srcset = '';
+    sizes = '';
+  }
+
   export let hide = false;
   export let lazyload = true;
   export let fit = false;
