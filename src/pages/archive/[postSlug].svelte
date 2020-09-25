@@ -4,7 +4,7 @@
 
   import Navigation from "../_components/Navigation.svelte";
   import Gallery from "../_components/Gallery.svelte";
-  import Message from "../_components/Message.svelte";
+  import Loading from "../_components/Loading.svelte";
   import Headline from "../_components/Headline.svelte";
   import Product from "../_components/Product.svelte";
 
@@ -126,5 +126,5 @@
     </section>
   </main>
 {:else}
-  <Message />
+  <Loading />
 {/if}

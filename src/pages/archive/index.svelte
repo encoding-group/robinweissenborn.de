@@ -6,7 +6,7 @@
   import { processPosts } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
-  import Message from "../_components/Message.svelte";
+  import Loading from "../_components/Loading.svelte";
 
   import GridItem from "../_components/GridItem.svelte";
   import ListItem from "../_components/ListItem.svelte";
@@ -88,7 +88,7 @@
             {/each}
           </ul>
         {:else}
-          <Message />
+          <Loading />
         {/if}
       </div>
 
@@ -100,7 +100,7 @@
             {/each}
           </ul>
         {:else}
-          <Message />
+          <Loading />
         {/if}
       </div>
     {:else if data}
@@ -110,7 +110,7 @@
         {/each}
       </ul>
     {:else}
-      <Message />
+      <Loading />
     {/if}
   </div>
 </div>

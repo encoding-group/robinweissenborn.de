@@ -2,7 +2,7 @@
   import { url, metatags, ready } from "@sveltech/routify";
   import { processInfo } from "../js/wpResponseParser.js";
 
-  import Message from "./_components/Message.svelte";
+  import Loading from "./_components/Loading.svelte";
   import LocalTime from "./_components/LocalTime.svelte";
 
   metatags.title = "Info | Robin Weißenborn";
@@ -126,7 +126,7 @@
     </section>
   </div>
 {:else}
-  <Message />
+  <Loading />
 {/if}
 
 <a class="imprint" href={$url('/imprint')}>Imprint</a>

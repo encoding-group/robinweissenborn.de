@@ -3,7 +3,7 @@
   import { processPosts } from "../js/wpResponseParser.js";
 
   import TeaserItem from "./_components/TeaserItem.svelte";
-  import Message from "./_components/Message.svelte";
+  import Loading from "./_components/Loading.svelte";
 
   metatags.title = "Robin Weißenborn";
 
@@ -36,6 +36,6 @@
       <TeaserItem {post} />
     {/each}
   {:else}
-    <Message />
+    <Loading />
   {/if}
 </ul>

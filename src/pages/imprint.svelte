@@ -2,9 +2,9 @@
   import { metatags, ready } from "@sveltech/routify";
   import { processInfo } from "../js/wpResponseParser.js";
 
-  import Message from "./_components/Message.svelte";
+  import Loading from "./_components/Loading.svelte";
 
-  metatags.title = "Imprint | Robin Weißenbord";
+  metatags.title = "Imprint | Robin Weißenborn";
 
   let data = { content: "stuff" };
   $: getData();
@@ -31,5 +31,5 @@
     {@html data.content}
   </section>
 {:else}
-  <Message />
+  <Loading />
 {/if}
