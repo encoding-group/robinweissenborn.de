@@ -10,16 +10,44 @@
   let container;
   let swipeGallery;
 
+  let first = true;
+  let last = gallery.media.length === 1;
+
   // https://swipe.js.org
   onMount(() => {
     swipeGallery = new Swipe(container, {
       draggable: true,
       continuous: false,
+      callback: function(index, element) {
+        console.log( index, gallery.media.length );
+        first = index === 0;
+        last = index + 1 === gallery.media.length;
+      }
     });
   });
 </script>
 
 <style lang="scss">
+  .nav-buttons {
+    button {
+      width: 1rem;
+      height: 1rem;
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      position: absolute;
+      bottom: 1.5rem;
+      opacity: 1;
+      transition: opacity 400ms ease;
+      &.prev {
+        left: 1.5rem;
+        transform: rotate(-45deg);
+      }
+      &.next {
+        right: 1.5rem;
+        transform: rotate(135deg);
+      }
+    }
+  }
   section.gallery {
     height: 100vh;
     width: 100%;
@@ -27,6 +55,16 @@
     :global(.headline) {
       position: absolute;
       top: 0;
+    }
+    &.first {
+      .nav-buttons button.prev {
+        opacity: 0;
+      }
+    }
+    &.last {
+      .nav-buttons button.next {
+        opacity: 0;
+      }
     }
   }
 
@@ -50,7 +88,7 @@
     }
   }
 
-  .nav-buttons {
+  .nav-panels {
     position: absolute;
     top: 0;
     left: 0;
@@ -62,37 +100,19 @@
       width: 50%;
       top: 0;
       height: 100%;
-      &:after {
-        content: '';
-        width: 1rem;
-        height: 1rem;
-        border-top: 1px solid #fff;
-        border-left: 1px solid #fff;
-        position: absolute;
-        bottom: 1.5rem;
-      }
       &.prev {
         left: 0;
         cursor: w-resize;
-        &:after {
-          left: 1.5rem;
-          transform: rotate(-45deg);
-        }
       }
       &.next {
         left: 50%;
         cursor: e-resize;
-        &:after {
-          right: 1.5rem;
-          transform: rotate(135deg);
-        }
       }
-
     }
   }
 </style>
 
-<section class="gallery">
+<section class="gallery" class:first class:last>
   <Headline>
     <h3>{gallery.headline}</h3>
   </Headline>
@@ -106,7 +126,7 @@
               <figcaption>{key + 1}/{gallery.media.length}</figcaption>
             </Figure>
 
-            <div class="nav-buttons">
+            <div class="nav-panels">
               {#if key > 0}
                 <button class="prev" on:click={swipeGallery.prev} />
               {/if}
@@ -114,9 +134,16 @@
                 <button class="next" on:click={swipeGallery.next} />
               {/if}
             </div>
+
           </div>
         {/if}
       {/each}
     </div>
   </div>
+
+  <div class="nav-buttons">
+    <button class="prev" on:click={swipeGallery.prev} />
+    <button class="next" on:click={swipeGallery.next} />
+  </div>
+
 </section>
