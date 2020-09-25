@@ -20,10 +20,12 @@
 </script>
 
 <style type="text/scss">
-  ul {
-    scroll-snap-type: y mandatory;
-    max-height: 100vh;
-    overflow-y: scroll;
+  @supports (display: grid) {
+    ul {
+      scroll-snap-type: y mandatory;
+      max-height: 100vh;
+      overflow-y: scroll;
+    }
   }
 </style>
 

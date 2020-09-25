@@ -34,14 +34,16 @@
 </script>
 
 <style type="text/scss">
-  main {
-    animation: fadein 1s;
-    scroll-snap-type: y mandatory;
-    max-height: 100vh;
-    overflow-y: scroll;
-    :global(section) {
+  @supports (display: grid) {
+    main {
+      scroll-snap-type: y mandatory;
+      :global(section) {
       scroll-snap-align: start;
     }
+    }
+  }
+  main {
+    animation: fadein 1s;
   }
   section.info {
     height: 100vh;
