@@ -7,13 +7,14 @@
     align-items: center;
     justify-content: center;
     animation: fadein 1s;
-    color: #555;
-    em {
-        text-align: center;
+    text-align: center;
+    img {
+        width: 2rem;
+        height: 2rem;
     }
 }
 </style>
 
 <li class="loading">
-    <em>Loading ...</em>
+    <img src="/loading.gif" />
 </li>
