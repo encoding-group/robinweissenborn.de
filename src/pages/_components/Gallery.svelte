@@ -62,14 +62,32 @@
       width: 50%;
       top: 0;
       height: 100%;
+      &:after {
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        position: absolute;
+        bottom: 1.5rem;
+      }
       &.prev {
         left: 0;
         cursor: w-resize;
+        &:after {
+          left: 1.5rem;
+          transform: rotate(-45deg);
+        }
       }
       &.next {
         left: 50%;
         cursor: e-resize;
+        &:after {
+          right: 1.5rem;
+          transform: rotate(135deg);
+        }
       }
+
     }
   }
 </style>
