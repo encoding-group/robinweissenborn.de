@@ -14,7 +14,8 @@
     height: -webkit-fill-available;
     scroll-snap-align: start;
 		> a {
-			height: 100%;
+      height: 100%;
+      height: -webkit-fill-available;
 			display: flex;
 			position: relative;
 			:global(.headline) {
