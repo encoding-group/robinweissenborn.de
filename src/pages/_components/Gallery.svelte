@@ -107,8 +107,12 @@
             </Figure>
 
             <div class="nav-buttons">
-              <button class="prev" on:click={swipeGallery.prev} />
-              <button class="next" on:click={swipeGallery.next} />
+              {#if key > 0}
+                <button class="prev" on:click={swipeGallery.prev} />
+              {/if}
+              {#if key + 1 < gallery.media.length}
+                <button class="next" on:click={swipeGallery.next} />
+              {/if}
             </div>
           </div>
         {/if}
