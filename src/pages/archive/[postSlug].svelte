@@ -37,9 +37,11 @@
   @supports (display: grid) {
     main {
       scroll-snap-type: y mandatory;
+      max-height: 100vh;
+      overflow-y: scroll;
       :global(section) {
-      scroll-snap-align: start;
-    }
+        scroll-snap-align: start;
+      }
     }
   }
   main {
