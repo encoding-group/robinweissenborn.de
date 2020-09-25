@@ -11,6 +11,7 @@
   li {
     animation: fadein 1s;
     height: 100vh;
+    height: -webkit-fill-available;
     scroll-snap-align: start;
 		> a {
 			height: 100%;

@@ -23,8 +23,10 @@
   @supports (display: grid) {
     ul {
       scroll-snap-type: y mandatory;
-      max-height: 100vh;
       overflow-y: scroll;
+      height: 100%;
+      height: 100vh;
+      height: -webkit-fill-available;
     }
   }
 </style>

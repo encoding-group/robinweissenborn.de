@@ -37,7 +37,9 @@
   @supports (display: grid) {
     main {
       scroll-snap-type: y mandatory;
-      max-height: 100vh;
+      height: 100%;
+      height: 100vh;
+      height: -webkit-fill-available;
       overflow-y: scroll;
       :global(section) {
         scroll-snap-align: start;
@@ -49,6 +51,7 @@
   }
   section.info {
     height: 100vh;
+    height: -webkit-fill-available;
     .headline {
       padding: 1.5rem;
       text-align: center;

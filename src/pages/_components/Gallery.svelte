@@ -50,6 +50,7 @@
   }
   section.gallery {
     height: 100vh;
+    height: -webkit-fill-available;
     width: 100%;
     position: relative;
     :global(.headline) {
