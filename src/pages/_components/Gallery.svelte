@@ -74,14 +74,17 @@
     visibility: hidden;
     position: relative;
     height: 100%;
+    height: -webkit-fill-available;
 
     .swipe-wrap {
       overflow: hidden;
       position: relative;
       height: 100%;
+      height: -webkit-fill-available;
 
       > div {
         height: 100%;
+        height: -webkit-fill-available;
         float: left;
         width: 100%;
         position: relative;
