@@ -84,9 +84,9 @@
   }
 </style>
 
-<Navigation />
-
 {#if data}
+<Navigation headline={data.title} />
+
   <main>
     {#each data.galleryGrid as gallery}
       <Gallery {gallery} />
@@ -129,5 +129,6 @@
     </section>
   </main>
 {:else}
+  <Navigation />
   <Loading />
 {/if}

@@ -2,8 +2,8 @@
   import { isActive, url } from "@sveltech/routify";
 
   export let panels = false;
+  export let headline = false;
 
-  let headline = false;
 </script>
 
 <style type="text/scss">
