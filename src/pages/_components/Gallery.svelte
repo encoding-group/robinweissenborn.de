@@ -28,6 +28,7 @@
 </script>
 
 <style lang="scss">
+  /*
   .nav-buttons {
     button {
       width: 1rem;
@@ -48,6 +49,7 @@
       }
     }
   }
+  */
   section.gallery {
     height: 100vh;
     height: -webkit-fill-available;
@@ -57,6 +59,7 @@
       position: absolute;
       top: 0;
     }
+    /*
     &.first {
       .nav-buttons button.prev {
         opacity: 0;
@@ -67,6 +70,7 @@
         opacity: 0;
       }
     }
+    */
   }
 
   .swipe {
@@ -105,6 +109,7 @@
       top: 0;
       height: 100%;
       &.prev {
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property#Limitations
         left: 0;
         cursor: w-resize;
       }
@@ -145,9 +150,11 @@
     </div>
   </div>
 
+  <!--
   <div class="nav-buttons">
     <button class="prev" on:click={swipeGallery.prev} />
     <button class="next" on:click={swipeGallery.next} />
   </div>
+  -->
 
 </section>
