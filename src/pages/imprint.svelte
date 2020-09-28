@@ -58,6 +58,9 @@
         &.col-1 {
           margin-left: 12.5%;
         }
+        &.col-3 {
+          margin-left: 0;
+        }
       }
     }
   }
