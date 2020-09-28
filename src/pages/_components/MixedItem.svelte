@@ -43,6 +43,7 @@
   <a href={$url('../:slug', { slug: post.slug })}
     on:touchstart={() => hover = true}
     on:touchend={() => hover = false}
+    on:touchcancel={() => hover = false}
     on:mouseenter={() => hover = true}
     on:mouseleave={() => hover = false}>
     <figure>
