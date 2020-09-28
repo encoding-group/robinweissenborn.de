@@ -92,9 +92,9 @@
       <Gallery {gallery} />
     {/each}
 
-    <section class="info">
+    <section class="info" id="project-info">
       <Headline>
-        <h3>Info</h3>
+        <h3>Project info</h3>
       </Headline>
 
       <div class="panels">

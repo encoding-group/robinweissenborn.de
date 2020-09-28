@@ -47,7 +47,7 @@
       <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
     {/if}
     {#if headline !== false}
-      <h1>{headline}</h1>
+      <h1><a href="#project-info" title="Project info">{headline}</a></h1>
     {/if}
   </div>
 
