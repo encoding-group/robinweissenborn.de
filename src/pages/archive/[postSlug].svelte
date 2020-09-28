@@ -40,6 +40,7 @@
       height: 100%;
       height: 100vh;
       overflow-y: scroll;
+      scroll-behavior: smooth;
       :global(section) {
         scroll-snap-align: start;
       }
@@ -82,8 +83,13 @@
   }
 </style>
 
+<Navigation>
+  {#if data}
+    <h1><a data-scroll class="smooth" href="#project-info" title="Project info">{data.title}</a></h1>
+  {/if}
+</Navigation>
+
 {#if data}
-<Navigation headline={data.title} />
 
   <main>
     {#each data.galleryGrid as gallery}
@@ -127,6 +133,5 @@
     </section>
   </main>
 {:else}
-  <Navigation />
   <Loading />
 {/if}

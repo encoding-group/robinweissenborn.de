@@ -1,9 +1,6 @@
 <script>
   import { isActive, url } from "@sveltech/routify";
-
   export let panels = false;
-  export let headline = false;
-
 </script>
 
 <style type="text/scss">
@@ -46,9 +43,7 @@
     {:else}
       <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
     {/if}
-    {#if headline !== false}
-      <h1><a href="#project-info" title="Project info">{headline}</a></h1>
-    {/if}
+    <slot></slot>
   </div>
 
   <div class="right">
