@@ -11,23 +11,8 @@
 <style type="text/scss">
   li {
     .info {
-      display: flex;
       padding: 0.25rem 1.25rem 2rem;
-      .col {
-        padding: 0.25em;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: auto;
-        overflow: hidden;
-        &.title {
-          flex-grow: 1;
-          flex-shrink: 1;
-        }
-        &.client,
-        &.discipline {
-          flex-basis: 25%;
-        }
-      }
+      text-align: center;
     }
   }
   figure {
@@ -59,19 +44,12 @@
     </figure>
 
     <div class="info">
-      <p class="col year">{post.year}</p>
 
       <h3 class="col title">
-        <Marquee text={post.title} />
+        {post.title}
       </h3>
-
       <p class="col client">
-        <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
-      </p>
-
-      <p class="col discipline">
-        <Marquee
-          text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
+        {post.client.length > 0 ? post.client.join(', ') : '—'}
       </p>
 
     </div>
