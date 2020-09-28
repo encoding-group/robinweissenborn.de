@@ -49,7 +49,7 @@
         {post.title}
       </h3>
       <p class="col client">
-        {post.client.length > 0 ? post.client.join(', ') : '—'}
+        {post.client.length > 0 ? post.client.join(', ') : ''}
       </p>
 
     </div>
