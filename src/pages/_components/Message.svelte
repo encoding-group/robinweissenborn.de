@@ -2,7 +2,9 @@
 .message {
     width: 100%;
     height: 100vh;
+    height: -moz-available;
     height: -webkit-fill-available;
+    height: fill-available;
     text-align: center;
     display: flex;
     align-items: center;

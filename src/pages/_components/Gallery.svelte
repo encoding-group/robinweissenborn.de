@@ -32,7 +32,9 @@
 <style lang="scss">
   section.gallery {
     height: 100vh;
+    height: -moz-available;
     height: -webkit-fill-available;
+    height: fill-available;
     width: 100%;
     position: relative;
     :global(.headline) {
@@ -46,17 +48,23 @@
     visibility: hidden;
     position: relative;
     height: 100%;
+    height: -moz-available;
     height: -webkit-fill-available;
+    height: fill-available;
 
     .swipe-wrap {
       overflow: hidden;
       position: relative;
       height: 100%;
+      height: -moz-available;
       height: -webkit-fill-available;
+      height: fill-available;
 
       > div {
         height: 100%;
+        height: -moz-available;
         height: -webkit-fill-available;
+        height: fill-available;
         float: left;
         width: 100%;
         position: relative;

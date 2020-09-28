@@ -26,7 +26,9 @@
       overflow-y: scroll;
       height: 100%;
       height: 100vh;
+      height: -moz-available;
       height: -webkit-fill-available;
+      height: fill-available;
     }
   }
 </style>
