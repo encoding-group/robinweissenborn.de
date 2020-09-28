@@ -7,12 +7,17 @@
   metatags.title = "Imprint | Robin Weißenborn";
 
   let data = { content: "" };
+  let columns = {};
   $: getData();
   function getData() {
     fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=imprint")
       .then((response) => response.json())
       .then((json) => {
         data = processInfo(json[0]);
+        columns = {
+          '2': json[0].acf.column_2,
+          '3': json[0].acf.column_3,
+        },
         $ready();
       })
       .catch((err) => console.log(err));
@@ -88,11 +93,11 @@
     </section>
 
     <section class="col-2">
-      Platzhalter Spalte 2
+      {@html columns['2']}
     </section>
 
     <section class="col-3">
-      Platzhalter Spalte 3
+      {@html columns['3']}
     </section>
 
   </main>
