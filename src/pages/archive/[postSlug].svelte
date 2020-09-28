@@ -34,7 +34,7 @@
 </script>
 
 <style type="text/scss">
-  @supports (display: grid) {
+  @supports (scroll-snap-type: y mandatory) {
     main {
       scroll-snap-type: y mandatory;
       height: 100%;

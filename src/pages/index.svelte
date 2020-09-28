@@ -20,7 +20,7 @@
 </script>
 
 <style type="text/scss">
-  @supports (display: grid) {
+  @supports (scroll-snap-type: y mandatory) {
     ul {
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
