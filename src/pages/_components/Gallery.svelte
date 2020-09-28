@@ -132,7 +132,9 @@
         {#if column.media}
           <div>
             <Figure image={column.media}>
-              <figcaption>{key + 1}/{gallery.media.length}</figcaption>
+              {#if gallery.media.length > 1}
+                <figcaption>{key + 1}/{gallery.media.length}</figcaption>
+              {/if}
             </Figure>
 
             <div class="nav-panels">
