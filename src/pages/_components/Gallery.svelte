@@ -12,6 +12,7 @@
 
   let first = true;
   let last = gallery.media.length === 1;
+  let gi = 1;
 
   // https://swipe.js.org
   onMount(() => {
@@ -22,6 +23,7 @@
         console.log( index, gallery.media.length );
         first = index === 0;
         last = index + 1 === gallery.media.length;
+        gi = index + 1;
       }
     });
   });
@@ -119,6 +121,14 @@
       }
     }
   }
+  .figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+  }
 </style>
 
 <section class="gallery" class:first class:last>
@@ -132,9 +142,6 @@
         {#if column.media}
           <div>
             <Figure image={column.media}>
-              {#if gallery.media.length > 1}
-                <figcaption>{key + 1}/{gallery.media.length}</figcaption>
-              {/if}
             </Figure>
 
             <div class="nav-panels">
@@ -151,6 +158,10 @@
       {/each}
     </div>
   </div>
+
+  {#if gallery.media.length > 1}
+    <div class="figcaption">{gi}/{gallery.media.length}</div>
+  {/if}
 
   <!--
   <div class="nav-buttons">
