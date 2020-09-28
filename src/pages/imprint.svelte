@@ -37,7 +37,7 @@
       flex-wrap: wrap;
       section {
         flex: 0 0 50%;
-        &.about + .about {
+        &.col-3 {
           margin-left: 50%;
         }
       }
