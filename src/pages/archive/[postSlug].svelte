@@ -99,9 +99,6 @@
 
       <div class="panels">
         <div class="info">
-          {#if data.year}
-            <p>{data.year}</p>
-          {/if}
           {#if data.title}
             <h2>{data.title}</h2>
           {/if}
@@ -110,6 +107,9 @@
           {/if}
           {#if data.discipline}
             <p>{data.discipline.join(', ')}</p>
+          {/if}
+          {#if data.year}
+            <p>{data.year}</p>
           {/if}
 
           <div>
