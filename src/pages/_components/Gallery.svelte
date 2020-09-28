@@ -30,28 +30,6 @@
 </script>
 
 <style lang="scss">
-  /*
-  .nav-buttons {
-    button {
-      width: 1rem;
-      height: 1rem;
-      border-top: 1px solid #fff;
-      border-left: 1px solid #fff;
-      position: absolute;
-      bottom: 1.5rem;
-      opacity: 1;
-      transition: opacity 400ms ease;
-      &.prev {
-        left: 1.5rem;
-        transform: rotate(-45deg);
-      }
-      &.next {
-        right: 1.5rem;
-        transform: rotate(135deg);
-      }
-    }
-  }
-  */
   section.gallery {
     height: 100vh;
     height: -webkit-fill-available;
@@ -61,18 +39,6 @@
       position: absolute;
       top: 0;
     }
-    /*
-    &.first {
-      .nav-buttons button.prev {
-        opacity: 0;
-      }
-    }
-    &.last {
-      .nav-buttons button.next {
-        opacity: 0;
-      }
-    }
-    */
   }
 
   .swipe {
@@ -111,17 +77,18 @@
       top: 0;
       height: 100%;
       &.prev {
-        // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property#Limitations
         left: 0;
         cursor: w-resize;
+        cursor: url('../arrow-prev.png') 2 24, w-resize;
       }
       &.next {
         left: 50%;
         cursor: e-resize;
+        cursor: url('../arrow-next.png') 22 24, e-resize;
       }
     }
   }
-  .figcaption {
+  .index {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -160,14 +127,7 @@
   </div>
 
   {#if gallery.media.length > 1}
-    <div class="figcaption">{gi}/{gallery.media.length}</div>
+    <div class="index">{gi}/{gallery.media.length}</div>
   {/if}
-
-  <!--
-  <div class="nav-buttons">
-    <button title="Previous slide" class="prev" on:click={swipeGallery.prev} />
-    <button title="Next slide" class="next" on:click={swipeGallery.next} />
-  </div>
-  -->
 
 </section>
