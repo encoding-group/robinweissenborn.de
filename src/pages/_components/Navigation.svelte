@@ -42,9 +42,9 @@
 <nav class="menu" class:panels>
   <div class="left">
     {#if $isActive('/info')}
-      <a href={$url('/')}>Back</a>
+      <a title="Homepage" href={$url('/')}>Back</a>
     {:else}
-      <a class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
+      <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
     {/if}
     {#if headline !== false}
       <h1>{headline}</h1>
@@ -53,7 +53,9 @@
 
   <div class="right">
     {#if $isActive('/archive/index', true)}
-      <a href={$url('/')}>Back</a>
-    {:else}<a href={$url('/archive')}>Archive</a>{/if}
+      <a title="Homepage" href={$url('/')}>Back</a>
+    {:else}
+      <a title="Archive" href={$url('/archive')}>Archive</a>
+    {/if}
   </div>
 </nav>

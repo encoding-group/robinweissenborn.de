@@ -25,7 +25,7 @@
 </style>
 
 <li class:hover>
-  <a href={$url('../:slug', { slug: post.slug })}
+  <a href={$url('../:slug', { slug: post.slug })} title="{post.title}"
     on:touchstart={() => hover = true}
     on:touchend={() => hover = false}
     on:touchcancel={() => hover = false}

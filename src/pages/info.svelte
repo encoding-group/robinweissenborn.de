@@ -109,8 +109,8 @@
       </address>
 
       <p>
-        <a href="mailto:{data.contact.email}">{data.contact.email}</a><br />
-        <a href="tel:{data.contact.tel}">{data.contact.tel}</a>
+        <a title="Send me an email" href="mailto:{data.contact.email}">{data.contact.email}</a><br />
+        <a title="Call me" href="tel:{data.contact.tel}">{data.contact.tel}</a>
       </p>
 
       <LocalTime>{data['address-1'].city}</LocalTime>
@@ -129,4 +129,4 @@
   <Loading />
 {/if}
 
-<a class="imprint" href={$url('/imprint')}>Imprint</a>
+<a title="Imprint" class="imprint" href={$url('/imprint')}>Imprint</a>

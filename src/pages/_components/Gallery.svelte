@@ -139,10 +139,10 @@
 
             <div class="nav-panels">
               {#if key > 0}
-                <button class="prev" on:click={swipeGallery.prev} />
+                <button title="Previous slide" class="prev" on:click={swipeGallery.prev} />
               {/if}
               {#if key + 1 < gallery.media.length}
-                <button class="next" on:click={swipeGallery.next} />
+                <button title="Next slide" class="next" on:click={swipeGallery.next} />
               {/if}
             </div>
 
@@ -154,8 +154,8 @@
 
   <!--
   <div class="nav-buttons">
-    <button class="prev" on:click={swipeGallery.prev} />
-    <button class="next" on:click={swipeGallery.next} />
+    <button title="Previous slide" class="prev" on:click={swipeGallery.prev} />
+    <button title="Next slide" class="next" on:click={swipeGallery.next} />
   </div>
   -->
 
