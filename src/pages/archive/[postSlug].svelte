@@ -39,9 +39,6 @@
       scroll-snap-type: y mandatory;
       height: 100%;
       height: 100vh;
-      height: -moz-available;
-      height: -webkit-fill-available;
-      height: fill-available;
       overflow-y: scroll;
       :global(section) {
         scroll-snap-align: start;
@@ -53,9 +50,6 @@
   }
   section.info {
     height: 100vh;
-    height: -moz-available;
-    height: -webkit-fill-available;
-    height: fill-available;
     .headline {
       padding: 1.5rem;
       text-align: center;

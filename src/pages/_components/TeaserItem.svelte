@@ -11,15 +11,9 @@
   li {
     animation: fadein 1s;
     height: 100vh;
-    height: -moz-available;
-    height: -webkit-fill-available;
-    height: fill-available;
     scroll-snap-align: start;
 		> a {
       height: 100%;
-      height: -moz-available;
-      height: -webkit-fill-available;
-      height: fill-available;
 			display: flex;
 			position: relative;
 			:global(.headline) {
