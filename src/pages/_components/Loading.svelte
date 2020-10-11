@@ -16,5 +16,5 @@
 </style>
 
 <li class="loading">
-    <img src="/loading.gif" />
+    <img src="/loading.gif" alt="Loading..." />
 </li>
