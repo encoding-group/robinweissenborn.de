@@ -15,7 +15,7 @@ to = "/.netlify/functions/ssr"
 package = "@netlify/plugin-sitemap"
 
 [plugins.inputs]
-changeFreq = "daily"
+changeFreq = "monthly"
 priority = 0.5
 
 # SPA only
