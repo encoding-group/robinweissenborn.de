@@ -41,7 +41,7 @@
       height: 100vh;
       overflow-y: scroll;
       scroll-behavior: smooth;
-      :global(section) {
+      :global( section ) {
         scroll-snap-align: start;
       }
     }
@@ -50,7 +50,7 @@
     animation: fadein 1s;
   }
   section.info {
-    height: 100vh;
+    min-height: 100vh;
     .headline {
       padding: 1.5rem;
       text-align: center;

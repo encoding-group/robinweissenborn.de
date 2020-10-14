@@ -96,9 +96,6 @@
 </style>
 
 <section class="gallery" class:first class:last>
-  <Headline>
-    <h3>{gallery.headline}</h3>
-  </Headline>
 
   <div class="swipe" bind:this={container}>
     <div class="swipe-wrap">
@@ -123,8 +120,11 @@
     </div>
   </div>
 
-  {#if gallery.media.length > 1}
-    <div class="index">{gi}/{gallery.media.length}</div>
-  {/if}
+  <div class="index">
+    <p>{gallery.headline}</p>
+    {#if gallery.media.length > 1}
+      <p>{gi}/{gallery.media.length}</p>
+    {/if}
+  </div>
 
 </section>
