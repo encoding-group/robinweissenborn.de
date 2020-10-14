@@ -20,16 +20,18 @@
 </script>
 
 <style type="text/scss">
-  @supports (scroll-snap-type: y mandatory) {
-    ul {
-      scroll-snap-type: y mandatory;
-      overflow-y: auto;
-      position: fixed;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      :global( li ){
-        scroll-snap-align: start;
+  @media (hover: hover) and (pointer: fine) {
+    @supports (scroll-snap-type: y mandatory) {
+      ul {
+        scroll-snap-type: y mandatory;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        :global( li ){
+          scroll-snap-align: start;
+        }
       }
     }
   }

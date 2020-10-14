@@ -34,18 +34,20 @@
 </script>
 
 <style type="text/scss">
-  @supports (scroll-snap-type: y mandatory) {
-    main {
-      scroll-snap-type: y mandatory;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow-y: scroll;
-      scroll-behavior: smooth;
-      :global( section ) {
-        scroll-snap-align: start;
+  @media (hover: hover) and (pointer: fine) {
+    @supports (scroll-snap-type: y mandatory) {
+      main {
+        scroll-snap-type: y mandatory;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        :global( section ) {
+          scroll-snap-align: start;
+        }
       }
     }
   }
