@@ -35,6 +35,4 @@
     </div>
 </nav>
 
-<div class="columns-layout">
-    <slot />
-</div>
+<slot />
