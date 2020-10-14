@@ -6,6 +6,8 @@
   import { processPosts } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
+  import NavigationArchive from "../_components/NavigationArchive.svelte";
+
   import Loading from "../_components/Loading.svelte";
 
   import GridItem from "../_components/GridItem.svelte";
@@ -42,17 +44,19 @@
 </script>
 
 <style type="text/scss">
-  .page :global(nav) {
-    position: sticky !important;
+  main {
+    width: 100vw;
   }
-  .page.panels {
+  main.panels {
     height: 100vh;
+    position: fixed;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    .container {
+    .panels {
       flex: 1;
       display: flex;
-      .panel {
+      section {
         animation: fadein 1s;
         flex: 1 1 50%;
         height: 100%;
@@ -66,21 +70,26 @@
   ul {
     -webkit-user-select: none;
     user-select: none;
-  }
-  ul.grid {
-    display: flex;
-    flex-wrap: wrap;
+    &.grid {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &.mixed {
+      margin-top: 3.8rem;
+    }
   }
 </style>
 
 <svelte:window on:resize={() => panelsLayout()} />
 
-<div class="page" class:panels>
-  <Navigation {panels} />
+<main class:panels>
 
-  <div class="container">
-    {#if panels}
-      <div class="panel">
+  {#if panels}
+
+    <NavigationArchive />
+
+    <div class="panels">
+      <section>
         {#if data}
           <ul class="grid">
             {#each data as post}
@@ -90,9 +99,9 @@
         {:else}
           <Loading />
         {/if}
-      </div>
 
-      <div class="panel">
+      </section>
+      <section>
         {#if data}
           <ul class="list">
             {#each data as post}
@@ -102,15 +111,20 @@
         {:else}
           <Loading />
         {/if}
-      </div>
-    {:else if data}
-      <ul class="mixed">
-        {#each data as post}
-          <MixedItem {post} />
-        {/each}
-      </ul>
-    {:else}
-      <Loading />
-    {/if}
-  </div>
-</div>
+      </section>
+    </div>
+
+  {:else if data}
+
+    <Navigation />
+    <ul class="mixed">
+      {#each data as post}
+        <MixedItem {post} />
+      {/each}
+    </ul>
+
+  {:else}
+    <Loading />
+  {/if}
+
+</main>

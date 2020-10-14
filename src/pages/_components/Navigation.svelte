@@ -1,50 +1,56 @@
 <script>
   import { isActive, url } from "@sveltech/routify";
-  export let panels = false;
+
+  export let center = false;
+
 </script>
 
 <style type="text/scss">
-  nav.menu {
+  nav {
+    animation: fadein 1s;
     position: fixed;
     z-index: 100;
     top: 0;
-    width: 100%;
     display: flex;
-    animation: fadein 1s;
     justify-content: space-between;
+    width: 100vw;
+    pointer-events: none;
     > div {
+      pointer-events: auto;
+      flex: 0 0 auto;
       padding: 1.5rem;
-      flex: 0 0 40%;
-      @media only screen and (min-width: 400px) {
-        flex-basis: 50%;
-      }
-      &.right {
-        text-align: right;
+    }
+    &.center {
+      > div {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 33.3%;
       }
     }
   }
-  nav.panels {
-    position: relative !important;
-    flex-basis: auto;
-    flex-grow: 0;
-    flex-shrink: 0;
-    border-bottom: $border;
-    background-color: $black;
-    .left {
-      border-right: $border;
-    }
+  .headline {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
   }
 </style>
 
-<nav class="menu" class:panels>
+<nav class:center>
+
   <div class="left">
     {#if $isActive('/info')}
       <a title="Homepage" href={$url('/')}>Back</a>
     {:else}
       <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
     {/if}
-    <slot></slot>
   </div>
+
+  {#if center}
+    <div class="headline">
+      <slot></slot>
+    </div>
+  {/if}
 
   <div class="right">
     {#if $isActive('/archive/index', true)}
@@ -53,4 +59,5 @@
       <a title="Archive" href={$url('/archive')}>Archive</a>
     {/if}
   </div>
+
 </nav>
