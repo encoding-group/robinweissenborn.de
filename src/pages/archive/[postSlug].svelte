@@ -51,10 +51,7 @@
   }
   section.info {
     min-height: 100vh;
-    .headline {
-      padding: 1.5rem;
-      text-align: center;
-    }
+    padding-top: 3.8rem;
   }
   .panels {
     > div {
@@ -73,11 +70,13 @@
       margin: 0 25vw;
     }
   }
-  .panels .info div {
-    margin-top: 1.1em;
-  }
   .content {
     :global(p) {
+      margin-bottom: 1.1em;
+    }
+  }
+  .info {
+    div {
       margin-bottom: 1.1em;
     }
   }
@@ -97,24 +96,22 @@
     {/each}
 
     <section class="info" id="project-info">
-      <Headline>
-        <h3>Project info</h3>
-      </Headline>
-
       <div class="panels">
         <div class="info">
-          {#if data.title}
-            <h2>{data.title}</h2>
-          {/if}
-          {#if data.client}
-            <p>{data.client.join(', ')}</p>
-          {/if}
-          {#if data.discipline}
-            <p>{data.discipline.join(', ')}</p>
-          {/if}
-          {#if data.year}
-            <p>{data.year}</p>
-          {/if}
+          <div>
+            {#if data.title}
+              <h2>{data.title}</h2>
+            {/if}
+            {#if data.client}
+              <p>{data.client.join(', ')}</p>
+            {/if}
+            {#if data.discipline}
+              <p>{data.discipline.join(', ')}</p>
+            {/if}
+            {#if data.year}
+              <p>{data.year}</p>
+            {/if}
+          </div>
 
           <div>
             {@html data.projectInfo}
