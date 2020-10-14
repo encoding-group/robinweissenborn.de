@@ -33,11 +33,9 @@
   section.gallery {
     height: 100vh;
     width: 100%;
-    position: relative;
-    :global(.headline) {
-      position: absolute;
-      top: 0;
-    }
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
   }
 
   .swipe {
@@ -47,14 +45,11 @@
     height: 100%;
 
     .swipe-wrap {
-      background-color: red;
       overflow: hidden;
       position: relative;
       height: 100%;
-
       > div {
         height: 100%;
-
         float: left;
         width: 100%;
         position: relative;
@@ -86,11 +81,8 @@
       }
     }
   }
-  .index {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  .headline {
+    flex: 0 0 auto;
     padding: 1.5rem;
     text-align: center;
   }
@@ -103,8 +95,8 @@
       {#each gallery.media as column, key}
         {#if column.media}
           <div>
-            <Figure image={column.media}>
-            </Figure>
+
+            <Figure image={column.media} />
 
             <div class="nav-panels">
               {#if key > 0}
@@ -121,8 +113,8 @@
     </div>
   </div>
 
-  <div class="index">
-    <p>{gallery.headline}</p>
+  <div class="headline">
+    <h3>{gallery.headline}</h3>
     {#if gallery.media.length > 1}
       <p>{gi}/{gallery.media.length}</p>
     {/if}

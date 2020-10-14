@@ -11,15 +11,18 @@
   li {
     animation: fadein 1s;
     height: 100vh;
-    scroll-snap-align: start;
 		> a {
-      height: 100%;
+      height: 100vh;
 			display: flex;
-			position: relative;
+			flex-direction: column;
+      padding-bottom: 1.5rem;
 			:global(.headline) {
-				position: absolute;
-				top: 0;
+				flex: 0 0 auto;
 			}
+      div {
+        position: relative;
+        height: 100%;
+      }
 		}
 	}
 </style>
@@ -30,7 +33,9 @@
       <h3>{post.title}</h3>
     </Headline>
     {#if 'titleImage' in post}
-      <Figure image={post.titleImage} />
+      <div>
+        <Figure image={post.titleImage} />
+      </div>
     {/if}
   </a>
 </li>

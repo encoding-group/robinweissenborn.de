@@ -7,25 +7,17 @@
   figure {
     width: 100%;
     height: 100%;
-    padding: 4rem 1.5rem;
     position: absolute;
     z-index: 10;
     pointer-events: none;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 
     :global(img) {
       height: 100%;
       width: 100%;
       object-fit: contain;
       object-position: center;
-    }
-
-    figcaption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.5rem;
-      text-align: center;
     }
   }
   .video {
@@ -47,7 +39,4 @@
       {@html image}
     </div>
   {/if}
-  <figcaption>
-    <slot />
-  </figcaption>
 </figure>
