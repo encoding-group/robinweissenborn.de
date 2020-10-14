@@ -83,13 +83,13 @@
   }
 </style>
 
-<Navigation>
-  {#if data}
-    <h1><a data-scroll class="smooth" href="#project-info" title="Project info">{data.title}</a></h1>
-  {/if}
-</Navigation>
+<Navigation />
 
 {#if data}
+
+  <Headline>
+    <h1><a href="#project-info" title="Scroll down to project info">{data.title}</a></h1>
+  </Headline>
 
   <main>
     {#each data.galleryGrid as gallery}
