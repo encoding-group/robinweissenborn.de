@@ -14,10 +14,8 @@
 			.then((response) => response.json())
 			.then((json) => {
 				data = processInfo(json[0]);
-				columns = {
-					'2': json[0].acf.column_2,
-					'3': json[0].acf.column_3,
-				},
+				data.column2 = json[0].acf.column_2;
+				data.column3 = json[0].acf.column_3;
 				$ready();
 			})
 			.catch((err) => console.log(err));
@@ -92,11 +90,11 @@
 		</section>
 
 		<section class="col-2">
-			{@html columns['2']}
+			{@html data.column2}
 		</section>
 
 		<section class="col-3">
-			{@html columns['3']}
+			{@html data.column3}
 		</section>
 
 	</main>
