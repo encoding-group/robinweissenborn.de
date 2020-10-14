@@ -51,7 +51,7 @@
   }
   section.info {
     min-height: 100vh;
-    padding-top: 3.8rem;
+    padding-top: 4rem;
   }
   .panels {
     > div {

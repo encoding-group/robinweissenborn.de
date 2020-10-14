@@ -7,7 +7,7 @@
   figure {
     width: 100%;
     height: 100%;
-    padding: 3.8rem 1.5rem;
+    padding: 4rem 1.5rem;
     position: absolute;
     z-index: 10;
     pointer-events: none;

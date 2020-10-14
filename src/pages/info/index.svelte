@@ -47,7 +47,7 @@
 	}
   main {
     animation: fadein 1s;
-    padding: 3.8rem 1.5rem 1.5rem;
+    padding: 4rem 1.5rem 1.5rem;
     @media only screen and (min-width: 640px) {
         display: flex;
         flex-wrap: wrap;

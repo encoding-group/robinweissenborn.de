@@ -47,6 +47,7 @@
     height: 100%;
 
     .swipe-wrap {
+      background-color: red;
       overflow: hidden;
       position: relative;
       height: 100%;

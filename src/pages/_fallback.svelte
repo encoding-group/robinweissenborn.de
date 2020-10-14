@@ -4,7 +4,7 @@
 
 <style>
   main {
-    margin: 3.8rem 1.5rem;
+    margin: 4rem 1.5rem;
   }
 </style>
 

@@ -75,7 +75,7 @@
       flex-wrap: wrap;
     }
     &.mixed {
-      margin-top: 3.8rem;
+      margin-top: 4rem;
     }
   }
 </style>
