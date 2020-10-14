@@ -23,12 +23,14 @@
   @supports (scroll-snap-type: y mandatory) {
     ul {
       scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-      height: 100%;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      width: 100vw;
       height: 100vh;
-      height: -moz-available;
-      height: -webkit-fill-available;
-      height: fill-available;
+      :global( li ){
+        scroll-snap-align: start;
+      }
     }
   }
 </style>
