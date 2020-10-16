@@ -32,8 +32,16 @@
   .headline {
     text-align: center;
   }
+  .left {
+    padding-right: 0.2rem;
+  }
   .right {
     text-align: right;
+    padding-left: 0.2em;
+  }
+  .headline {
+    padding-left: 0;
+    padding-right: 0;
   }
 </style>
 
