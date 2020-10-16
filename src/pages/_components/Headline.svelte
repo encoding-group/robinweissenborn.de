@@ -1,6 +1,6 @@
 <style type="text/scss">
     .headline {
-        padding: 1.5rem 25%;
+        padding: 1.5rem 30%;
         text-align: center;
         width: 100%;
         @media only screen and (min-width: 600px) {

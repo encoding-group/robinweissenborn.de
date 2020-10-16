@@ -19,6 +19,7 @@
       pointer-events: auto;
       flex: 0 0 auto;
       padding: 1.5rem;
+      max-width: 30vw;
     }
     &.center {
       > div {
