@@ -13,7 +13,15 @@ function makeUrl(data) {
 function apiLinks(baseUrl) {
   return axios.get(baseUrl).then((response) => {
     const links = response.data.map((post) => {
-      return makeUrl(post);
+      return {
+        loc: post.link.replace(/api\.robinweissenborn/, "robinweissenborn"),
+        changefreq: "monthly",
+        priority: "0.5",
+        "image:image": {
+          "image:loc": post.acf.title_image.url,
+          "image:title": post.acf.title_image.name,
+        },
+      };
     });
     return links;
   });
@@ -27,7 +35,7 @@ async function data() {
     makeUrl({ link: "https://robinweissenborn.de/imprint" }),
     makeUrl({ link: "https://robinweissenborn.de/archive" }),
     ...(await apiLinks(
-      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?_fields=link,acf.title_image.url"
+      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?_fields=link,acf.title_image.url,acf.title_image.name&per_page=100"
     )),
   ];
 
