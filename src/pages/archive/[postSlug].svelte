@@ -20,11 +20,6 @@
       .then((json) => {
         data = processPost(json[0]);
         $ready();
-        return { data };
-      })
-      .catch((error) => {
-        console.log(error);
-        return { statusCode: 500, msg: error.message };
       });
   }
 
@@ -45,7 +40,7 @@
         height: 100vh;
         overflow-y: scroll;
         scroll-behavior: smooth;
-        :global( section ) {
+        :global(section) {
           scroll-snap-align: start;
         }
       }
@@ -89,12 +84,15 @@
 
 <Navigation center={true}>
   {#if data}
-    <h1><a href="#project-info" title="Scroll down to project info">{data.title}</a></h1>
+    <h1>
+      <a
+        href="#project-info"
+        title="Scroll down to project info">{data.title}</a>
+    </h1>
   {/if}
 </Navigation>
 
 {#if data}
-
   <main>
     {#each data.galleryGrid as gallery}
       <Gallery {gallery} />
