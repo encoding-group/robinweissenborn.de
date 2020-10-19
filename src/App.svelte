@@ -26,23 +26,23 @@
 
   $: if (metaData) {
     const jsonLdNode = document.createElement("script");
-    jsonLdNode.setAttribute('type', 'application/ld+json');
+    jsonLdNode.setAttribute("type", "application/ld+json");
     jsonLdNode.innerText = getJsonLd(metaData);
     removeJsonLdBlockIfExists();
     document.head.appendChild(jsonLdNode);
 
     // metatags.title = "Robin Weißenborn";
     metatags.author = `${metaData.acf.contact.first_name}`;
-    if( metaData.acf["website-metadata"].description ){
+    if (metaData.acf["website-metadata"].description) {
       metatags["description"] = metaData.acf["website-metadata"].description;
     }
-    if( metaData.acf["website-metadata"].keywords ){
+    if (metaData.acf["website-metadata"].keywords) {
       metatags["keywords"] = metaData.acf["website-metadata"].keywords;
     }
     metatags.generator = "encoding.group";
     metatags["geo.region"] = "DE";
 
-    if( metaData.acf["website-metadata"].image ){
+    if (metaData.acf["website-metadata"].image) {
       metatags["og:image"] = metaData.acf["website-metadata"].image;
     }
     metatags["og:type"] = "website";

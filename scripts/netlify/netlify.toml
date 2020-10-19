@@ -10,14 +10,6 @@ from = "/*"
 status = 200
 to = "/.netlify/functions/ssr"
 
-# As suggested at https://github.com/netlify-labs/netlify-plugin-sitemap
-[[plugins]]
-package = "@netlify/plugin-sitemap"
-
-[plugins.inputs]
-changeFreq = "monthly"
-priority = 0.5
-
 # SPA only
 # from = "/*"
 # to = "/__app.html"
