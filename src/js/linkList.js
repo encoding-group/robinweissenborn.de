@@ -52,7 +52,7 @@ async function data() {
 export default function linkList({ distDir }) {
   return {
     name: "LinkList",
-    async buildStart(options) {
+    async buildEnd() {
       fs.writeFile(distDir + "/sitemap.xml", await data(), function (err) {
         if (err) throw err;
         console.log("Created Sitemap.");
