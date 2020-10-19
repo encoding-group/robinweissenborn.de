@@ -12,7 +12,7 @@ to = "/.netlify/functions/ssr"
 
 # As suggested at https://github.com/netlify-labs/netlify-plugin-sitemap
 [[plugins]]
-package = "plugin-sitemap"
+package = "@netlify/plugin-sitemap"
 
 [plugins.inputs]
 changeFreq = "monthly"
