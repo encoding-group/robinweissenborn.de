@@ -94,9 +94,11 @@
 
 {#if data}
   <main>
-    {#each data.galleryGrid as gallery}
-      <Gallery {gallery} />
-    {/each}
+    {#if data.galleryGrid}
+      {#each data.galleryGrid as gallery}
+        <Gallery {gallery} />
+      {/each}
+    {/if}
 
     <section class="info" id="project-info">
       <div class="panels">
