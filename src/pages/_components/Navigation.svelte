@@ -15,6 +15,8 @@
     justify-content: space-between;
     width: 100vw;
     pointer-events: none;
+    color: #fff;
+    mix-blend-mode: difference;
     > div {
       pointer-events: auto;
       flex: 0 0 auto;
