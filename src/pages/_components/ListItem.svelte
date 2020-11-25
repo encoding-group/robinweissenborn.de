@@ -49,7 +49,7 @@
 </style>
 
 <li class:hover>
-  <a href={$url('../:slug', { slug: post.slug })} >
+  <a href={$url('/portfolio/:slug', { slug: post.slug })} >
     <p class="col year">{post.year}</p>
 
     <div class="col bubble"><span /></div>

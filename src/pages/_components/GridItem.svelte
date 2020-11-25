@@ -48,7 +48,7 @@
 </style>
 
 <li style="background-color:{post.color}" class:frameless={post.isFrameless}>
-  <a href={$url('../:post', { post: post.slug })}
+  <a href={$url('/portfolio/:slug', { slug: post.slug })}
     on:mouseenter={() => hoverEvent(true)}
     on:mouseleave={() => hoverEvent(false)}>
     <figure>

@@ -28,7 +28,7 @@
 </style>
 
 <li class="post">
-  <a title="{post.title}" href={$url('../archive/:post', { post: post.slug })}>
+  <a title="{post.title}" href={$url('/portfolio/:post', { post: post.slug })}>
     <Headline>
       <h3>{post.title}</h3>
     </Headline>
