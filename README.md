@@ -162,8 +162,8 @@ const info = await getPage("info");
 - `/` home
 - `/info` info
 - `/imprint` imprint
-- `/archive` posts (not actually a worpress page)
-- `/archive/my-first-post` single post
+- `/portfolio` posts (not actually a worpress page)
+- `/portfolio/my-first-post` single post
 
 ## routify-starter
 
