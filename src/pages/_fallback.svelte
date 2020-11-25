@@ -1,4 +1,5 @@
 <script>
+   import Navigation from "./_components/Navigation.svelte";
     import { url } from '@sveltech/routify'
 </script>
 
@@ -7,6 +8,8 @@
     margin: 4rem 1.5rem;
   }
 </style>
+
+<Navigation />
 
 <main>
   <h2>404. Page not found</h2>

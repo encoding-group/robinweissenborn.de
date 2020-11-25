@@ -37,9 +37,9 @@
 
   <div class="right">
     {#if $isActive('/archive/index', true)}
-      <a title="Homepage" href={$url('/')}>Back</a>
+      <!-- <a title="Homepage" href={$url('/')}>Back</a> -->
     {:else}
-      <a title="Archive" href={$url('/archive')}>Archive</a>
+      <a title="Index" href={$url('/')}>Index</a>
     {/if}
   </div>
 
