@@ -54,7 +54,11 @@
     display: flex;
     flex-direction: column;
     .panels {
-      flex: 1;
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 97%;
+      height: 97%;
+      min-height: 30%;
       display: flex;
       section {
         animation: fadein 1s;

@@ -5,6 +5,9 @@
 <style type="text/scss">
   nav {
     display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 3%;
     z-index: 100;
     background-color: $black;
     border-bottom: $border;
