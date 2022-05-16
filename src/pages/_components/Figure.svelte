@@ -1,6 +1,9 @@
 <script>
-  export let image;
+  export let slide;
+
   import Image from "./Image.svelte";
+
+  console.log('gallery slide', slide);
 </script>
 
 <style lang="scss">
@@ -32,11 +35,11 @@
 </style>
 
 <figure>
-  {#if typeof image === 'object'}
-    <Image {image} />
+  {#if slide.type === 'Image'}
+    <Image image={slide.media} />
   {:else}
-    <div class="video">
-      {@html image}
+    <div class="video" data-type={slide.type}>
+      {@html slide.media}
     </div>
   {/if}
 </figure>

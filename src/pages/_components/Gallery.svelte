@@ -94,11 +94,11 @@
 
   <div class="swipe" bind:this={container}>
     <div class="swipe-wrap">
-      {#each gallery.media as column, key}
-        {#if column.media}
+      {#each gallery.media as slide, key}
+        {#if slide.media}
           <div>
 
-            <Figure image={column.media} />
+            <Figure {slide} />
 
             <div class="nav-panels">
               {#if key > 0}

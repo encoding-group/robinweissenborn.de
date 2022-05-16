@@ -165,13 +165,21 @@ function processProductFields(postData) {
 }
 
 function processGallerySlide( slide ){
-  return {
-    type: slide.select,
-    media:
-      slide.select === "Image"
-        ? processImage(slide.image)
-        : slide.embedded_media,
-  };
+  
+  let type = slide.select;
+  let media;
+
+  if( type === 'Image' ){
+    media = processImage(slide.image);
+  } else if ( type === 'Video URL' ){
+    media = slide.embedded_media;
+  } else if ( type === 'HTML' ){
+    media = slide.html;
+  } else {
+    type = undefined;
+  }
+
+  return { type, media };
 }
 
 function processGalleryRow( row ){
