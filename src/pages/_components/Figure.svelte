@@ -10,7 +10,7 @@
   {#if slide.type === 'Image'}
     <Image image={slide.media} />
   {:else}
-    <div class="video" data-type={slide.type} style="width:{height*0.5625}px;">
+    <div class="video" data-type={slide.type} style="width:{height*1.77}px;">
       {@html slide.media}
     </div>
   {/if}
@@ -25,6 +25,9 @@
     pointer-events: none;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     :global(img) {
       height: 100%;
