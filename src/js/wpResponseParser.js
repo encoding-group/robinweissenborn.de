@@ -164,6 +164,23 @@ function processProductFields(postData) {
   return { isProduct: false };
 }
 
+function processGallerySlide( slide ){
+  return {
+    type: slide.select,
+    media:
+      slide.select === "Image"
+        ? processImage(slide.image)
+        : slide.embedded_media,
+  };
+}
+
+function processGalleryRow( row ){
+  return {
+    headline: row.headline,
+    media: row.media.map( processGallerySlide ),
+  };
+}
+
 function processGalleryGrid(postData) {
   if (!postData.acf.hasOwnProperty("2d_gallery")) {
     return {};
@@ -172,20 +189,7 @@ function processGalleryGrid(postData) {
     return {};
   }
   return {
-    galleryGrid: postData.acf["2d_gallery"].map((row) => {
-      return {
-        headline: row.headline,
-        media: row.media.map((column) => {
-          return {
-            type: column.select,
-            media:
-              column.select === "Image"
-                ? processImage(column.image)
-                : column.embedded_media,
-          };
-        }),
-      };
-    }),
+    galleryGrid: postData.acf["2d_gallery"].map( processGalleryRow ),
   };
 }
 
