@@ -3,8 +3,19 @@
 
   import Image from "./Image.svelte";
 
+  let height;
   console.log('gallery slide', slide);
 </script>
+
+<figure bind:offsetHeight={height}>
+  {#if slide.type === 'Image'}
+    <Image image={slide.media} />
+  {:else}
+    <div class="video" data-type={slide.type} style="width:{height*0.5625}px;">
+      {@html slide.media}
+    </div>
+  {/if}
+</figure>
 
 <style lang="scss">
   figure {
@@ -24,22 +35,16 @@
     }
   }
   .video {
+    min-width: 50vw;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     :global(iframe){
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: all;
     }
   }
 </style>
-
-<figure>
-  {#if slide.type === 'Image'}
-    <Image image={slide.media} />
-  {:else}
-    <div class="video" data-type={slide.type}>
-      {@html slide.media}
-    </div>
-  {/if}
-</figure>
