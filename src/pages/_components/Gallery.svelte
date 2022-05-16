@@ -7,8 +7,6 @@
 
   export let gallery;
 
-  console.log( gallery );
-
   let container;
   let swipeGallery;
 

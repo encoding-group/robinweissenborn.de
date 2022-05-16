@@ -4,7 +4,6 @@
   import Image from "./Image.svelte";
 
   let height;
-  console.log('gallery slide', slide);
 </script>
 
 <figure bind:offsetHeight={height}>
