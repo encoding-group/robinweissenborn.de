@@ -66,9 +66,62 @@
   //     url: "https://robinweissenborn.de", // site.url
   //   });
   // }
+
+  import { serializeSchema } from './utility.js';
+
+  const title = 'Robin Weißenborn';
+  const siteUrl = 'https://robinweissenborn.de';
+  const description = 'Never Ready Congress on the visuality of the internet. HFBK Hamburg 2022.';
+  const keywords = [
+    'never',
+    'ready',
+    'congress',
+    'visuality',
+    'internet',
+    'hfbk',
+    'graphic',
+    'design',
+    'hamburg',
+    'germany',
+    '2022',
+  ];
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    workLocation: {
+      "@type": "PostalAddress",
+      // addressLocality: data.acf["address-1"].city,
+      // postalCode: data.acf["address-1"].zip_code,
+      // streetAddress: data.acf["address-1"].street,
+    },
+    name: 'Robin Weißenborn',
+    alternateName: 'Robin Weissenborn',
+    additionalType: "Artist",
+    // description: data.acf["website-metadata"].description,
+    // about: data.acf["website-metadata"].description,
+    // email: data.acf.contact.email,
+    // image: data.acf["website-metadata"].image,
+    jobTitle: "Graphic Designer",
+    url: siteUrl,
+    keywords,
+  };
+
 </script>
 
 <svelte:head>
+
+  <!-- <meta name="description" content={description}>
+  <meta name="keywords" content={keywords.join(',')}> -->
+
+  <!-- <meta property="og:title" content="{title}" /> -->
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:url" content="{siteUrl}" /> -->
+  <meta property="og:locale" content="de" />
+  <!-- <meta property="og:site_name" content="{title}" />
+  <meta property="og:image" content="{siteUrl}/images/never-ready.jpg" /> -->
+
+  {@html serializeSchema(schema)}
 
   <meta name="author" content="Robin" />
 

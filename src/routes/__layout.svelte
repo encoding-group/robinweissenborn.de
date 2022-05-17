@@ -2,7 +2,7 @@
   
   import "../scss/global.scss";
   import "lazysizes";
-  import { checkExternalLinks } from "$lib/externalLinks.js";
+  import { checkExternalLinks } from "$lib/utility.js";
   import Meta from "$lib/Meta.svelte";
 
 </script>
