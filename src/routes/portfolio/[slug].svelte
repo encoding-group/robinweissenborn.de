@@ -1,25 +1,21 @@
+<script context="module">
+	export async function load({ params, fetch }) {
+    const slug = params.slug;
+		const data = await fetch(`/portfolio/${slug}.json`)
+			.then((response) => response.json())
+		return { props: { data } };
+	}
+</script>
+
 <script>
-  import { processPost } from "../../js/wpResponseParser.js";
 
-  import Navigation from "../_components/Navigation.svelte";
-  import Gallery from "../_components/Gallery.svelte";
-  import Loading from "../_components/Loading.svelte";
-  import Headline from "../_components/Headline.svelte";
-  import Product from "../_components/Product.svelte";
+  import Navigation from "$lib/ui/Navigation.svelte";
+  import Gallery from "$lib/ui/Gallery.svelte";
+  import Loading from "$lib/ui/Loading.svelte";
+  import Headline from "$lib/ui/Headline.svelte";
+  import Product from "$lib/ui/Product.svelte";
 
-  export let postSlug;
-
-  let data;
-  $: getData(postSlug);
-  function getData(slug) {
-    fetch(
-      `https://api.robinweissenborn.de/wp-json/wp/v2/posts?slug=${slug}&_embed=wp:term`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        data = processPost(json[0]);
-      });
-  }
+  export let data;
 
 </script>
 

@@ -1,47 +1,37 @@
-<script>
-	import { processInfo } from "../../js/wpResponseParser.js";
-
-	import Loading from "../_components/Loading.svelte";
-
-	let data = { content: "" };
-	let columns = {};
-	$: getData();
-	function getData() {
-		fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=imprint")
+<script context="module">
+	export async function load({ fetch }) {
+		const data = await fetch(`/info/imprint.json`)
 			.then((response) => response.json())
-			.then((json) => {
-				data = processInfo(json[0]);
-				data.column2 = json[0].acf.column_2;
-				data.column3 = json[0].acf.column_3;
-			})
-			.catch((err) => console.log(err));
+		return { props: { data } };
 	}
+</script>
+
+<script>
+
+	export let data;
+	
 </script>
 
 <svelte:head>
   <title>Impressum | Robin Weißenborn</title>
 </svelte:head>
 
-{#if data}
-	<main>
+<main>
 
-		<section class="col-1">
-			<h1>{data.title}</h1>
-			{@html data.content}
-		</section>
+	<section class="col-1">
+		<h1>{data.title}</h1>
+		{@html data.content}
+	</section>
 
-		<section class="col-2">
-			{@html data.column2}
-		</section>
+	<section class="col-2">
+		{@html data.column2}
+	</section>
 
-		<section class="col-3">
-			{@html data.column3}
-		</section>
+	<section class="col-3">
+		{@html data.column3}
+	</section>
 
-	</main>
-{:else}
-	<Loading />
-{/if}
+</main>
 
 <style lang="scss">
 	section {

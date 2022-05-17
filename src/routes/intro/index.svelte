@@ -1,18 +1,17 @@
+<script context="module">
+	export async function load({ fetch }) {
+		const posts = await fetch(`/intro.json`)
+			.then((response) => response.json())
+		return { props: { posts } };
+	}
+</script>
+
 <script>
-  import { processPosts } from "$lib/wpResponseParser.js";
 
   import TeaserItem from "$lib/ui/TeaserItem.svelte";
-  import Loading from "$lib/ui/Loading.svelte";
 
-  let data;
-  $: getData();
-  function getData() {
-    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/posts?sticky=true&per_page=100")
-      .then((response) => response.json())
-      .then((json) => {
-        data = processPosts(json);
-      });
-  }
+  export let posts;
+
 </script>
 
 <svelte:head>
@@ -20,14 +19,9 @@
 </svelte:head>
 
 <ul>
-  {#if data}
-    <!-- filter featured posts -->
-    {#each data as post}
-      <TeaserItem {post} />
-    {/each}
-  {:else}
-    <Loading />
-  {/if}
+  {#each posts as post}
+    <TeaserItem {post} />
+  {/each}
 </ul>
 
 <style lang="scss">

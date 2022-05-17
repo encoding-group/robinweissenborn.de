@@ -6,10 +6,6 @@ const config = {
   kit: {
     adapter: adapter(),
 
-    files: {
-      assets: "assets",
-    },
-
     vite: {
       css: {
         preprocessorOptions: {

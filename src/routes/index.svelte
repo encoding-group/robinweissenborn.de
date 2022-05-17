@@ -1,8 +1,14 @@
+<script context="module">
+	export async function load({ fetch }) {
+		const posts = await fetch(`/portfolio.json`)
+			.then((response) => response.json())
+		return { props: { posts } };
+	}
+</script>
+
 <script>
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
-
-  import { processPosts } from "$lib/wpResponseParser.js";
 
   import Navigation from "$lib/ui/Navigation.svelte";
   import NavigationArchive from "$lib/ui/NavigationArchive.svelte";
@@ -18,20 +24,11 @@
     panels = window.innerWidth >= 840;
     return panels;
   }
-  panelsLayout();
+  onMount(()=>{
+    panelsLayout();
+  });
 
-  let data;
-  $: getData();
-  function getData() {
-    fetch(
-      "https://api.robinweissenborn.de/wp-json/wp/v2/posts?per_page=100&_embed=wp:term"
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        data = processPosts(json);
-      })
-      .catch((err) => console.log(err));
-  }
+  export let posts;
 
   let hover = false;
   function onItemHover(event) {
@@ -43,7 +40,7 @@
   <title>Robin Weißenborn</title>
 </svelte:head>
 
-<svelte:window on:resize={() => panelsLayout()} />
+<svelte:window on:resize={panelsLayout} />
 
 <main class:panels>
 
@@ -53,9 +50,9 @@
 
     <div class="panels">
       <section>
-        {#if data}
+        {#if posts}
           <ul class="grid">
-            {#each data as post}
+            {#each posts as post}
               <GridItem {post} on:hover={onItemHover} />
             {/each}
           </ul>
@@ -65,9 +62,9 @@
 
       </section>
       <section>
-        {#if data}
+        {#if posts}
           <ul class="list">
-            {#each data as post}
+            {#each posts as post}
               <ListItem {post} hover={hover === post.id} />
             {/each}
           </ul>
@@ -77,11 +74,11 @@
       </section>
     </div>
 
-  {:else if data}
+  {:else if posts}
 
     <Navigation />
     <ul class="mixed">
-      {#each data as post}
+      {#each posts as post}
         <MixedItem {post} />
       {/each}
     </ul>

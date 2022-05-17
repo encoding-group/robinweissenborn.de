@@ -1,23 +1,54 @@
+<script context="module">
+	export async function load({ fetch }) {
+		const data = await fetch(`/info.json`)
+			.then((response) => response.json())
+		return { props: { data } };
+	}
+</script>
+
 <script>
-  import { processInfo } from "../../js/wpResponseParser.js";
 
-  import Loading from "../_components/Loading.svelte";
-  import LocalTime from "../_components/LocalTime.svelte";
+  import LocalTime from "$lib/ui/LocalTime.svelte";
 
-  let data;
-  $: getData();
-  function getData() {
-    fetch("https://api.robinweissenborn.de/wp-json/wp/v2/pages?slug=info")
-      .then((response) => response.json())
-      .then((json) => {
-        data = processInfo(json[0]);
-      });
-  }
+  export let data;
+
 </script>
 
 <svelte:head>
   <title>Info | Robin Weißenborn</title>
 </svelte:head>
+
+<main>
+
+  <section class="contact">
+    <h1>{data.officeName}</h1>
+    <h2>{data.contact.person}</h2>
+    <address>
+      {data['address-1'].street}<br />
+      {data['address-1'].zip}
+      {data['address-1'].city}<br />
+      {data['address-1'].country}
+    </address>
+    <p>
+      <a title="Send me an email" href="mailto:{data.contact.email}">{data.contact.email}</a><br />
+      <a title="Call me" href="tel:{data.contact.tel}">{data.contact.tel}</a>
+    </p>
+    <LocalTime>{data['address-1'].city}</LocalTime>
+  </section>
+
+  <section class="about">
+    <h2>{data.service}</h2>
+    {@html data.content}
+  </section>
+
+  <section class="about">
+    {@html data.info}
+  </section>
+
+</main>
+
+<a title="Imprint" class="imprint" href="/info/imprint">Imprint</a>
+
 
 <style lang="scss">
 	section {
@@ -82,40 +113,3 @@
     }
   }
 </style>
-
-{#if data}
-
-  <main>
-
-    <section class="contact">
-      <h1>{data.officeName}</h1>
-      <h2>{data.contact.person}</h2>
-      <address>
-        {data['address-1'].street}<br />
-        {data['address-1'].zip}
-        {data['address-1'].city}<br />
-        {data['address-1'].country}
-      </address>
-      <p>
-        <a title="Send me an email" href="mailto:{data.contact.email}">{data.contact.email}</a><br />
-        <a title="Call me" href="tel:{data.contact.tel}">{data.contact.tel}</a>
-      </p>
-      <LocalTime>{data['address-1'].city}</LocalTime>
-    </section>
-
-    <section class="about">
-      <h2>{data.service}</h2>
-      {@html data.content}
-    </section>
-
-    <section class="about">
-      {@html data.info}
-    </section>
-
-  </main>
-
-{:else}
-  <Loading />
-{/if}
-
-<a title="Imprint" class="imprint" href="/info/imprint">Imprint</a>
