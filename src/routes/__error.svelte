@@ -6,7 +6,7 @@
 
 <main>
   <h2>404. Page not found</h2>
-  <a href="/">&larr; Go back</a>
+  <a href="/" sveltekit:prefetch>&larr; Go back</a>
 </main>
 
 <style lang="scss">

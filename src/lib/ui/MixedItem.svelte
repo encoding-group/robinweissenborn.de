@@ -24,7 +24,7 @@
 </style>
 
 <li class:hover>
-  <a href="/portfolio/{post.slug}" title="{post.title}"
+  <a href="/portfolio/{post.slug}" title="{post.title}" sveltekit:prefetch
     on:touchstart={() => hover = true}
     on:touchend={() => hover = false}
     on:touchcancel={() => hover = false}

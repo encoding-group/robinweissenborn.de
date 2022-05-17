@@ -27,7 +27,7 @@
 </style>
 
 <li class="post">
-  <a title="{post.title}" href="/portfolio/{post.slug}">
+  <a title="{post.title}" href="/portfolio/{post.slug}" sveltekit:prefetch>
     <Headline>
       <h3>{post.title}</h3>
     </Headline>

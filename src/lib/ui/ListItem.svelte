@@ -7,7 +7,7 @@
 </script>
 
 <li class:hover>
-  <a href="/portfolio/{post.slug}">
+  <a href="/portfolio/{post.slug}" sveltekit:prefetch>
     <p class="col year">{post.year}</p>
 
     <div class="col bubble"><span /></div>

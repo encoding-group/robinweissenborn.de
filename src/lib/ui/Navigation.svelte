@@ -10,9 +10,9 @@
 
   <div class="left">
     {#if $page.url.pathname === '/info'}
-      <a title="Homepage" href="/">Back</a>
+      <a title="Homepage" href="/" sveltekit:prefetch>Back</a>
     {:else}
-      <a title="About" class="logo" href="/info"><span>Robin</span> Weißenborn</a>
+      <a title="About" class="logo" href="/info" sveltekit:prefetch><span>Robin</span> Weißenborn</a>
     {/if}
   </div>
 
@@ -24,9 +24,9 @@
 
   <div class="right">
     {#if $page.url.pathname === '/archive' }
-      <!-- <a title="Homepage" href="/">Back</a> -->
+      <!-- <a title="Homepage" href="/" sveltekit:prefetch>Back</a> -->
     {:else}
-      <a title="Index" href="/">Index</a>
+      <a title="Index" href="/" sveltekit:prefetch>Index</a>
     {/if}
   </div>
 

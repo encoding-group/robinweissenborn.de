@@ -47,7 +47,7 @@
 </style>
 
 <li style="background-color:{post.color}" class:frameless={post.isFrameless}>
-  <a href="/portfolio/{post.slug}"
+  <a href="/portfolio/{post.slug}" sveltekit:prefetch
     on:mouseenter={() => hoverEvent(true)}
     on:mouseleave={() => hoverEvent(false)}
     >

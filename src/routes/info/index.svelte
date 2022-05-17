@@ -47,7 +47,7 @@
 
 </main>
 
-<a title="Imprint" class="imprint" href="/info/imprint">Imprint</a>
+<a title="Imprint" class="imprint" href="/info/imprint" sveltekit:prefetch>Imprint</a>
 
 
 <style lang="scss">

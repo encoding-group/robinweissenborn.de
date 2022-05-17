@@ -1,5 +1,5 @@
 <li class="loading">
-    <img src="/loading.gif" alt="Loading..." />
+    <img src="/img/loading.gif" alt="Loading..." />
 </li>
 
 <style lang="scss">
