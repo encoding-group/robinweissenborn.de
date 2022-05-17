@@ -1,10 +1,18 @@
 <script context="module">
-	export async function load({ params, fetch }) {
+  
+  import { config } from '$lib/config.js';
+  import { processPost } from '$lib/wpResponseParser.js';
+	
+  export async function load({ params, fetch }) {
     const slug = params.slug;
-		const data = await fetch(`/portfolio/${slug}.json`)
-			.then((response) => response.json())
+		const data = await fetch(`${config.api}/posts?slug=${slug}&_embed=wp:term`)
+      .then((response) => response.json())
+      .then((json) => {
+        return processPost(json[0]);
+      });
 		return { props: { data } };
 	}
+  
 </script>
 
 <script>
