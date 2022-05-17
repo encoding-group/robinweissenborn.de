@@ -1,5 +1,5 @@
 <script>
-   import Navigation from "./_components/Navigation.svelte";
+   import Navigation from "$lib/ui/Navigation.svelte";
     import { url } from '@sveltech/routify'
 </script>
 

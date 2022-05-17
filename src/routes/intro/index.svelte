@@ -1,9 +1,9 @@
 <script>
   import { metatags, ready } from "@sveltech/routify";
-  import { processPosts } from "../js/wpResponseParser.js";
+  import { processPosts } from "$lib/wpResponseParser.js";
 
-  import TeaserItem from "./_components/TeaserItem.svelte";
-  import Loading from "./_components/Loading.svelte";
+  import TeaserItem from "$lib/ui/TeaserItem.svelte";
+  import Loading from "$lib/ui/Loading.svelte";
 
   metatags.title = "Robin Weißenborn";
 

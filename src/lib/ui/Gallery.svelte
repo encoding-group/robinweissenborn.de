@@ -72,12 +72,12 @@
       &.prev {
         left: 0;
         cursor: w-resize;
-        cursor: url('../arrow-prev.png') 2 24, w-resize;
+        cursor: url('/assets/arrow-prev.png') 2 24, w-resize;
       }
       &.next {
         left: 50%;
         cursor: e-resize;
-        cursor: url('../arrow-next.png') 22 24, e-resize;
+        cursor: url('/assets/arrow-next.png') 22 24, e-resize;
       }
     }
   }

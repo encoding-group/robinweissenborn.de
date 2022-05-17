@@ -2,7 +2,7 @@
   import { Router } from "@sveltech/routify";
   import { metatags, ready } from "@sveltech/routify";
   import { routes } from "../.routify/routes";
-  import { checkExternalLinks } from "./js/externalLinks.js";
+  import { checkExternalLinks } from "$lib/externalLinks.js";
 
   import "lazysizes";
 

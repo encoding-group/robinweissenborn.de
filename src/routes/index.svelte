@@ -3,16 +3,16 @@
   import { onDestroy } from "svelte";
 
   import { metatags, url, ready } from "@sveltech/routify";
-  import { processPosts } from "../js/wpResponseParser.js";
+  import { processPosts } from "$lib/wpResponseParser.js";
 
-  import Navigation from "./_components/Navigation.svelte";
-  import NavigationArchive from "./_components/NavigationArchive.svelte";
+  import Navigation from "$lib/ui/Navigation.svelte";
+  import NavigationArchive from "$lib/ui/NavigationArchive.svelte";
 
-  import Loading from "./_components/Loading.svelte";
+  import Loading from "$lib/ui/Loading.svelte";
 
-  import GridItem from "./_components/GridItem.svelte";
-  import ListItem from "./_components/ListItem.svelte";
-  import MixedItem from "./_components/MixedItem.svelte";
+  import GridItem from "$lib/ui/GridItem.svelte";
+  import ListItem from "$lib/ui/ListItem.svelte";
+  import MixedItem from "$lib/ui/MixedItem.svelte";
 
   metatags.title = "Robin Weißenborn";
 
