@@ -67,3 +67,9 @@
   //   });
   // }
 </script>
+
+<svelte:head>
+
+  <meta name="author" content="Robin" />
+
+</svelte:head>
