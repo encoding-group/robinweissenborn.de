@@ -19,7 +19,18 @@
   }
 </script>
 
-<style type="text/scss">
+<ul>
+  {#if data}
+    <!-- filter featured posts -->
+    {#each data as post}
+      <TeaserItem {post} />
+    {/each}
+  {:else}
+    <Loading />
+  {/if}
+</ul>
+
+<style lang="scss">
   @media (hover: hover) and (pointer: fine) {
     @supports (scroll-snap-type: y mandatory) {
       ul {
@@ -36,14 +47,3 @@
     }
   }
 </style>
-
-<ul>
-  {#if data}
-    <!-- filter featured posts -->
-    {#each data as post}
-      <TeaserItem {post} />
-    {/each}
-  {:else}
-    <Loading />
-  {/if}
-</ul>

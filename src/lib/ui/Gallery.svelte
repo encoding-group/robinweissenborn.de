@@ -29,6 +29,41 @@
   });
 </script>
 
+<section class="gallery" class:first class:last>
+
+  <div class="swipe" bind:this={container}>
+    <div class="swipe-wrap">
+      {#each gallery.media as slide, key}
+        {#if slide.media}
+          <div>
+
+            <Figure {slide} />
+
+            <div class="nav-panels">
+              {#if key > 0}
+                <button title="Previous slide" class="prev" on:click={swipeGallery.prev} />
+              {/if}
+              {#if key + 1 < gallery.media.length}
+                <button title="Next slide" class="next" on:click={swipeGallery.next} />
+              {/if}
+            </div>
+
+          </div>
+        {/if}
+      {/each}
+    </div>
+  </div>
+
+  <div class="headline">
+    <h3>{gallery.headline}</h3>
+    {#if gallery.media.length > 1}
+      <p>{gi}/{gallery.media.length}</p>
+    {/if}
+  </div>
+
+</section>
+
+
 <style lang="scss">
   section.gallery {
     height: 100vh;
@@ -87,37 +122,3 @@
     text-align: center;
   }
 </style>
-
-<section class="gallery" class:first class:last>
-
-  <div class="swipe" bind:this={container}>
-    <div class="swipe-wrap">
-      {#each gallery.media as slide, key}
-        {#if slide.media}
-          <div>
-
-            <Figure {slide} />
-
-            <div class="nav-panels">
-              {#if key > 0}
-                <button title="Previous slide" class="prev" on:click={swipeGallery.prev} />
-              {/if}
-              {#if key + 1 < gallery.media.length}
-                <button title="Next slide" class="next" on:click={swipeGallery.next} />
-              {/if}
-            </div>
-
-          </div>
-        {/if}
-      {/each}
-    </div>
-  </div>
-
-  <div class="headline">
-    <h3>{gallery.headline}</h3>
-    {#if gallery.media.length > 1}
-      <p>{gi}/{gallery.media.length}</p>
-    {/if}
-  </div>
-
-</section>

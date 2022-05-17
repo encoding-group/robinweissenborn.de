@@ -19,7 +19,7 @@
   }
 </script>
 
-<style type="text/scss">
+<style lang="scss">
 	section {
 		h1,
 		p,

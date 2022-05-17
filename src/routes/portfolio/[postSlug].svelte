@@ -28,7 +28,7 @@
   }
 </script>
 
-<style type="text/scss">
+<style lang="scss">
   @media (hover: hover) and (pointer: fine) {
     @supports (scroll-snap-type: y mandatory) {
       main {

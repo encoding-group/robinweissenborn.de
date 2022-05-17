@@ -1,4 +1,8 @@
-<style type="text/scss">
+<div class="headline">
+    <slot></slot>
+</div>
+
+<style lang="scss">
     .headline {
         padding: 1.5rem 30%;
         text-align: center;
@@ -8,7 +12,3 @@
         }
     }
 </style>
-
-<div class="headline">
-    <slot></slot>
-</div>

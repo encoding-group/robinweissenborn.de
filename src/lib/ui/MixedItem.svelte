@@ -8,7 +8,7 @@
   let hover = false;
 </script>
 
-<style type="text/scss">
+<style lang="scss">
   li {
     .info {
       padding: 0.25rem 1.25rem 2rem;

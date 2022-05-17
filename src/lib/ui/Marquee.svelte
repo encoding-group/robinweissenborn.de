@@ -27,7 +27,7 @@
 
 </script>
 
-<style>
+<style lang="scss">
 	.outer {
 		position: relative;
 		overflow: hidden;

@@ -1,4 +1,4 @@
-<style type="text/scss">
+<style lang="scss">
 .loading {
     width: 100%;
     height: 100vh;

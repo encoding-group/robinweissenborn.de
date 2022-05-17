@@ -7,7 +7,7 @@
   export let post = [];
 </script>
 
-<style type="text/scss">
+<style lang="scss">
   li {
     animation: fadein 1s;
     height: 100vh;

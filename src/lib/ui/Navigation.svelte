@@ -5,7 +5,33 @@
 
 </script>
 
-<style type="text/scss">
+<nav class:center>
+
+  <div class="left">
+    {#if $isActive('/info')}
+      <a title="Homepage" href={$url('/')}>Back</a>
+    {:else}
+      <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
+    {/if}
+  </div>
+
+  {#if center}
+    <div class="headline">
+      <slot></slot>
+    </div>
+  {/if}
+
+  <div class="right">
+    {#if $isActive('/archive/index', true)}
+      <!-- <a title="Homepage" href={$url('/')}>Back</a> -->
+    {:else}
+      <a title="Index" href={$url('/')}>Index</a>
+    {/if}
+  </div>
+
+</nav>
+
+<style lang="scss">
   nav {
     animation: fadein 1s;
     position: fixed;
@@ -46,29 +72,3 @@
     padding-right: 0;
   }
 </style>
-
-<nav class:center>
-
-  <div class="left">
-    {#if $isActive('/info')}
-      <a title="Homepage" href={$url('/')}>Back</a>
-    {:else}
-      <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
-    {/if}
-  </div>
-
-  {#if center}
-    <div class="headline">
-      <slot></slot>
-    </div>
-  {/if}
-
-  <div class="right">
-    {#if $isActive('/archive/index', true)}
-      <!-- <a title="Homepage" href={$url('/')}>Back</a> -->
-    {:else}
-      <a title="Index" href={$url('/')}>Index</a>
-    {/if}
-  </div>
-
-</nav>

@@ -18,26 +18,6 @@
 	});
 </script>
 
-<style>
-  div {
-    text-align: center;
-    margin: 1.5em 0;
-    display: inline-block;
-  }
-  p {
-    margin-top: 0.5em;
-  }
-	svg {
-		width: 40px;
-		height: 40px;
-	}
-	circle, line {
-		stroke: #fff;
-		fill: none;
-		stroke-width: 5px;
-	}
-</style>
-
 <div>
 
   <svg viewBox='-110 -110 220 220'>
@@ -62,3 +42,23 @@
   <p><slot /></p>
 
 </div>
+
+<style lang="scss">
+  div {
+    text-align: center;
+    margin: 1.5em 0;
+    display: inline-block;
+  }
+  p {
+    margin-top: 0.5em;
+  }
+	svg {
+		width: 40px;
+		height: 40px;
+	}
+	circle, line {
+		stroke: #fff;
+		fill: none;
+		stroke-width: 5px;
+	}
+</style>

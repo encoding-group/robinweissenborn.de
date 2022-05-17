@@ -16,15 +16,6 @@
 
 </script>
 
-<style type="text/scss">
-  .price {
-    margin: 1rem 0;
-  }
-  a {
-    border-bottom: $border;
-  }
-</style>
-
 <div>
   {#if 'productInfo' in post}
     <p class="info">{post.productInfo}</p>
@@ -32,3 +23,12 @@
   <p class="price">Price: {post.price || '0'} € + shipping</p>
   <a title="Order via E-Mail" href="mailto:{to}?subject={encode(subject)}&body={encode(text)}">Order via E-Mail</a>
 </div>
+
+<style lang="scss">
+  .price {
+    margin: 1rem 0;
+  }
+  a {
+    border-bottom: $border;
+  }
+</style>

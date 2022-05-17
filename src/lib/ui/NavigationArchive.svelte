@@ -2,7 +2,7 @@
   import { isActive, url } from "@sveltech/routify";
 </script>
 
-<style type="text/scss">
+<style lang="scss">
   nav {
     display: flex;
     flex-shrink: 0;

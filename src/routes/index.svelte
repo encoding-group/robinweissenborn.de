@@ -43,7 +43,7 @@
   }
 </script>
 
-<style type="text/scss">
+<style lang="scss">
   main {
     width: 100vw;
   }

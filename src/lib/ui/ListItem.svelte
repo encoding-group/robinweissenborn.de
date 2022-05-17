@@ -7,7 +7,28 @@
   export let hover = false;
 </script>
 
-<style type="text/scss">
+<li class:hover>
+  <a href={$url('/portfolio/:slug', { slug: post.slug })} >
+    <p class="col year">{post.year}</p>
+
+    <div class="col bubble"><span /></div>
+
+    <h3 class="col title">
+      <Marquee text={post.title} />
+    </h3>
+
+    <p class="col client">
+      <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
+    </p>
+
+    <p class="col discipline">
+      <Marquee
+        text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
+    </p>
+  </a>
+</li>
+
+<style lang="scss">
   .bubble span {
     width: 0.8em;
     height: 0.8em;
@@ -47,24 +68,3 @@
     }
   }
 </style>
-
-<li class:hover>
-  <a href={$url('/portfolio/:slug', { slug: post.slug })} >
-    <p class="col year">{post.year}</p>
-
-    <div class="col bubble"><span /></div>
-
-    <h3 class="col title">
-      <Marquee text={post.title} />
-    </h3>
-
-    <p class="col client">
-      <Marquee text={post.client.length > 0 ? post.client.join(', ') : '—'} />
-    </p>
-
-    <p class="col discipline">
-      <Marquee
-        text={post.discipline.length > 0 ? post.discipline.join(', ') : '—'} />
-    </p>
-  </a>
-</li>

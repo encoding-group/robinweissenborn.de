@@ -22,7 +22,28 @@
 	}
 </script>
 
-<style type="text/scss">
+{#if data}
+	<main>
+
+		<section class="col-1">
+			<h1>{data.title}</h1>
+			{@html data.content}
+		</section>
+
+		<section class="col-2">
+			{@html data.column2}
+		</section>
+
+		<section class="col-3">
+			{@html data.column3}
+		</section>
+
+	</main>
+{:else}
+	<Loading />
+{/if}
+
+<style lang="scss">
 	section {
 		:global(h1) {
 			margin-bottom: 1em;
@@ -80,24 +101,3 @@
 		}
 	}
 </style>
-
-{#if data}
-	<main>
-
-		<section class="col-1">
-			<h1>{data.title}</h1>
-			{@html data.content}
-		</section>
-
-		<section class="col-2">
-			{@html data.column2}
-		</section>
-
-		<section class="col-3">
-			{@html data.column3}
-		</section>
-
-	</main>
-{:else}
-	<Loading />
-{/if}
