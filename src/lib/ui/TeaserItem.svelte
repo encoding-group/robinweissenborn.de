@@ -1,5 +1,4 @@
 <script>
-  import { url } from "@sveltech/routify";
 
   import Headline from "./Headline.svelte";
   import Figure from "./Figure.svelte";
@@ -28,7 +27,7 @@
 </style>
 
 <li class="post">
-  <a title="{post.title}" href={$url('/portfolio/:post', { post: post.slug })}>
+  <a title="{post.title}" href="/portfolio/{post.slug}">
     <Headline>
       <h3>{post.title}</h3>
     </Headline>

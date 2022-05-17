@@ -7,7 +7,6 @@
       .then((response) => response.json())
       .then((json) => {
         metaData = json[0];
-        $ready();
       });
   }
 

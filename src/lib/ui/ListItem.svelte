@@ -1,5 +1,4 @@
 <script>
-  import { url } from "@sveltech/routify";
   import Marquee from "./Marquee.svelte";
 
   export let post = {};
@@ -8,7 +7,7 @@
 </script>
 
 <li class:hover>
-  <a href={$url('/portfolio/:slug', { slug: post.slug })} >
+  <a href="/portfolio/{post.slug}">
     <p class="col year">{post.year}</p>
 
     <div class="col bubble"><span /></div>

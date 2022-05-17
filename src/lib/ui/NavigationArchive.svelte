@@ -1,5 +1,5 @@
 <script>
-  import { isActive, url } from "@sveltech/routify";
+  import { page } from '$app/stores';
 </script>
 
 <style lang="scss">
@@ -31,18 +31,18 @@
 <nav>
 
   <div class="left">
-    {#if $isActive('/info')}
-      <a title="Homepage" href={$url('/')}>Back</a>
+    {#if $page.url.pathname === '/info'}
+      <a title="Homepage" href="/">Back</a>
     {:else}
-      <a title="About" class="logo" href={$url('/info')}><span>Robin</span> Weißenborn</a>
+      <a title="About" class="logo" href="/info"><span>Robin</span> Weißenborn</a>
     {/if}
   </div>
 
   <div class="right">
-    {#if $isActive('/archive/index', true)}
-      <!-- <a title="Homepage" href={$url('/')}>Back</a> -->
+    {#if $page.url.pathname === '/archive'}
+      <!-- <a title="Homepage" href="/">Back</a> -->
     {:else}
-      <a title="Index" href={$url('/')}>Index</a>
+      <a title="Index" href="/">Index</a>
     {/if}
   </div>
 

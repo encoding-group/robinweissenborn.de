@@ -1,5 +1,4 @@
 <script>
-  import { url } from "@sveltech/routify";
   import { createEventDispatcher } from "svelte";
 
   import Image from "./Image.svelte";
@@ -48,9 +47,10 @@
 </style>
 
 <li style="background-color:{post.color}" class:frameless={post.isFrameless}>
-  <a href={$url('/portfolio/:slug', { slug: post.slug })}
+  <a href="/portfolio/{post.slug}"
     on:mouseenter={() => hoverEvent(true)}
-    on:mouseleave={() => hoverEvent(false)}>
+    on:mouseleave={() => hoverEvent(false)}
+    >
     <figure>
       {#if post.secondaryTitleImage}
         <Image hide={hover} image={post.titleImage} />

@@ -1,11 +1,8 @@
 <script>
-  import { metatags, ready } from "@sveltech/routify";
   import { processPosts } from "$lib/wpResponseParser.js";
 
   import TeaserItem from "$lib/ui/TeaserItem.svelte";
   import Loading from "$lib/ui/Loading.svelte";
-
-  metatags.title = "Robin Weißenborn";
 
   let data;
   $: getData();
@@ -14,10 +11,13 @@
       .then((response) => response.json())
       .then((json) => {
         data = processPosts(json);
-        $ready();
       });
   }
 </script>
+
+<svelte:head>
+  <title>Robin Weißenborn</title>
+</svelte:head>
 
 <ul>
   {#if data}

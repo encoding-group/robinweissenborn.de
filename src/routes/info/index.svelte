@@ -1,11 +1,8 @@
 <script>
-  import { url, metatags, ready } from "@sveltech/routify";
   import { processInfo } from "../../js/wpResponseParser.js";
 
   import Loading from "../_components/Loading.svelte";
   import LocalTime from "../_components/LocalTime.svelte";
-
-  metatags.title = "Info | Robin Weißenborn";
 
   let data;
   $: getData();
@@ -14,10 +11,13 @@
       .then((response) => response.json())
       .then((json) => {
         data = processInfo(json[0]);
-        $ready();
       });
   }
 </script>
+
+<svelte:head>
+  <title>Info | Robin Weißenborn</title>
+</svelte:head>
 
 <style lang="scss">
 	section {
@@ -118,4 +118,4 @@
   <Loading />
 {/if}
 
-<a title="Imprint" class="imprint" href={$url('/info/imprint')}>Imprint</a>
+<a title="Imprint" class="imprint" href="/info/imprint">Imprint</a>

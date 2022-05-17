@@ -1,5 +1,4 @@
 <script>
-  import { url } from "@sveltech/routify";
 
   import Image from "./Image.svelte";
   import Marquee from "./Marquee.svelte";
@@ -25,7 +24,7 @@
 </style>
 
 <li class:hover>
-  <a href={$url('/portfolio/:slug', { slug: post.slug })} title="{post.title}"
+  <a href="/portfolio/{post.slug}" title="{post.title}"
     on:touchstart={() => hover = true}
     on:touchend={() => hover = false}
     on:touchcancel={() => hover = false}

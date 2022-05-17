@@ -1,10 +1,7 @@
 <script>
-	import { metatags, ready } from "@sveltech/routify";
 	import { processInfo } from "../../js/wpResponseParser.js";
 
 	import Loading from "../_components/Loading.svelte";
-
-	metatags.title = "Imprint | Robin Weißenborn";
 
 	let data = { content: "" };
 	let columns = {};
@@ -16,11 +13,14 @@
 				data = processInfo(json[0]);
 				data.column2 = json[0].acf.column_2;
 				data.column3 = json[0].acf.column_3;
-				$ready();
 			})
 			.catch((err) => console.log(err));
 	}
 </script>
+
+<svelte:head>
+  <title>Impressum | Robin Weißenborn</title>
+</svelte:head>
 
 {#if data}
 	<main>

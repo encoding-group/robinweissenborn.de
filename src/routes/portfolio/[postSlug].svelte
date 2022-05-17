@@ -1,5 +1,4 @@
 <script>
-  import { metatags, params, ready } from "@sveltech/routify";
   import { processPost } from "../../js/wpResponseParser.js";
 
   import Navigation from "../_components/Navigation.svelte";
@@ -19,14 +18,14 @@
       .then((response) => response.json())
       .then((json) => {
         data = processPost(json[0]);
-        $ready();
       });
   }
 
-  $: if (data) {
-    metatags.title = `${data.title} | Robin Weißenborn`;
-  }
 </script>
+
+<svelte:head>
+  <title>{data.title} | Robin Weißenborn</title>
+</svelte:head>
 
 <style lang="scss">
   @media (hover: hover) and (pointer: fine) {

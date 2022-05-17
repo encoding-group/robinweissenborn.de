@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
 
-  import { metatags, url, ready } from "@sveltech/routify";
   import { processPosts } from "$lib/wpResponseParser.js";
 
   import Navigation from "$lib/ui/Navigation.svelte";
@@ -13,8 +12,6 @@
   import GridItem from "$lib/ui/GridItem.svelte";
   import ListItem from "$lib/ui/ListItem.svelte";
   import MixedItem from "$lib/ui/MixedItem.svelte";
-
-  metatags.title = "Robin Weißenborn";
 
   let panels = false;
   function panelsLayout() {
@@ -32,7 +29,6 @@
       .then((response) => response.json())
       .then((json) => {
         data = processPosts(json);
-        $ready();
       })
       .catch((err) => console.log(err));
   }
@@ -43,46 +39,9 @@
   }
 </script>
 
-<style lang="scss">
-  main {
-    width: 100vw;
-  }
-  main.panels {
-    height: 100vh;
-    position: fixed;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    .panels {
-      flex-shrink: 1;
-      flex-grow: 1;
-      flex-basis: 97%;
-      height: 97%;
-      min-height: 30%;
-      display: flex;
-      section {
-        animation: fadein 1s;
-        flex: 1 1 50%;
-        height: 100%;
-        overflow-y: auto;
-        &:first-child {
-          border-right: $border;
-        }
-      }
-    }
-  }
-  ul {
-    -webkit-user-select: none;
-    user-select: none;
-    &.grid {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    &.mixed {
-      margin-top: 4rem;
-    }
-  }
-</style>
+<svelte:head>
+  <title>Robin Weißenborn</title>
+</svelte:head>
 
 <svelte:window on:resize={() => panelsLayout()} />
 
@@ -132,3 +91,44 @@
   {/if}
 
 </main>
+
+<style lang="scss">
+  main {
+    width: 100vw;
+  }
+  main.panels {
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .panels {
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 97%;
+      height: 97%;
+      min-height: 30%;
+      display: flex;
+      section {
+        animation: fadein 1s;
+        flex: 1 1 50%;
+        height: 100%;
+        overflow-y: auto;
+        &:first-child {
+          border-right: $border;
+        }
+      }
+    }
+  }
+  ul {
+    -webkit-user-select: none;
+    user-select: none;
+    &.grid {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &.mixed {
+      margin-top: 4rem;
+    }
+  }
+</style>
