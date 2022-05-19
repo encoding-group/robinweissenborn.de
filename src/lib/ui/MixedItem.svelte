@@ -33,9 +33,6 @@
 
 <li class:hover bind:this={element}>
   <a href="/portfolio/{post.slug}" title="{post.title}" sveltekit:prefetch
-    on:touchstart={() => hover = true}
-    on:touchend={() => hover = false}
-    on:touchcancel={() => hover = false}
     on:mouseenter={() => hover = true}
     on:mouseleave={() => hover = false}
     >
