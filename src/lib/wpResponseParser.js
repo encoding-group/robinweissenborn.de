@@ -173,6 +173,8 @@ function processGallerySlide( slide ){
     media = processImage(slide.image);
   } else if ( type === 'Video URL' ){
     media = slide.embedded_media;
+  } else if ( type === 'iFrame' ){
+    media = slide.iframe;
   } else if ( type === 'HTML' ){
     media = slide.html;
   } else {

@@ -9,6 +9,10 @@
 <figure bind:offsetHeight={height}>
   {#if slide.type === 'Image'}
     <Image image={slide.media} />
+  {:else if slide.type === 'iFrame'}
+    <div class="video" style="width:{height*1.77}px;">
+      <iframe title="iFrame" src="{slide.media}" />
+    </div>
   {:else}
     <div class="video" data-type={slide.type} style="width:{height*1.77}px;">
       {@html slide.media}
@@ -40,6 +44,7 @@
     min-width: 50vw;
     height: 100%;
     position: relative;
+    iframe,
     :global(iframe){
       position: absolute;
       top: 0;
