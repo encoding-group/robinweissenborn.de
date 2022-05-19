@@ -25,6 +25,7 @@
     observer.observe(element);
     return ()=>{
       observer.disconnect();
+      observer = undefined;
     };
   });
 
