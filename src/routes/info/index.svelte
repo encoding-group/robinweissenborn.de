@@ -23,17 +23,35 @@
   <section class="contact">
     <h1>{data.officeName}</h1>
     <h2>{data.contact.person}</h2>
+
     <address>
       {data['address-1'].street}<br />
       {data['address-1'].zip}
       {data['address-1'].city}<br />
       {data['address-1'].country}
     </address>
+    
+    {#if data['address-2'].city}
+      <address>
+        {data['address-2'].street}<br />
+        {data['address-2'].zip}
+        {data['address-2'].city}<br />
+        {data['address-2'].country}
+      </address>
+    {/if}
+
     <p>
       <a title="Send me an email" href="mailto:{data.contact.email}">{data.contact.email}</a><br />
       <a title="Call me" href="tel:{data.contact.tel}">{data.contact.tel}</a>
     </p>
-    <LocalTime>{data['address-1'].city}</LocalTime>
+
+    <div class="clock">
+      <LocalTime>{data['address-1'].city}</LocalTime>
+      {#if data['address-2'].city}
+        <LocalTime>{data['address-2'].city}</LocalTime>
+      {/if}
+    </div>
+
   </section>
 
   <section class="about">

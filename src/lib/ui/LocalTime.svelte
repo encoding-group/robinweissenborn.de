@@ -47,6 +47,7 @@
   div {
     text-align: center;
     margin: 1.5em 0;
+    margin-right: 2em;
     display: inline-block;
   }
   p {
