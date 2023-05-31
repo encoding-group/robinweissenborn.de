@@ -1,13 +1,19 @@
 @import "reset";
 @import "variables";
 
+:root {
+  --background: #000;
+  --color: #fff;
+  --stroke: #585858;
+}
+
 html {
   font-size: 0.9em;
   scroll-behavior: smooth;
 }
 body {
-  background-color: $background;
-  color: $color;
+  background-color: var(--background);
+  color: var(--color);
   line-height: 1.15;
   @include font;
 }

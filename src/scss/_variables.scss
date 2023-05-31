@@ -1,11 +1,3 @@
-// colors
-$black: #000;
-$grey: #999;
-$white: #fff;
-
-$background: $black;
-$color: $white;
-
 // typography
 @mixin font {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -31,9 +23,7 @@ $color: $white;
 }
 
 // borders
-$border-style: solid;
-$border-width: 1px;
-$border: $border-width solid currentColor;
+$border: 1px solid var(--stroke);
 
 // effects
 @mixin fadein {

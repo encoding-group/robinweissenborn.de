@@ -9,7 +9,7 @@
     flex-grow: 0;
     /* flex-basis: 3%; */
     z-index: 100;
-    background-color: $black;
+    background-color: var(--background);
     border-bottom: $border;
     width: 100vw;
     > div {
